@@ -13,14 +13,16 @@ const config: Config = {
           bordeaux: {
             DEFAULT: '#6B0F1A',
             hover: '#540A13',
-            dark: '#3D070D',
+            dark: '#38060E',
+            deep: '#200307',
             light: '#851422',
             subtle: '#FAF0F1',
           },
           champagne: {
             DEFAULT: '#C59B27',
-            hover: '#B0881F',
-            light: '#DFB949',
+            hover: '#AF881E',
+            light: '#E2C063',
+            pale: '#F6EED8',
             soft: '#F4ECE1',
           },
           ivoire: {
@@ -41,8 +43,14 @@ const config: Config = {
         },
       },
       fontFamily: {
-        serif: ['var(--font-playfair)', 'Georgia', 'serif'],
-        sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
+        serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+        sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+      },
+      boxShadow: {
+        'gold-sm': '0 2px 10px rgba(197, 155, 39, 0.15)',
+        'gold-md': '0 8px 30px rgba(197, 155, 39, 0.20)',
+        'gold-lg': '0 20px 45px rgba(197, 155, 39, 0.25)',
+        'bordeaux-lg': '0 20px 45px rgba(54, 6, 14, 0.35)',
       },
     },
   },

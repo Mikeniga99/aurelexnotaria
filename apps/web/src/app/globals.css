@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -5,21 +7,83 @@
 :root {
   --background: #FAF7F2;
   --foreground: #23070B;
+  --bordeaux: #6B0F1A;
+  --bordeaux-dark: #3E070F;
+  --bordeaux-deep: #240509;
+  --champagne: #C59B27;
+  --champagne-light: #E2C063;
+  --champagne-foil: linear-gradient(135deg, #F0DB92 0%, #C59B27 50%, #9A7718 100%);
+  --ivoire: #FAF7F2;
+  --beige: #F3ECE2;
 }
 
 body {
   color: var(--foreground);
-  background: var(--background);
-  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  background-color: var(--background);
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  overflow-x: hidden;
+  background-image: radial-gradient(#C59B27 0.75px, transparent 0.75px);
+  background-size: 24px 24px;
+  background-color: #FAF7F2;
 }
 
-/* Custom scrollbar */
+/* Luxury Utilities */
+.font-serif {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+}
+
+.font-sans {
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+}
+
+/* Metallic gold gradients */
+.gold-gradient-text {
+  background: linear-gradient(135deg, #D4AF37 0%, #C59B27 40%, #E8CD78 70%, #9B771A 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gold-gradient-bg {
+  background: linear-gradient(135deg, #E2C063 0%, #C59B27 50%, #A47F1D 100%);
+}
+
+.gold-gradient-border {
+  border-image: linear-gradient(135deg, #E2C063, #C59B27, #6B0F1A) 1;
+}
+
+/* Velvet Bordeaux Dark Cards */
+.bordeaux-velvet {
+  background: radial-gradient(circle at top left, #5B0C15 0%, #30060C 60%, #1A0307 100%);
+}
+
+/* Luxury Glassmorphism */
+.glass-gold {
+  background: rgba(250, 247, 242, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(197, 155, 39, 0.25);
+}
+
+.glass-dark {
+  background: rgba(35, 7, 11, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(197, 155, 39, 0.3);
+}
+
+/* Ornamental Lines */
+.ornament-line {
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, #C59B27 50%, transparent 100%);
+}
+
+/* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
 }
 ::-webkit-scrollbar-track {
-  background: #F3ECE2;
+  background: #FAF7F2;
 }
 ::-webkit-scrollbar-thumb {
   background: #C59B27;
@@ -29,7 +93,6 @@ body {
   background: #6B0F1A;
 }
 
-/* Selection */
 ::selection {
   background-color: #6B0F1A;
   color: #FAF7F2;

@@ -6,141 +6,140 @@ import {
   Calendar,
   ChevronRight,
   ShieldCheck,
-  Building,
-  HeartHandshake,
-  Briefcase,
-  TrendingUp,
+  Scale,
   Award,
   FileCheck2,
   Users2,
   Lock,
+  Building,
+  CheckCircle2,
+  Sparkles,
+  ArrowRight,
 } from 'lucide-react';
+import { NotaryFeeSimulator } from '@/components/public/NotaryFeeSimulator';
+import { ExpertisesShowcase } from '@/components/public/ExpertisesShowcase';
 
 export default function HomePage() {
   const tHero = useTranslations('hero');
-  const tExp = useTranslations('expertises');
   const tAbout = useTranslations('about');
 
-  const expertises = [
-    {
-      icon: Building,
-      title: tExp('realEstate'),
-      desc: tExp('realEstateDesc'),
-      slug: 'immobilier',
-    },
-    {
-      icon: HeartHandshake,
-      title: tExp('family'),
-      desc: tExp('familyDesc'),
-      slug: 'famille-succession',
-    },
-    {
-      icon: Briefcase,
-      title: tExp('business'),
-      desc: tExp('businessDesc'),
-      slug: 'entreprises',
-    },
-    {
-      icon: TrendingUp,
-      title: tExp('wealth'),
-      desc: tExp('wealthDesc'),
-      slug: 'patrimoine',
-    },
-  ];
-
   return (
-    <div>
-      {/* 1. HERO SECTION */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-aurelex-ivoire via-aurelex-beige/30 to-aurelex-ivoire py-20 lg:py-28 border-b border-aurelex-beige-border">
-        {/* Subtle decorative background shapes */}
-        <div className="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 rounded-full bg-aurelex-champagne/10 blur-3xl pointer-events-none" />
-        <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-96 h-96 rounded-full bg-aurelex-bordeaux/5 blur-3xl pointer-events-none" />
+    <div className="space-y-24">
+      {/* 1. HERO SECTION MAJESTUEUSE */}
+      <section className="relative overflow-hidden pt-12 pb-24 lg:pt-20 lg:pb-32 border-b border-aurelex-beige-border">
+        {/* Subtle luminous halo */}
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-gradient-to-tr from-aurelex-champagne/15 via-aurelex-bordeaux/10 to-transparent blur-3xl rounded-full pointer-events-none" />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            {/* Left Column: Text & CTAs */}
-            <div className="lg:col-span-7 space-y-6">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-aurelex-champagne-soft border border-aurelex-champagne/40 text-aurelex-bordeaux text-xs font-semibold uppercase tracking-wider">
-                <ShieldCheck className="w-4 h-4 text-aurelex-champagne" />
-                <span>{tHero('badge')}</span>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+            {/* Left Content */}
+            <div className="lg:col-span-7 space-y-8">
+              {/* Notarial Seal Badge */}
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-aurelex-champagne/50 shadow-sm text-aurelex-bordeaux text-xs font-bold uppercase tracking-[0.2em]">
+                <Scale className="w-4 h-4 text-aurelex-champagne" />
+                <span>Office Notarial · Paris Place Vendôme</span>
               </div>
 
-              <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-aurelex-bordeaux leading-tight tracking-tight">
-                {tHero('title')}
-              </h1>
+              {/* Main Headline */}
+              <div className="space-y-3">
+                <h1 className="font-serif text-4xl sm:text-6xl lg:text-7xl font-bold text-aurelex-bordeaux leading-[1.08] tracking-tight">
+                  <span className="italic font-normal block font-serif text-aurelex-ebene">
+                    L'Excellence de l'Acte,
+                  </span>
+                  L'Éternité du Droit.
+                </h1>
+                <div className="w-24 h-1 bg-gradient-to-r from-aurelex-champagne via-aurelex-champagne-light to-transparent rounded-full" />
+              </div>
 
-              <p className="text-lg sm:text-xl text-aurelex-ebene/80 leading-relaxed font-normal">
-                {tHero('subtitle')}
+              {/* Subtitle */}
+              <p className="text-base sm:text-lg text-aurelex-ebene/80 max-w-2xl leading-relaxed font-normal">
+                Officiers publics investis d'une mission de confiance par l'État, les notaires associés d'<strong>Aurelex</strong> garantissent la sécurité absolue, l'authenticité et la pérennité de vos engagements civils, familiaux et d'entreprise.
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-4 pt-4">
+              {/* Fast-Track Actions */}
+              <div className="flex flex-col sm:flex-row gap-4 pt-2">
                 <Link
                   href="/rendez-vous"
-                  className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-aurelex-bordeaux to-aurelex-bordeaux-hover text-white text-base font-semibold px-7 py-3.5 rounded-lg shadow-lg hover:shadow-xl hover:from-aurelex-bordeaux-hover hover:to-aurelex-bordeaux-dark transition-all transform hover:-translate-y-0.5"
+                  className="inline-flex items-center justify-center gap-3 bg-gradient-to-r from-aurelex-bordeaux via-aurelex-bordeaux-hover to-aurelex-bordeaux-dark text-white text-sm uppercase tracking-wider font-bold px-8 py-4 rounded-xl shadow-lg hover:shadow-2xl hover:scale-[1.02] transition-all border border-aurelex-champagne/40"
                 >
-                  <Calendar className="w-5 h-5 text-aurelex-champagne-light" />
-                  <span>{tHero('ctaAppointment')}</span>
+                  <Calendar className="w-4 h-4 text-aurelex-champagne-light" />
+                  <span>Solliciter une consultation</span>
                 </Link>
 
                 <Link
                   href="/expertises"
-                  className="inline-flex items-center justify-center gap-2 bg-white text-aurelex-bordeaux border border-aurelex-beige-border hover:border-aurelex-champagne text-base font-semibold px-7 py-3.5 rounded-lg shadow-sm hover:bg-aurelex-beige/30 transition-all"
+                  className="inline-flex items-center justify-center gap-2 bg-white text-aurelex-bordeaux border border-aurelex-beige-border hover:border-aurelex-champagne text-sm uppercase tracking-wider font-bold px-7 py-4 rounded-xl shadow-sm hover:bg-aurelex-ivoire transition-all"
                 >
-                  <span>{tHero('ctaExpertises')}</span>
+                  <span>Nos domaines d'action</span>
                   <ChevronRight className="w-4 h-4 text-aurelex-champagne" />
                 </Link>
               </div>
 
-              {/* Trust Metrics */}
-              <div className="grid grid-cols-3 gap-6 pt-8 border-t border-aurelex-beige-border">
-                <div>
-                  <div className="font-serif text-3xl font-bold text-aurelex-bordeaux">
-                    25+
-                  </div>
-                  <div className="text-xs text-aurelex-ebene/70 font-medium mt-0.5">
-                    {tHero('metricYears')}
-                  </div>
-                </div>
-                <div>
-                  <div className="font-serif text-3xl font-bold text-aurelex-bordeaux">
-                    1 800+
-                  </div>
-                  <div className="text-xs text-aurelex-ebene/70 font-medium mt-0.5">
-                    {tHero('metricActs')}
-                  </div>
-                </div>
-                <div>
-                  <div className="font-serif text-3xl font-bold text-aurelex-bordeaux">
-                    99.4%
-                  </div>
-                  <div className="text-xs text-aurelex-ebene/70 font-medium mt-0.5">
-                    {tHero('metricSatisfaction')}
-                  </div>
+              {/* Quick Notarial Fast-Track Pills */}
+              <div className="pt-4 border-t border-aurelex-beige-border">
+                <span className="text-[11px] font-bold uppercase tracking-widest text-aurelex-ebene/60 block mb-3">
+                  Démarches prioritaires :
+                </span>
+                <div className="flex flex-wrap gap-2.5">
+                  <Link
+                    href="/rendez-vous"
+                    className="px-3.5 py-1.5 rounded-lg bg-white border border-aurelex-beige-border hover:border-aurelex-champagne text-xs font-semibold text-aurelex-ebene hover:text-aurelex-bordeaux transition-all shadow-sm"
+                  >
+                    Achat & Vente Immobilière
+                  </Link>
+                  <Link
+                    href="/rendez-vous"
+                    className="px-3.5 py-1.5 rounded-lg bg-white border border-aurelex-beige-border hover:border-aurelex-champagne text-xs font-semibold text-aurelex-ebene hover:text-aurelex-bordeaux transition-all shadow-sm"
+                  >
+                    Donation-Partage & Succession
+                  </Link>
+                  <Link
+                    href="/rendez-vous"
+                    className="px-3.5 py-1.5 rounded-lg bg-white border border-aurelex-beige-border hover:border-aurelex-champagne text-xs font-semibold text-aurelex-ebene hover:text-aurelex-bordeaux transition-all shadow-sm"
+                  >
+                    Pacte Dutreil & Statuts SAS
+                  </Link>
                 </div>
               </div>
             </div>
 
-            {/* Right Column: Crest Emblem Card */}
+            {/* Right Heraldic Seal & Crest Card */}
             <div className="lg:col-span-5 flex justify-center">
-              <div className="relative w-full max-w-md aspect-square rounded-3xl p-6 bg-gradient-to-tr from-aurelex-beige to-white shadow-2xl border-2 border-aurelex-champagne/40 flex flex-col items-center justify-center text-center">
-                <div className="relative w-48 h-48 mb-6 drop-shadow-xl hover:scale-105 transition-transform">
+              <div className="relative w-full max-w-md p-8 sm:p-10 rounded-3xl bg-gradient-to-b from-white to-aurelex-beige/40 shadow-2xl border-2 border-aurelex-champagne/40 flex flex-col items-center text-center space-y-6">
+                {/* Gold Crest Medallion */}
+                <div className="relative w-44 h-44 sm:w-52 sm:h-52 drop-shadow-2xl hover:scale-105 transition-transform">
                   <Image
                     src="/images/logo.png"
-                    alt="Aurelex Emblem"
+                    alt="Aurelex Heraldic Emblem"
                     fill
                     className="object-contain"
                     priority
                   />
                 </div>
-                <h3 className="font-serif text-2xl font-bold text-aurelex-bordeaux">
-                  Aurelex Notaires
-                </h3>
-                <p className="text-xs tracking-[0.2em] uppercase text-aurelex-champagne-hover font-semibold mt-1">
-                  Officiers Publics & Ministériels
-                </p>
-                <div className="mt-4 flex items-center gap-1.5 text-xs text-aurelex-ebene/70 bg-white/80 px-3 py-1.5 rounded-full border border-aurelex-beige-border">
-                  <Lock className="w-3.5 h-3.5 text-aurelex-champagne" />
-                  <span>Authenticité & Secret Professionnel</span>
+
+                <div className="space-y-1">
+                  <h3 className="font-serif text-3xl font-bold text-aurelex-bordeaux tracking-tight">
+                    Aurelex Notaires
+                  </h3>
+                  <p className="text-xs tracking-[0.25em] uppercase text-aurelex-champagne-hover font-bold">
+                    Iustitia · Fides · Firmitas
+                  </p>
+                </div>
+
+                <div className="w-full pt-4 border-t border-aurelex-beige-border grid grid-cols-2 gap-4 text-left text-xs">
+                  <div className="p-3 rounded-xl bg-white/80 border border-aurelex-beige-border">
+                    <span className="text-[10px] uppercase font-bold text-aurelex-ebene/60 block">Résidence</span>
+                    <strong className="text-aurelex-bordeaux font-serif text-sm">Paris Vendôme</strong>
+                  </div>
+                  <div className="p-3 rounded-xl bg-white/80 border border-aurelex-beige-border">
+                    <span className="text-[10px] uppercase font-bold text-aurelex-ebene/60 block">Délégation</span>
+                    <strong className="text-aurelex-bordeaux font-serif text-sm">Puissance Publique</strong>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-2 text-xs text-emerald-800 bg-emerald-50/80 px-4 py-2 rounded-xl border border-emerald-200">
+                  <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0" />
+                  <span>Actes authentiques à force probante et exécutoire</span>
                 </div>
               </div>
             </div>
@@ -148,148 +147,96 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 2. PRACTICE AREAS / EXPERTISES */}
-      <section className="py-20 bg-white">
+      {/* 2. LES 4 PILIERS DE L'OFFICE NOTARIAL (INTERACTIVE SHOWCASE) */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+        <div className="text-center max-w-3xl mx-auto space-y-4">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-aurelex-champagne-soft border border-aurelex-champagne/40 text-aurelex-bordeaux text-xs font-bold uppercase tracking-widest">
+            <Sparkles className="w-3.5 h-3.5 text-aurelex-champagne" />
+            <span>Champs d'Intervention Juridique</span>
+          </div>
+          <h2 className="font-serif text-3xl sm:text-5xl font-bold text-aurelex-bordeaux">
+            Les Quatre Piliers de l'Office
+          </h2>
+          <div className="w-20 h-1 bg-aurelex-champagne mx-auto rounded-full" />
+          <p className="text-base sm:text-lg text-aurelex-ebene/80">
+            Une expertise notariale de premier plan, alliant haute technicité juridique et confidentialité absolue.
+          </p>
+        </div>
+
+        <ExpertisesShowcase />
+      </section>
+
+      {/* 3. SIMULATEUR RÉGLEMENTÉ DE FRAIS IMMOBILIERS (LEAD GENERATION TOOL) */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <NotaryFeeSimulator />
+      </section>
+
+      {/* 4. LE MANIFESTE DU NOTARIAT (DEONTOLOGY & HERITAGE) */}
+      <section className="bg-gradient-to-r from-aurelex-ebene via-aurelex-bordeaux-dark to-aurelex-ebene text-white py-20 border-y-2 border-aurelex-champagne/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="font-serif text-3xl sm:text-4xl font-bold text-aurelex-bordeaux">
-              {tExp('title')}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div className="lg:col-span-8 space-y-6">
+              <span className="text-xs uppercase tracking-[0.3em] text-aurelex-champagne font-bold block">
+                Tradition Législative & Serment
+              </span>
+
+              <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-white">
+                « Les notaires sont les officiers publics établis pour recevoir tous les actes et contrats... »
+              </h2>
+
+              <p className="text-base text-aurelex-champagne-soft/90 leading-relaxed font-normal">
+                Extrait fondateur de la loi du 25 ventôse an XI régissant le statut des notaires de France. 
+                À l’office <strong>Aurelex Notaires</strong>, ce texte n'est pas un vestige, c'est notre boussole quotidienne : assurer la certitude absolue de la date, l’indiscutabilité du contenu et la sauvegarde des droits des personnes et des patrimoines.
+              </p>
+
+              <div className="pt-4 flex flex-wrap gap-6 text-xs text-white/70">
+                <div className="flex items-center gap-2">
+                  <ShieldCheck className="w-4 h-4 text-aurelex-champagne" />
+                  <span>Délégation par arrêté du Garde des Sceaux</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <ShieldCheck className="w-4 h-4 text-aurelex-champagne" />
+                  <span>Contrôle régulier par la Chambre des Notaires de Paris</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="lg:col-span-4 bg-white/5 border border-aurelex-champagne/30 p-8 rounded-3xl backdrop-blur-md space-y-4 text-center">
+              <div className="relative w-16 h-16 rounded-full mx-auto border-2 border-aurelex-champagne overflow-hidden">
+                <Image src="/images/logo.png" alt="Aurelex Seal" fill className="object-cover" />
+              </div>
+              <h4 className="font-serif text-xl font-bold text-white">Me Alexandre de Saint-Germain</h4>
+              <p className="text-xs uppercase tracking-widest text-aurelex-champagne font-semibold">
+                Notaire Associé Fondateur
+              </p>
+              <div className="ornament-line my-4" />
+              <p className="text-xs text-white/80 italic font-serif leading-relaxed">
+                « Nous sommes les gardiens de vos volontés et les bâtisseurs de votre tranquillité d'esprit. »
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 5. CALL TO ACTION BANNER */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
+        <div className="bg-gradient-to-br from-aurelex-bordeaux to-aurelex-bordeaux-dark text-white rounded-3xl p-10 sm:p-16 text-center space-y-6 shadow-2xl border-2 border-aurelex-champagne/40 relative overflow-hidden">
+          <div className="max-w-3xl mx-auto space-y-4">
+            <h2 className="font-serif text-3xl sm:text-5xl font-bold tracking-tight">
+              Initier Votre Dossier Notarial
             </h2>
-            <div className="w-16 h-1 bg-aurelex-champagne mx-auto my-4 rounded-full" />
-            <p className="text-base sm:text-lg text-aurelex-ebene/80">
-              {tExp('subtitle')}
+            <p className="text-sm sm:text-base text-aurelex-champagne-soft leading-relaxed">
+              Nos notaires et premiers clercs vous reçoivent au cabinet de la Place Vendôme ou organisent des séances d'actes par visioconférence sécurisée certifiée.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {expertises.map((item, idx) => {
-              const IconComp = item.icon;
-              return (
-                <div
-                  key={idx}
-                  className="bg-aurelex-ivoire rounded-2xl p-6 border border-aurelex-beige-border hover:border-aurelex-champagne hover:shadow-lg transition-all group flex flex-col justify-between"
-                >
-                  <div>
-                    <div className="w-12 h-12 rounded-xl bg-aurelex-champagne-soft text-aurelex-bordeaux flex items-center justify-center mb-6 group-hover:bg-aurelex-bordeaux group-hover:text-aurelex-champagne transition-colors">
-                      <IconComp className="w-6 h-6" />
-                    </div>
-                    <h3 className="font-serif text-xl font-bold text-aurelex-bordeaux mb-3">
-                      {item.title}
-                    </h3>
-                    <p className="text-sm text-aurelex-ebene/75 leading-relaxed mb-6">
-                      {item.desc}
-                    </p>
-                  </div>
-                  <Link
-                    href={`/expertises`}
-                    className="inline-flex items-center gap-1 text-sm font-semibold text-aurelex-bordeaux hover:text-aurelex-champagne-hover transition-colors"
-                  >
-                    <span>{tExp('viewDetail')}</span>
-                    <ChevronRight className="w-4 h-4" />
-                  </Link>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* 3. ABOUT / VALUES SECTION */}
-      <section className="py-20 bg-aurelex-beige/30 border-y border-aurelex-beige-border">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            <div className="lg:col-span-6 space-y-6">
-              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-aurelex-champagne-hover">
-                {tAbout('badge')}
-              </span>
-              <h2 className="font-serif text-3xl sm:text-4xl font-bold text-aurelex-bordeaux">
-                {tAbout('title')}
-              </h2>
-              <p className="text-base text-aurelex-ebene/80 leading-relaxed">
-                {tAbout('description')}
-              </p>
-
-              <div className="space-y-4 pt-2">
-                <div className="flex items-start gap-4 p-4 rounded-xl bg-white border border-aurelex-beige-border shadow-sm">
-                  <div className="p-2 rounded-lg bg-aurelex-champagne-soft text-aurelex-bordeaux shrink-0 mt-0.5">
-                    <FileCheck2 className="w-5 h-5 text-aurelex-champagne" />
-                  </div>
-                  <div>
-                    <h4 className="font-serif font-bold text-aurelex-bordeaux text-base">
-                      {tAbout('value1Title')}
-                    </h4>
-                    <p className="text-xs text-aurelex-ebene/70 mt-1">
-                      {tAbout('value1Desc')}
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4 p-4 rounded-xl bg-white border border-aurelex-beige-border shadow-sm">
-                  <div className="p-2 rounded-lg bg-aurelex-champagne-soft text-aurelex-bordeaux shrink-0 mt-0.5">
-                    <Lock className="w-5 h-5 text-aurelex-champagne" />
-                  </div>
-                  <div>
-                    <h4 className="font-serif font-bold text-aurelex-bordeaux text-base">
-                      {tAbout('value2Title')}
-                    </h4>
-                    <p className="text-xs text-aurelex-ebene/70 mt-1">
-                      {tAbout('value2Desc')}
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4 p-4 rounded-xl bg-white border border-aurelex-beige-border shadow-sm">
-                  <div className="p-2 rounded-lg bg-aurelex-champagne-soft text-aurelex-bordeaux shrink-0 mt-0.5">
-                    <Users2 className="w-5 h-5 text-aurelex-champagne" />
-                  </div>
-                  <div>
-                    <h4 className="font-serif font-bold text-aurelex-bordeaux text-base">
-                      {tAbout('value3Title')}
-                    </h4>
-                    <p className="text-xs text-aurelex-ebene/70 mt-1">
-                      {tAbout('value3Desc')}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Right quote / statement */}
-            <div className="lg:col-span-6">
-              <div className="bg-aurelex-ebene text-white p-10 rounded-3xl shadow-xl relative border border-aurelex-champagne/30">
-                <Award className="w-12 h-12 text-aurelex-champagne mb-6" />
-                <blockquote className="font-serif text-2xl sm:text-3xl font-normal leading-relaxed text-aurelex-champagne-soft">
-                  « Le notaire n'est pas seulement le rédacteur de l'acte, il est le garant de la paix civile et de la volonté libre et éclairée des parties. »
-                </blockquote>
-                <div className="mt-8 pt-6 border-t border-white/10 flex items-center justify-between">
-                  <div>
-                    <div className="font-serif font-bold text-lg text-white">Me Alexandre de Saint-Germain</div>
-                    <div className="text-xs text-aurelex-champagne tracking-wider uppercase font-semibold">Notaire Associé Fondateur</div>
-                  </div>
-                  <div className="text-xs text-white/50">Paris · Place Vendôme</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 4. BANNER APPOINTMENT CALL TO ACTION */}
-      <section className="py-16 bg-gradient-to-r from-aurelex-bordeaux via-aurelex-bordeaux-hover to-aurelex-bordeaux text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
-          <h2 className="font-serif text-3xl sm:text-4xl font-bold tracking-tight">
-            Un projet immobilier, successoral ou d'entreprise ?
-          </h2>
-          <p className="text-base sm:text-lg text-aurelex-champagne-soft max-w-2xl mx-auto font-normal">
-            Nos notaires et juristes vous conseillent avec rigueur et bienveillance. Prenez contact avec notre secrétariat en toute confidentialité.
-          </p>
           <div className="pt-2">
             <Link
               href="/rendez-vous"
-              className="inline-flex items-center gap-2 bg-aurelex-champagne text-aurelex-ebene font-bold px-8 py-3.5 rounded-lg shadow-xl hover:bg-aurelex-champagne-light transition-all transform hover:scale-105"
+              className="inline-flex items-center gap-3 bg-gradient-to-r from-aurelex-champagne to-aurelex-champagne-light text-aurelex-ebene font-bold text-sm uppercase tracking-wider px-9 py-4 rounded-xl shadow-xl hover:shadow-2xl hover:scale-105 transition-all"
             >
               <Calendar className="w-5 h-5" />
-              <span>Demander une consultation</span>
+              <span>Transmettre votre demande de rendez-vous</span>
             </Link>
           </div>
         </div>
