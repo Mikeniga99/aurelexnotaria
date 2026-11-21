@@ -1,0 +1,102 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "about": "L'Étude",
+    "expertises": "Expertises",
+    "team": "L'Équipe",
+    "news": "Actualités & Guides",
+    "contact": "Contact",
+    "appointment": "Prendre Rendez-vous",
+    "admin": "Espace Gestion"
+  },
+  "hero": {
+    "badge": "Office Notarial — Paris & Région Île-de-France",
+    "title": "La rigueur juridique au service de vos projets de vie",
+    "subtitle": "Aurelex Notaires accompagne les particuliers, les familles et les entreprises à chaque étape clé de leur patrimoine avec solennité, sécurité et humanisme.",
+    "ctaAppointment": "Prendre rendez-vous",
+    "ctaExpertises": "Découvrir nos expertises",
+    "metricYears": "Ans d'expertise",
+    "metricActs": "Actes authentiques / an",
+    "metricSatisfaction": "Satisfaction clients"
+  },
+  "expertises": {
+    "title": "Nos Domaines d'Intervention",
+    "subtitle": "Un conseil personnalisé et une rédaction sécurisée pour tous vos actes civils et commerciaux.",
+    "realEstate": "Droit Immobilier",
+    "realEstateDesc": "Ventes, acquisitions, règlements de copropriété, baux commerciaux et prêts hypothécaires.",
+    "family": "Droit de la Famille & Successions",
+    "familyDesc": "Donations-partages, successions, contrats de mariage, PACS et mandats de protection future.",
+    "business": "Droit des Entreprises",
+    "businessDesc": "Transmission d'entreprises, pactes Dutreil, cessions de fonds de commerce et constitution de sociétés.",
+    "wealth": "Gestion & Stratégie Patrimoniale",
+    "wealthDesc": "Optimisation fiscale, transmission de capitaux et sécurisation des actifs familiaux.",
+    "viewDetail": "Consulter l'expertise",
+    "viewAll": "Voir toutes nos expertises"
+  },
+  "about": {
+    "badge": "L'Étude Aurelex",
+    "title": "Tradition d'excellence et vision contemporaine du notariat",
+    "description": "Implantée au cœur de Paris, l'étude Aurelex Notaires conjugue la noblesse de la fonction notariale et la réactivité d'un office moderne. Officiers publics et ministériels, nous garantissons l'authenticité et la pérennité juridique de tous vos engagements.",
+    "valuesTitle": "Nos Engagements Fondamentaux",
+    "value1Title": "Sécurité Juridique Absolue",
+    "value1Desc": "Chaque acte authentique est rédigé avec une minutie exemplaire pour prévenir tout litige futur.",
+    "value2Title": "Secret Professionnel & Rigueur",
+    "value2Desc": "Une discrétion absolue et un respect strict de la déontologie notariale encadrée par la loi.",
+    "value3Title": "Écoute & Pédagogie",
+    "value3Desc": "Nous traduisons le droit en conseils clairs et compréhensibles, adaptés à votre situation humaine."
+  },
+  "team": {
+    "title": "Une Équipe de Notaires et de Spécialistes Dévoués",
+    "subtitle": "Des notaires associés et des clercs spécialisés unis pour vous apporter la meilleure réponse juridique.",
+    "roleNotaryPartner": "Notaire Associé",
+    "roleNotary": "Notaire Salarié",
+    "roleHeadClerk": "Premier Clerc de Notaire"
+  },
+  "appointment": {
+    "title": "Demande de Rendez-vous",
+    "subtitle": "Choisissez votre créneau et renseignez le motif de votre dossier. Notre secrétariat examinera votre demande avec diligence.",
+    "fullName": "Nom complet",
+    "email": "Adresse e-mail",
+    "phone": "Téléphone",
+    "motif": "Objet de votre consultation",
+    "motifPlaceholder": "Sélectionnez un domaine",
+    "motifImmo": "Immobilier (Vente, Achat, Hypothèque)",
+    "motifFamily": "Famille & Succession (Donation, Testament, Mariage)",
+    "motifBusiness": "Entreprise (Cession, Dutreil, Statuts)",
+    "motifWealth": "Gestion de Patrimoine",
+    "motifOther": "Autre demande",
+    "preferredDate": "Date ou période souhaitée",
+    "preferredTimeSlot": "Plage horaire privilégiée",
+    "morning": "Matin (09h00 - 12h00)",
+    "afternoon": "Après-midi (14h00 - 18h00)",
+    "message": "Précisions sur votre situation (facultatif)",
+    "submit": "Transmettre ma demande de rendez-vous",
+    "submitting": "Transmission en cours...",
+    "disclaimer": "Conformément à la déontologie notariale, cette demande est transmise à l'étude sous statut 'en attente' et sera confirmée par notre secrétariat après vérification de la disponibilité.",
+    "successTitle": "Demande bien transmise",
+    "successMessage": "Votre demande de rendez-vous a été enregistrée avec succès. Notre équipe vous contactera rapidement."
+  },
+  "contact": {
+    "title": "Nous Contacter",
+    "subtitle": "L'office vous accueille du lundi au vendredi sur rendez-vous.",
+    "address": "18, Place Vendôme, 75001 Paris",
+    "phone": "+33 (0)1 42 68 50 00",
+    "email": "contact@aurelex-notaires.fr",
+    "openingHours": "Du lundi au vendredi : 09h00 - 12h30 / 14h00 - 18h30",
+    "send": "Envoyer le message",
+    "fullName": "Nom et prénom",
+    "subject": "Sujet de votre message",
+    "message": "Votre message",
+    "successTitle": "Message transmis",
+    "successMessage": "Nous avons bien reçu votre message et y apporterons une réponse soignée."
+  },
+  "footer": {
+    "tagline": "Office Notarial — Sécurité, Authenticité & Conseil Patrimonial.",
+    "quickLinks": "Liens Rapides",
+    "legalNotice": "Mentions Légales",
+    "privacyPolicy": "Politique de Confidentialité",
+    "regulatedFees": "Tarifs & Émoluments Réglementés",
+    "mediator": "Médiateur du Notariat",
+    "copyright": "© 2026 Aurelex Notaires. Tous droits réservés. Étude fictive conçue pour démonstration technique."
+  }
+}

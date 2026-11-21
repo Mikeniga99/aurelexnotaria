@@ -1,0 +1,102 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "The Firm",
+    "expertises": "Practice Areas",
+    "team": "Our Team",
+    "news": "Insights & Guides",
+    "contact": "Contact",
+    "appointment": "Book Consultation",
+    "admin": "Portal"
+  },
+  "hero": {
+    "badge": "Civil Law Notary Practice — Paris, France",
+    "title": "Legal rigor and expertise dedicated to your life milestones",
+    "subtitle": "Aurelex Notaires advises individuals, families, and corporations at every critical stage of their wealth with solemnity, certainty, and human dedication.",
+    "ctaAppointment": "Book a consultation",
+    "ctaExpertises": "Explore practice areas",
+    "metricYears": "Years of expertise",
+    "metricActs": "Authentic deeds / year",
+    "metricSatisfaction": "Client satisfaction"
+  },
+  "expertises": {
+    "title": "Our Practice Areas",
+    "subtitle": "Tailored guidance and legally enforceable drafting for all your civil and commercial transactions.",
+    "realEstate": "Real Estate Law",
+    "realEstateDesc": "Acquisitions, sales, co-ownership bylaws, commercial leases, and mortgage securities.",
+    "family": "Family & Succession Law",
+    "familyDesc": "Inheritance planning, inter-vivos gifts, prenuptial agreements, and future protection mandates.",
+    "business": "Corporate & Business Law",
+    "businessDesc": "Business transfers, Dutreil tax pacts, asset purchases, and corporate structuring.",
+    "wealth": "Wealth & Tax Strategy",
+    "wealthDesc": "Cross-border estate planning, tax optimization, and long-term family asset protection.",
+    "viewDetail": "View details",
+    "viewAll": "View all practice areas"
+  },
+  "about": {
+    "badge": "About Aurelex",
+    "title": "A heritage of excellence with a contemporary vision of notarial law",
+    "description": "Located in the historic center of Paris, Aurelex Notaires combines the solemnity of public authentication with the agility of a cutting-edge practice. As civil law public officers, we guarantee the legal validity and enduring certainty of your agreements.",
+    "valuesTitle": "Core Commitments",
+    "value1Title": "Absolute Legal Certainty",
+    "value1Desc": "Every notarized deed is drafted with rigorous precision to safeguard your interests and prevent disputes.",
+    "value2Title": "Professional Secrecy & Ethics",
+    "value2Desc": "Strict adherence to notarial confidentiality and French professional ethics governed by law.",
+    "value3Title": "Dedicated Counsel & Clarity",
+    "value3Desc": "We articulate complex legal rules into straightforward, empathetic advice tailored to your needs."
+  },
+  "team": {
+    "title": "A Dedicated Team of Notaries and Legal Counsel",
+    "subtitle": "Partner notaries and specialized legal clerks united to deliver premier notarial counsel.",
+    "roleNotaryPartner": "Partner Notary",
+    "roleNotary": "Associate Notary",
+    "roleHeadClerk": "Head Legal Clerk"
+  },
+  "appointment": {
+    "title": "Request a Consultation",
+    "subtitle": "Select your preferred slot and specify your inquiry. Our secretariat will review your request promptly.",
+    "fullName": "Full name",
+    "email": "Email address",
+    "phone": "Phone number",
+    "motif": "Consultation subject",
+    "motifPlaceholder": "Select a category",
+    "motifImmo": "Real Estate (Purchase, Sale, Mortgage)",
+    "motifFamily": "Family & Estate (Gift, Will, Marriage)",
+    "motifBusiness": "Corporate (Transfer, Dutreil, Bylaws)",
+    "motifWealth": "Wealth Planning",
+    "motifOther": "Other legal matter",
+    "preferredDate": "Requested date or timeframe",
+    "preferredTimeSlot": "Preferred time of day",
+    "morning": "Morning (09:00 - 12:00)",
+    "afternoon": "Afternoon (14:00 - 18:00)",
+    "message": "Additional details (optional)",
+    "submit": "Submit consultation request",
+    "submitting": "Submitting...",
+    "disclaimer": "In accordance with notarial regulations, this request is received under 'pending' status and will be confirmed by our team upon availability verification.",
+    "successTitle": "Request successfully received",
+    "successMessage": "Your appointment request has been recorded. Our team will contact you shortly."
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "The practice welcomes clients Monday through Friday by appointment.",
+    "address": "18 Place Vendôme, 75001 Paris, France",
+    "phone": "+33 (0)1 42 68 50 00",
+    "email": "contact@aurelex-notaires.fr",
+    "openingHours": "Monday to Friday: 09:00 - 12:30 / 14:00 - 18:30",
+    "send": "Send message",
+    "fullName": "Full name",
+    "subject": "Subject",
+    "message": "Your message",
+    "successTitle": "Message sent",
+    "successMessage": "We have received your message and will respond promptly."
+  },
+  "footer": {
+    "tagline": "Civil Law Notary Practice — Certainty, Authenticity & Estate Counsel.",
+    "quickLinks": "Quick Links",
+    "legalNotice": "Legal Notice",
+    "privacyPolicy": "Privacy Policy",
+    "regulatedFees": "Statutory Notarial Tariffs",
+    "mediator": "Notarial Ombudsman",
+    "copyright": "© 2026 Aurelex Notaires. All rights reserved. Fictional office designed for technical demonstration."
+  }
+}

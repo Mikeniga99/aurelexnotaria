@@ -1,0 +1,20 @@
+{
+  "name": "aurelex-notaires",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Plateforme web institutionnelle multilingue et CMS pour l'étude notariale Aurelex Notaires",
+  "scripts": {
+    "dev": "pnpm --parallel run dev",
+    "dev:api": "pnpm --filter @notaria/api run dev",
+    "dev:web": "pnpm --filter @notaria/web run dev",
+    "build": "pnpm --filter @notaria/typescript-config build && pnpm --filter @notaria/contracts build && pnpm --filter @notaria/api build && pnpm --filter @notaria/web build",
+    "test": "pnpm --recursive run test",
+    "lint": "pnpm --recursive run lint",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\""
+  },
+  "devDependencies": {
+    "prettier": "^3.4.2",
+    "typescript": "^5.7.3"
+  },
+  "packageManager": "pnpm@9.15.9"
+}

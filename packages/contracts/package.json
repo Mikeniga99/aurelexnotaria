@@ -1,0 +1,18 @@
+{
+  "name": "@notaria/contracts",
+  "version": "1.0.0",
+  "private": true,
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch"
+  },
+  "dependencies": {
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "@notaria/typescript-config": "workspace:*",
+    "typescript": "^5.7.3"
+  }
+}
