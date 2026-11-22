@@ -22,7 +22,7 @@ export default function AboutPage() {
         {/* Image de fond avec overlay haute lisibilité */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/etude_paris.jpg"
+            src="/images/arriere_grand_ecran.jpg"
             alt="L'Étude Aurelex Notaires Paris"
             fill
             className="object-cover object-center"
@@ -50,22 +50,31 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
 
-            {/* Image nette avec cadre de prestige */}
-            <div className="lg:col-span-5 relative aspect-[4/5] overflow-hidden rounded-3xl border-2 border-slate-200 shadow-xl bg-white">
-              <Image
-                src="/images/etude_paris.jpg"
-                alt="Cabinet notarial Aurelex Paris"
-                fill
-                className="object-cover"
-              />
-              {/* Badge flottant blanc opaque 100% lisible */}
-              <div className="absolute bottom-5 inset-x-5 bg-white/98 rounded-2xl p-4 flex items-center gap-3.5 shadow-lg border border-slate-200">
-                <div className="w-11 h-11 rounded-xl bg-blue-700 text-white flex items-center justify-center shrink-0">
-                  <Scale className="w-5 h-5" />
+            {/* Carte institutionnelle de prestige (sans image cliché) */}
+            <div className="lg:col-span-5 bg-gradient-to-br from-[#0B1938] to-[#060D1F] rounded-3xl p-8 sm:p-10 text-white border border-[#D4B483]/30 shadow-xl space-y-7 relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-48 h-48 bg-[#D4B483]/10 rounded-full blur-3xl pointer-events-none" />
+              <div className="w-14 h-14 rounded-2xl bg-[#D4B483]/15 border border-[#D4B483]/35 flex items-center justify-center text-[#D4B483]">
+                <Scale className="w-7 h-7" />
+              </div>
+              <div className="space-y-2">
+                <span className="text-xs font-bold tracking-[0.2em] text-[#D4B483] uppercase">Office Ministériel</span>
+                <h3 className="font-serif text-2xl sm:text-3xl font-bold text-white">Aurelex Notaires Paris</h3>
+                <p className="text-slate-300 text-sm leading-relaxed pt-1">
+                  Officiers publics investis d'une délégation de puissance publique par le Garde des Sceaux, garants de la foi publique et de la sécurité des actes notariés.
+                </p>
+              </div>
+              <div className="border-t border-white/10 pt-6 space-y-3.5 text-sm">
+                <div className="flex items-center justify-between">
+                  <span className="text-slate-400">Fondation de l'office</span>
+                  <span className="font-bold text-[#D4B483]">1998 (28 ans d'exercice)</span>
                 </div>
-                <div>
-                  <div className="font-serif text-base font-bold text-slate-950">Fondé en 1998</div>
-                  <div className="text-xs text-slate-600 font-medium">18 Place Vendôme, Paris Ier</div>
+                <div className="flex items-center justify-between">
+                  <span className="text-slate-400">Siège historique</span>
+                  <span className="font-semibold text-white">18 Place Vendôme, Paris 1er</span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-slate-400">Instance ordinale</span>
+                  <span className="font-semibold text-white">Chambre de Paris</span>
                 </div>
               </div>
             </div>
