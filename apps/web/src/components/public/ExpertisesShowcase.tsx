@@ -21,16 +21,14 @@ export function ExpertisesShowcase() {
       tag: 'IMMOBILIER',
       title: 'Sécurisation des Actes & Cessions Immobilières',
       icon: Building2,
-      color: 'from-blue-600/20 to-cyan-500/10',
-      accent: 'text-cyan-400',
-      border: 'border-cyan-400/30',
+      accent: 'text-blue-600',
       subtitle: "Du compromis sous seing privé à l'acte authentique revêtu de la formule exécutoire.",
       description:
         "L'achat ou la vente d'un bien immobilier engage l'avenir financier d'une vie ou d'un bilan d'entreprise. L'office Aurelex Notaires procède à une analyse exhaustive de l'origine de propriété sur plus de trente ans, purge les droits de préemption urbains et sécurise le déblocage des fonds.",
       keyPoints: [
         "Rédaction de promesses unilatérales et de compromis de vente avec conditions suspensives d'emprunt.",
-        'Assainissement des situations hypothécaires et radiation d\'inscriptions.',
-        'Immobilier d\'investissement, VEFA, baux commerciaux et divisions en volumes.',
+        "Assainissement des situations hypothécaires et radiation d'inscriptions.",
+        "Immobilier d'investissement, VEFA, baux commerciaux et divisions en volumes.",
         'Téléactes et télétransmission dématérialisée immédiate à la publicité foncière.',
       ],
       ctaText: 'Initier un dossier immobilier',
@@ -39,9 +37,7 @@ export function ExpertisesShowcase() {
       tag: 'FAMILLE & SUCCESSIONS',
       title: 'Transmission Supragénérationnelle & Droit de la Famille',
       icon: HeartHandshake,
-      color: 'from-indigo-600/20 to-blue-500/10',
-      accent: 'text-blue-300',
-      border: 'border-blue-300/30',
+      accent: 'text-indigo-600',
       subtitle: 'Anticiper pour protéger, pacifier et optimiser la dévolution de vos actifs.',
       description:
         "Face aux complexités des familles contemporaines et aux barèmes fiscaux successoraux élevés, la donation-partage et le démembrement de propriété permettent de figer la valeur vénale des actifs et d'éviter les conflits liquidatifs entre héritiers.",
@@ -57,9 +53,7 @@ export function ExpertisesShowcase() {
       tag: 'ENTREPRISES & DIRIGEANTS',
       title: 'Droit des Entreprises, Fusions & Pacte Dutreil',
       icon: Briefcase,
-      color: 'from-violet-600/20 to-indigo-500/10',
-      accent: 'text-violet-300',
-      border: 'border-violet-300/30',
+      accent: 'text-violet-600',
       subtitle: "Pérenniser l'outil professionnel et orchestrer la gouvernance actionnariale.",
       description:
         "Le chef d'entreprise doit concilier vision opérationnelle et protection patrimoniale. Nous accompagnons les fondateurs, repreneurs et holdings familiales lors de chaque acte structurant : rédaction des statuts de sociétés holding civiles ou SAS, cession de titres.",
@@ -75,9 +69,7 @@ export function ExpertisesShowcase() {
       tag: 'PATRIMOINE & FISCALITÉ',
       title: 'Stratégie de Détention & Conseil Patrimonial',
       icon: TrendingUp,
-      color: 'from-sky-600/20 to-blue-400/10',
-      accent: 'text-sky-300',
-      border: 'border-sky-300/30',
+      accent: 'text-sky-600',
       subtitle: 'Une ingénierie juridique au service de la résilience de vos avoirs.',
       description:
         "Le patrimoine requiert un audit pluridisciplinaire permanent : analyse civile des clauses bénéficiaires d'assurance-vie, optimisation de la trésorerie d'entreprise, démembrement temporaire ou viager, et fiscalité des plus-values immobilières ou mobilières.",
@@ -96,7 +88,7 @@ export function ExpertisesShowcase() {
 
   return (
     <div className="space-y-8">
-      {/* Tab Navigation — pill selector, no rigid cards */}
+      {/* Tab Navigation — sélecteur fluide sans cadres rigides */}
       <div className="flex flex-wrap gap-3 justify-center">
         {pillars.map((item, idx) => {
           const isSelected = activeTab === idx;
@@ -108,35 +100,31 @@ export function ExpertisesShowcase() {
               onClick={() => setActiveTab(idx)}
               className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-300 border ${
                 isSelected
-                  ? `bg-white/10 border-white/30 text-white shadow-lg shadow-blue-500/10 backdrop-blur-md`
-                  : `bg-transparent border-white/10 text-white/50 hover:text-white/80 hover:border-white/20`
+                  ? `bg-blue-600 border-blue-600 text-white shadow-md shadow-blue-500/25`
+                  : `bg-white border-slate-200 text-slate-600 hover:text-slate-900 hover:border-slate-300`
               }`}
             >
-              <TabIcon className={`w-3.5 h-3.5 ${isSelected ? item.accent : 'text-white/40'}`} />
+              <TabIcon className={`w-3.5 h-3.5 ${isSelected ? 'text-white' : 'text-slate-400'}`} />
               <span>{item.tag}</span>
             </button>
           );
         })}
       </div>
 
-      {/* Panel — no rigid frame, immersive liquid glass */}
+      {/* Panneau actif */}
       <div
         key={activeTab}
-        className={`relative rounded-3xl overflow-hidden border ${current.border} animate-fade-in-up`}
-        style={{ background: 'rgba(11,25,56,0.7)', backdropFilter: 'blur(20px)' }}
+        className="relative rounded-3xl overflow-hidden border border-slate-200/90 bg-white p-8 sm:p-12 shadow-xl animate-fade-in-up"
       >
-        {/* Gradient wash */}
-        <div className={`absolute inset-0 bg-gradient-to-br ${current.color} pointer-events-none`} />
-
-        <div className="relative z-10 p-8 sm:p-12 grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-          {/* Left: Content */}
+        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+          {/* Colonne gauche */}
           <div className="lg:col-span-7 space-y-5">
-            <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 ${current.accent} text-xs font-bold tracking-wider uppercase`}>
+            <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 ${current.accent} text-xs font-bold tracking-wider uppercase`}>
               <IconComp className="w-3.5 h-3.5" />
               <span>{current.tag}</span>
             </div>
 
-            <h3 className="font-serif text-3xl sm:text-4xl font-bold text-white leading-tight">
+            <h3 className="font-serif text-3xl sm:text-4xl font-bold text-slate-900 leading-tight">
               {current.title}
             </h3>
 
@@ -144,7 +132,7 @@ export function ExpertisesShowcase() {
               {current.subtitle}
             </p>
 
-            <p className="text-sm sm:text-base text-white/70 leading-relaxed">
+            <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
               {current.description}
             </p>
 
@@ -153,23 +141,23 @@ export function ExpertisesShowcase() {
                 href="/rendez-vous"
                 className="btn-liquid-primary inline-flex items-center gap-2 text-sm px-7 py-3.5"
               >
-                <Calendar className="w-4 h-4" />
+                <Calendar className="w-4 h-4 text-white" />
                 <span>{current.ctaText}</span>
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight className="w-4 h-4 text-white" />
               </Link>
             </div>
           </div>
 
-          {/* Right: Key points — no box, just list with neon dots */}
-          <div className="lg:col-span-5 space-y-4">
-            <div className={`flex items-center gap-2 text-xs font-bold uppercase tracking-wider ${current.accent} border-b border-white/10 pb-3`}>
+          {/* Colonne droite : compétences clés */}
+          <div className="lg:col-span-5 bg-slate-50/80 p-6 sm:p-8 rounded-2xl border border-slate-200 space-y-4">
+            <div className={`flex items-center gap-2 text-xs font-bold uppercase tracking-wider ${current.accent} border-b border-slate-200 pb-3`}>
               <FileCheck2 className="w-4 h-4" />
               <span>Compétences Juridiques & Actes Cibles</span>
             </div>
 
             <ul className="space-y-3.5">
               {current.keyPoints.map((point, pIdx) => (
-                <li key={pIdx} className="flex items-start gap-3 text-xs sm:text-sm text-white/75">
+                <li key={pIdx} className="flex items-start gap-3 text-xs sm:text-sm text-slate-700">
                   <CheckCircle2 className={`w-4 h-4 ${current.accent} shrink-0 mt-0.5`} />
                   <span className="leading-snug">{point}</span>
                 </li>
