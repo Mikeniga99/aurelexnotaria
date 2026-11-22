@@ -151,39 +151,43 @@ export function Footer() {
         </div>
       </div>
 
-      {/* ── Barre Basse de Copyright (Haute Finition & Sans rupture de ligne) ── */}
-      <div className="border-t border-white/10 bg-[#030712] pt-6 pb-32 lg:pb-8">
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 flex flex-col md:flex-row items-center justify-between gap-5 text-xs text-slate-400">
+      {/* ── Barre Basse de Copyright & Liens Légaux ── */}
+      <div className="border-t border-white/10 bg-[#030712] pt-8 pb-32 lg:pb-8">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 flex flex-col md:flex-row items-center justify-between gap-5">
           
-          {/* Copyright */}
-          <p className="text-center md:text-left text-slate-400 font-normal">
-            © 2025 AURELEX Notaire. Tous droits réservés.
-          </p>
-
-          {/* Liens légaux harmonieux sans séparateurs cassés */}
-          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-slate-400">
-            <Link href="/mentions-legales" className="hover:text-[#D4B483] transition-colors">
+          {/* Liens légaux parfaitement alignés sur une seule ligne */}
+          <div className="flex items-center justify-center gap-3.5 sm:gap-6 text-xs text-slate-400 order-1 md:order-2">
+            <Link href="/mentions-legales" className="hover:text-[#D4B483] transition-colors whitespace-nowrap">
               Mentions légales
             </Link>
-            <span className="w-1 h-1 rounded-full bg-slate-600 hidden sm:inline-block" />
-            <Link href="/confidentialite" className="hover:text-[#D4B483] transition-colors">
-              Politique de confidentialité
+            <span className="text-slate-600">·</span>
+            <Link href="/confidentialite" className="hover:text-[#D4B483] transition-colors whitespace-nowrap">
+              Confidentialité
             </Link>
-            <span className="w-1 h-1 rounded-full bg-slate-600 hidden sm:inline-block" />
-            <Link href="/contact" className="hover:text-[#D4B483] transition-colors">
+            <span className="text-slate-600">·</span>
+            <Link href="/contact" className="hover:text-[#D4B483] transition-colors whitespace-nowrap">
               Plan du site
             </Link>
           </div>
 
-          {/* Bouton retour en haut */}
-          <button
-            onClick={scrollToTop}
-            className="w-9 h-9 rounded-full bg-white/5 hover:bg-[#D4B483] border border-white/10 hover:border-[#D4B483] text-slate-300 hover:text-slate-950 flex items-center justify-center transition-all shadow-sm"
-            aria-label="Retour en haut"
-            title="Retour en haut de page"
-          >
-            <ArrowUp className="w-4 h-4" />
-          </button>
+          {/* Copyright */}
+          <p className="text-xs text-slate-400 text-center md:text-left order-2 md:order-1 font-normal">
+            © 2025 AURELEX Notaire. Tous droits réservés.
+          </p>
+
+          {/* Bouton retour en haut ergonomique */}
+          <div className="order-3 flex justify-center">
+            <button
+              onClick={scrollToTop}
+              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 hover:bg-[#D4B483]/15 border border-white/10 hover:border-[#D4B483]/50 text-xs text-slate-300 hover:text-[#D4B483] transition-all group"
+              aria-label="Retour en haut de page"
+              title="Retour en haut de page"
+            >
+              <span>Haut de page</span>
+              <ArrowUp className="w-3.5 h-3.5 text-[#D4B483] group-hover:-translate-y-0.5 transition-transform" />
+            </button>
+          </div>
+
         </div>
       </div>
     </footer>
