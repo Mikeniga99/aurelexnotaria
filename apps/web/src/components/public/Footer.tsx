@@ -4,14 +4,10 @@ import React from 'react';
 import Image from 'next/image';
 import { Link } from '@/i18n/routing';
 import { useTranslations } from 'next-intl';
-import { Phone, Mail, MapPin, ArrowUp, Linkedin, Youtube, ShieldCheck } from 'lucide-react';
+import { Phone, Mail, MapPin, Linkedin, Youtube, ShieldCheck } from 'lucide-react';
 
 export function Footer() {
   const t = useTranslations('footer');
-
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
 
   return (
     <footer className="bg-[#050B18] text-white border-t border-white/10">
@@ -153,10 +149,15 @@ export function Footer() {
 
       {/* ── Barre Basse de Copyright & Liens Légaux ── */}
       <div className="border-t border-white/10 bg-[#030712] pt-8 pb-32 lg:pb-8">
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 flex flex-col md:flex-row items-center justify-between gap-5">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 flex flex-col md:flex-row items-center justify-between gap-4">
           
+          {/* Copyright */}
+          <p className="text-xs text-slate-400 text-center md:text-left font-normal order-2 md:order-1">
+            © 2026 AURELEX Notaire. Tous droits réservés.
+          </p>
+
           {/* Liens légaux parfaitement alignés sur une seule ligne */}
-          <div className="flex items-center justify-center gap-3.5 sm:gap-6 text-xs text-slate-400 order-1 md:order-2">
+          <div className="flex items-center justify-center gap-4 sm:gap-6 text-xs text-slate-400 order-1 md:order-2">
             <Link href="/mentions-legales" className="hover:text-[#D4B483] transition-colors whitespace-nowrap">
               Mentions légales
             </Link>
@@ -168,24 +169,6 @@ export function Footer() {
             <Link href="/contact" className="hover:text-[#D4B483] transition-colors whitespace-nowrap">
               Plan du site
             </Link>
-          </div>
-
-          {/* Copyright */}
-          <p className="text-xs text-slate-400 text-center md:text-left order-2 md:order-1 font-normal">
-            © 2026 AURELEX Notaire. Tous droits réservés.
-          </p>
-
-          {/* Bouton retour en haut ergonomique */}
-          <div className="order-3 flex justify-center">
-            <button
-              onClick={scrollToTop}
-              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 hover:bg-[#D4B483]/15 border border-white/10 hover:border-[#D4B483]/50 text-xs text-slate-300 hover:text-[#D4B483] transition-all group"
-              aria-label="Retour en haut de page"
-              title="Retour en haut de page"
-            >
-              <span>Haut de page</span>
-              <ArrowUp className="w-3.5 h-3.5 text-[#D4B483] group-hover:-translate-y-0.5 transition-transform" />
-            </button>
           </div>
 
         </div>
