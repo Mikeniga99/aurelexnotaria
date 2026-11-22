@@ -10,16 +10,29 @@ export default function ContactPage() {
   return (
     <div className="bg-[#F8FAFC] text-slate-900">
 
-      {/* ── HERO HAUTE LISIBILITÉ ── */}
-      <section className="pt-32 pb-16 lg:pt-40 lg:pb-20 bg-gradient-to-b from-blue-50/70 to-[#F8FAFC] border-b border-slate-200">
-        <div className="max-w-4xl mx-auto px-5 sm:px-8 text-center space-y-5">
-          <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-900 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider border border-blue-200">
+      {/* ── HERO IMMERSIF AVEC IMAGE ── */}
+      <section className="relative pt-36 pb-20 lg:pt-44 lg:pb-28 overflow-hidden flex flex-col justify-center bg-[#060D1F]">
+        {/* Image de fond avec overlay haute lisibilité */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/images/arriere_grand_ecran.jpg"
+            alt="Cabinet Aurelex Notaires Contact"
+            fill
+            className="object-cover object-center"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-950/92 via-slate-950/80 to-slate-950/65" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#060D1F] via-transparent to-black/40" />
+        </div>
+
+        <div className="relative z-10 max-w-4xl mx-auto px-5 sm:px-8 text-center space-y-5">
+          <div className="inline-flex items-center gap-2 bg-[#D4B483]/15 border border-[#D4B483]/40 text-[#D4B483] px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider backdrop-blur-md">
             <span>Correspondance & Demandes</span>
           </div>
-          <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-950 leading-tight">
+          <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight drop-shadow-md">
             {t('title')}
           </h1>
-          <p className="text-base sm:text-lg text-slate-700 max-w-2xl mx-auto leading-relaxed font-normal">
+          <p className="text-base sm:text-lg text-slate-200 max-w-2xl mx-auto leading-relaxed font-normal drop-shadow-sm">
             {t('subtitle')}
           </p>
         </div>
