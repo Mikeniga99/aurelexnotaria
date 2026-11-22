@@ -120,8 +120,8 @@ export function Footer() {
         </div>
       </div>
 
-      {/* ── Barre Basse de Copyright ── */}
-      <div className="border-t border-slate-800/80 bg-[#040814] py-5">
+      {/* ── Barre Basse de Copyright (avec dégagement pour la bottom nav mobile) ── */}
+      <div className="border-t border-slate-800/80 bg-[#040814] pt-5 pb-28 md:pb-6">
         <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-slate-400">
           <p>© 2025 AURELEX Notaire. Tous droits réservés.</p>
 
