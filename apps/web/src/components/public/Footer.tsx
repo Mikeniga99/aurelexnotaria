@@ -19,14 +19,16 @@ export function Footer() {
       <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pt-16 pb-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 items-start">
 
-          {/* Colonne 1 : Identité & Slogan (Identique à la maquette) */}
+          {/* Colonne 1 : Identité & Slogan */}
           <div className="lg:col-span-4 space-y-4">
-            <Link href="/" className="flex items-center gap-3 group">
-              <div className="relative w-10 h-10 flex items-center justify-center shrink-0">
-                <span className="font-serif text-3xl font-light text-white tracking-widest">
-                  A
-                </span>
-                <span className="absolute -bottom-0.5 inset-x-0 h-[1.5px] bg-[#D4B483] rounded-full" />
+            <Link href="/" className="flex items-center gap-3.5 group">
+              <div className="relative w-11 h-11 rounded-xl overflow-hidden shadow-lg border border-[#D4B483]/50 group-hover:border-[#D4B483] transition-colors shrink-0 bg-[#0B1938]">
+                <Image
+                  src="/images/favicon.png"
+                  alt="Aurelex Notaire"
+                  fill
+                  className="object-cover"
+                />
               </div>
               <div className="flex flex-col">
                 <span className="font-serif text-xl font-bold tracking-widest text-white leading-tight uppercase">

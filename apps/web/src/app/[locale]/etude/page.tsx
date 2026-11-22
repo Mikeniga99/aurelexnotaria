@@ -53,8 +53,13 @@ export default function AboutPage() {
             {/* Carte institutionnelle de prestige (sans image cliché) */}
             <div className="lg:col-span-5 bg-gradient-to-br from-[#0B1938] to-[#060D1F] rounded-3xl p-8 sm:p-10 text-white border border-[#D4B483]/30 shadow-xl space-y-7 relative overflow-hidden">
               <div className="absolute top-0 right-0 w-48 h-48 bg-[#D4B483]/10 rounded-full blur-3xl pointer-events-none" />
-              <div className="w-14 h-14 rounded-2xl bg-[#D4B483]/15 border border-[#D4B483]/35 flex items-center justify-center text-[#D4B483]">
-                <Scale className="w-7 h-7" />
+              <div className="relative w-16 h-16 rounded-2xl overflow-hidden shadow-lg border border-[#D4B483]/50 shrink-0 bg-[#0B1938]">
+                <Image
+                  src="/images/favicon.png"
+                  alt="Aurelex Notaire Sceau Officiel"
+                  fill
+                  className="object-cover"
+                />
               </div>
               <div className="space-y-2">
                 <span className="text-xs font-bold tracking-[0.2em] text-[#D4B483] uppercase">Office Ministériel</span>

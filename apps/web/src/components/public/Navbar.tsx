@@ -41,13 +41,16 @@ export function Navbar() {
       >
         <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 flex items-center justify-between">
 
-          {/* Logo & Identité (Identique à la maquette) */}
+          {/* Logo & Identité officielle */}
           <Link href="/" className="flex items-center gap-3 group">
-            <div className="relative w-10 h-10 flex items-center justify-center shrink-0">
-              <span className="font-serif text-3xl font-light text-white tracking-widest">
-                A
-              </span>
-              <span className="absolute -bottom-0.5 inset-x-0 h-[1.5px] bg-[#D4B483] rounded-full scale-75 group-hover:scale-100 transition-transform" />
+            <div className="relative w-10 h-10 rounded-xl overflow-hidden shadow-md border border-[#D4B483]/50 group-hover:border-[#D4B483] transition-all shrink-0 bg-[#0B1938]">
+              <Image
+                src="/images/favicon.png"
+                alt="Aurelex Notaire"
+                fill
+                className="object-cover"
+                priority
+              />
             </div>
             <div className="flex flex-col">
               <span className="font-serif text-lg font-bold tracking-widest text-white leading-tight uppercase group-hover:text-[#D4B483] transition-colors">

@@ -5,7 +5,12 @@ export const metadata: Metadata = {
   title: 'Aurelex Notaires | Office Notarial Paris',
   description: 'Étude notariale Aurelex Notaires à Paris. Droit immobilier, droit de la famille, successions, droit des affaires et gestion de patrimoine.',
   icons: {
-    icon: '/images/favicon.png',
+    icon: [
+      { url: '/images/favicon.png', type: 'image/png' },
+      { url: '/favicon.png', type: 'image/png' },
+    ],
+    shortcut: '/images/favicon.png',
+    apple: '/images/favicon.png',
   },
 };
 

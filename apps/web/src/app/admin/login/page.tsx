@@ -42,14 +42,17 @@ export default function AdminLoginPage() {
     <div className="min-h-screen bg-gradient-to-br from-aurelex-ebene via-aurelex-bordeaux-dark to-aurelex-ebene flex items-center justify-center p-4">
       <div className="w-full max-w-md bg-white rounded-3xl p-8 sm:p-10 shadow-2xl border border-aurelex-champagne/30 space-y-6">
         {/* Header Branding */}
-        <div className="text-center space-y-3">
-          <div className="relative w-16 h-16 rounded-2xl overflow-hidden mx-auto border-2 border-aurelex-champagne shadow-md">
-            <Image src="/images/logo.png" alt="Aurelex Logo" fill className="object-cover" priority />
+        <div className="text-center space-y-2">
+          <div className="relative w-64 h-32 mx-auto">
+            <Image
+              src="/images/Logo_AURELEX.png"
+              alt="Aurelex Notaires Logo"
+              fill
+              className="object-contain"
+              priority
+            />
           </div>
-          <h1 className="font-serif text-2xl font-bold text-aurelex-bordeaux">
-            AURELEX NOTAIRES
-          </h1>
-          <p className="text-xs uppercase tracking-widest text-aurelex-ebene/70 font-semibold">
+          <p className="text-xs uppercase tracking-widest text-[#0B1938]/70 font-semibold">
             Portail d'Administration Sécurisé
           </p>
         </div>
