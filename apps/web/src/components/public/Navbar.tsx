@@ -34,69 +34,69 @@ export function Navbar() {
   ];
 
   return (
-    <header className="fixed top-0 inset-x-0 z-40 transition-all duration-500">
-      {/* ── Desktop Top Announcement Strip (Bande officielle de prestige) ── */}
-      <div className="hidden lg:block bg-[#0B1938] text-white/80 py-1.5 px-8 text-[11px] border-b border-white/10 shadow-sm">
+    <header className="fixed top-0 inset-x-0 z-40 transition-all duration-300">
+      {/* ── Bande officielle supérieure ── */}
+      <div className="hidden lg:block bg-[#0B1938] text-white py-2 px-8 text-xs border-b border-slate-800">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           <div className="flex items-center gap-4">
-            <span className="flex items-center gap-1.5 text-cyan-300 font-semibold tracking-wider uppercase text-[10px]">
-              <Scale className="w-3.5 h-3.5" />
-              <span>Office Notarial · Paris Ier · 18 Place Vendôme</span>
+            <span className="flex items-center gap-1.5 text-cyan-300 font-bold tracking-wider uppercase text-[11px]">
+              <Scale className="w-3.5 h-3.5 text-cyan-400" />
+              <span>Office Notarial · 18 Place Vendôme · Paris Ier</span>
             </span>
-            <span className="text-white/20">|</span>
-            <span className="text-white/60">Actes Authentiques Électroniques & Visioconférence</span>
+            <span className="text-slate-500">|</span>
+            <span className="text-slate-200 font-medium">Actes Authentiques Électroniques & Visioconférence</span>
           </div>
 
-          <div className="flex items-center gap-5">
+          <div className="flex items-center gap-5 font-medium">
             <a
               href="tel:+33142862400"
-              className="flex items-center gap-1.5 text-white/80 hover:text-cyan-300 transition-colors"
+              className="flex items-center gap-1.5 text-white hover:text-cyan-300 transition-colors"
             >
-              <Phone className="w-3 h-3 text-cyan-300" />
-              <span>01 42 86 24 00</span>
+              <Phone className="w-3.5 h-3.5 text-cyan-400" />
+              <span className="font-bold">01 42 86 24 00</span>
             </a>
-            <span className="text-white/20">|</span>
+            <span className="text-slate-500">|</span>
             <a
               href="/admin"
-              className="text-white/60 hover:text-cyan-300 transition-colors uppercase tracking-wider text-[10px]"
+              className="text-slate-300 hover:text-white transition-colors uppercase tracking-wider text-[11px] font-semibold"
             >
               Administration
             </a>
-            <span className="text-white/20">|</span>
+            <span className="text-slate-500">|</span>
             <button
               onClick={toggleLocale}
-              className="flex items-center gap-1 text-white hover:text-cyan-300 transition-colors uppercase font-bold text-[10px]"
+              className="flex items-center gap-1 text-white hover:text-cyan-300 transition-colors uppercase font-bold text-[11px] bg-slate-800/80 px-2.5 py-0.5 rounded"
             >
-              <Globe className="w-3 h-3 text-cyan-300" />
+              <Globe className="w-3 h-3 text-cyan-400" />
               <span>{locale === 'fr' ? 'EN' : 'FR'}</span>
             </button>
           </div>
         </div>
       </div>
 
-      {/* ── Main Luminous Crystal Bar ── */}
+      {/* ── Barre de Navigation Principale ── */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-2 sm:pt-3">
         <div
-          className={`rounded-2xl transition-all duration-300 px-4 sm:px-6 py-2.5 flex items-center justify-between bg-white/90 backdrop-blur-xl border border-slate-200/90 shadow-lg ${
-            scrolled ? 'shadow-slate-300/60 py-2' : 'shadow-slate-200/40'
+          className={`rounded-2xl transition-all duration-300 px-4 sm:px-6 py-3 flex items-center justify-between bg-white border-2 border-slate-200 shadow-md ${
+            scrolled ? 'shadow-lg border-slate-300 py-2.5' : ''
           }`}
         >
           {/* Logo & Identité */}
           <Link href="/" className="flex items-center gap-3 group">
-            <div className="relative w-11 h-11 rounded-xl overflow-hidden shadow-sm border border-slate-200 bg-white flex items-center justify-center group-hover:border-blue-400 transition-colors">
+            <div className="relative w-11 h-11 rounded-xl overflow-hidden shadow-xs border border-slate-200 bg-white flex items-center justify-center group-hover:border-blue-600 transition-colors p-1">
               <Image
                 src="/images/Logo_AURELEX.png"
                 alt="Aurelex Notaires Logo"
                 fill
-                className="object-contain p-1"
+                className="object-contain"
                 priority
               />
             </div>
             <div>
-              <span className="font-serif text-xl sm:text-2xl font-bold tracking-tight text-[#0B1938] block group-hover:text-blue-700 transition-colors">
+              <span className="font-serif text-xl sm:text-2xl font-black tracking-tight text-[#0B1938] block group-hover:text-blue-700 transition-colors">
                 AURELEX
               </span>
-              <span className="text-[8px] sm:text-[9px] uppercase tracking-[0.25em] text-[#6B0F1A] font-bold block -mt-1">
+              <span className="text-[9px] sm:text-[10px] uppercase tracking-[0.25em] text-[#6B0F1A] font-extrabold block -mt-1">
                 Notaires & Associés
               </span>
             </div>
@@ -111,29 +111,28 @@ export function Navbar() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`px-3.5 py-2 rounded-xl text-xs font-semibold tracking-wide transition-all relative ${
+                  className={`px-4 py-2 rounded-xl text-xs font-bold tracking-wide transition-all relative ${
                     isActive
-                      ? 'text-blue-700 bg-blue-50 font-bold border border-blue-200/70 shadow-xs'
-                      : 'text-slate-700 hover:text-blue-700 hover:bg-slate-50'
+                      ? 'text-blue-800 bg-blue-50 border border-blue-300'
+                      : 'text-slate-800 hover:text-blue-700 hover:bg-slate-50'
                   }`}
                 >
                   {link.label}
                   {isActive && (
-                    <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4 h-0.5 bg-blue-600 rounded-full" />
+                    <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4 h-0.5 bg-blue-700 rounded-full" />
                   )}
                 </Link>
               );
             })}
           </nav>
 
-          {/* Right Action (Desktop: CTA, Mobile: Phone + Lang) */}
+          {/* Action Droite */}
           <div className="flex items-center gap-3">
-            {/* Desktop CTA */}
             <Link
               href="/rendez-vous"
-              className="hidden sm:inline-flex btn-liquid-primary"
+              className="hidden sm:inline-flex items-center gap-2 bg-blue-700 hover:bg-blue-800 text-white px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider shadow-md transition-colors"
             >
-              <Calendar className="w-3.5 h-3.5 text-white/90" />
+              <Calendar className="w-3.5 h-3.5 text-white" />
               <span>{t('appointment')}</span>
             </Link>
 
@@ -141,13 +140,13 @@ export function Navbar() {
             <div className="flex md:hidden items-center gap-2">
               <button
                 onClick={toggleLocale}
-                className="px-2.5 py-1.5 rounded-lg border border-slate-200 text-[11px] font-bold text-slate-700 hover:bg-slate-50 uppercase"
+                className="px-2.5 py-1.5 rounded-lg border-2 border-slate-300 text-xs font-bold text-slate-800 bg-slate-50 uppercase"
               >
                 {locale === 'fr' ? 'EN' : 'FR'}
               </button>
               <a
                 href="tel:+33142862400"
-                className="p-2 rounded-xl bg-blue-50 border border-blue-200 text-blue-700"
+                className="p-2 rounded-xl bg-blue-700 text-white shadow-xs"
                 aria-label="Appeler l'office"
               >
                 <Phone className="w-4 h-4" />

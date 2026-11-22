@@ -47,25 +47,19 @@ export default function NewsPage() {
   const rest = articles.slice(1);
 
   return (
-    <div className="bg-[#F8FAFC]">
+    <div className="bg-[#F8FAFC] text-slate-900">
 
-      {/* ── HERO avec image ── */}
-      <section className="relative min-h-[65vh] flex flex-col justify-center overflow-hidden">
-        <div className="absolute inset-0">
-          <Image src="/images/etude_paris.jpg" alt="Actualités Aurelex" fill className="object-cover" priority />
-          <div className="absolute inset-0 bg-gradient-to-b from-white/94 via-white/80 to-[#F8FAFC]" />
-        </div>
-        <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pt-36 pb-20 text-center space-y-6">
-          <div className="inline-flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.3em] text-blue-700 animate-fade-in-up">
-            <span className="w-8 h-px bg-blue-600/40" />
+      {/* ── HERO HAUTE LISIBILITÉ ── */}
+      <section className="pt-32 pb-16 lg:pt-40 lg:pb-20 bg-gradient-to-b from-blue-50/70 to-[#F8FAFC] border-b border-slate-200">
+        <div className="max-w-4xl mx-auto px-5 sm:px-8 text-center space-y-5">
+          <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-900 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider border border-blue-200">
             <span>Doctrine & Décryptages Juridiques</span>
-            <span className="w-8 h-px bg-blue-600/40" />
           </div>
-          <h1 className="font-serif text-5xl sm:text-6xl lg:text-7xl font-bold text-slate-900 leading-tight animate-fade-in-up" style={{ animationDelay: '100ms' }}>
+          <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-950 leading-tight">
             Actualités & Guides Notariaux
           </h1>
-          <p className="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-normal animate-fade-in-up" style={{ animationDelay: '200ms' }}>
-            Les notaires de l'étude Aurelex analysent les évolutions législatives, fiscales et jurisprudentielles.
+          <p className="text-base sm:text-lg text-slate-700 max-w-2xl mx-auto leading-relaxed font-normal">
+            Les notaires de l'étude Aurelex analysent les évolutions législatives, fiscales et jurisprudentielles pour éclairer vos décisions patrimoniales.
           </p>
         </div>
       </section>
@@ -73,97 +67,95 @@ export default function NewsPage() {
       {/* ── ARTICLE VEDETTE ── */}
       <section className="py-16 border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
-          <div className="inline-flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.3em] text-blue-700 mb-10 animate-fade-in-up">
-            <span className="w-8 h-px bg-blue-600/40" />
-            <span>À la une</span>
+          <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-900 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-8">
+            <span>Article à la Une</span>
           </div>
-          <article className="relative group overflow-hidden rounded-3xl grid grid-cols-1 lg:grid-cols-2 border border-slate-200/90 shadow-lg bg-white animate-blur-focus">
+          <article className="bg-white rounded-3xl grid grid-cols-1 lg:grid-cols-12 border-2 border-slate-200 shadow-lg overflow-hidden">
             {/* Image */}
-            <div className="relative min-h-[300px]">
+            <div className="lg:col-span-5 relative min-h-[280px] lg:min-h-full">
               <Image
                 src={featured.img}
                 alt={featured.title}
                 fill
-                className="object-cover transition-transform duration-700 group-hover:scale-105"
+                className="object-cover"
               />
             </div>
             {/* Contenu */}
-            <div className="p-10 lg:p-12 flex flex-col justify-center space-y-5">
-              <div className="flex items-center gap-4 text-xs text-slate-500">
-                <span className="flex items-center gap-1.5 font-semibold text-blue-600">
-                  <Tag className="w-3.5 h-3.5" />
+            <div className="lg:col-span-7 p-8 sm:p-10 lg:p-12 flex flex-col justify-center space-y-5">
+              <div className="flex flex-wrap items-center gap-4 text-xs font-semibold text-slate-600">
+                <span className="bg-blue-100 text-blue-900 px-3 py-1 rounded-full font-bold">
                   {featured.category}
                 </span>
                 <span className="flex items-center gap-1.5">
-                  <Clock className="w-3.5 h-3.5 text-slate-400" />
-                  {featured.readTime} min
+                  <Clock className="w-3.5 h-3.5 text-blue-700" />
+                  {featured.readTime} min de lecture
                 </span>
                 <span className="flex items-center gap-1.5">
-                  <Calendar className="w-3.5 h-3.5 text-slate-400" />
+                  <Calendar className="w-3.5 h-3.5 text-blue-700" />
                   {featured.date}
                 </span>
               </div>
-              <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 leading-tight">
+              <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-950 leading-snug">
                 {featured.title}
               </h2>
-              <div className="neon-line w-12 group-hover:w-28 transition-all duration-500" />
-              <p className="text-sm text-slate-600 leading-relaxed">{featured.excerpt}</p>
-              <Link href={`/actualites/${featured.slug}`}
-                className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-blue-600 hover:text-blue-800 transition-colors pt-2">
-                <span>Lire l'article complet</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </Link>
+              <p className="text-sm sm:text-base text-slate-700 leading-relaxed font-normal">{featured.excerpt}</p>
+              <div className="pt-2">
+                <Link href={`/actualites/${featured.slug}`}
+                  className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-white bg-blue-700 hover:bg-blue-800 px-6 py-3 rounded-full shadow-sm transition-colors">
+                  <span>Lire l'analyse complète</span>
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+              </div>
             </div>
           </article>
         </div>
       </section>
 
-      {/* ── GRILLE ARTICLES CLAIR ── */}
+      {/* ── GRILLE ARTICLES ── */}
       <section className="py-20 lg:py-28">
         <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 space-y-12">
-          <div className="inline-flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.3em] text-blue-700 animate-fade-in-up">
-            <span className="w-8 h-px bg-blue-600/40" />
-            <span>Dernières publications</span>
+          <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-900 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider">
+            <span>Dernières publications de l'étude</span>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {rest.map((item, idx) => (
               <article
                 key={idx}
-                className="bg-white rounded-3xl overflow-hidden border border-slate-200/90 shadow-md hover:shadow-xl transition-all duration-500 flex flex-col animate-fade-in-up"
-                style={{ animationDelay: `${idx * 100}ms` }}
+                className="bg-white rounded-3xl overflow-hidden border-2 border-slate-200 shadow-md hover:shadow-xl transition-all duration-300 flex flex-col"
               >
-                {/* Image en haut */}
+                {/* Image */}
                 <div className="relative h-48 overflow-hidden">
                   <Image
                     src={item.img}
                     alt={item.title}
                     fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    className="object-cover"
                   />
                   <div className="absolute top-4 left-4">
-                    <span className="bg-white/95 backdrop-blur-md rounded-full px-3 py-1 text-[10px] font-bold text-blue-700 uppercase tracking-wider flex items-center gap-1.5 border border-slate-100 shadow-xs">
-                      <Tag className="w-3 h-3 text-blue-600" />
+                    <span className="bg-white/95 backdrop-blur-md rounded-full px-3 py-1 text-xs font-bold text-blue-900 uppercase tracking-wider border border-slate-200 shadow-xs">
                       {item.category}
                     </span>
                   </div>
                 </div>
 
                 {/* Contenu */}
-                <div className="p-6 flex flex-col flex-1 space-y-4">
-                  <div className="flex items-center gap-3 text-[11px] text-slate-500">
-                    <span className="flex items-center gap-1"><Calendar className="w-3 h-3 text-slate-400" /> {item.date}</span>
-                    <span className="flex items-center gap-1"><Clock className="w-3 h-3 text-slate-400" /> {item.readTime} min</span>
+                <div className="p-6 sm:p-7 flex flex-col flex-1 space-y-4">
+                  <div className="flex items-center gap-3 text-xs text-slate-600 font-medium">
+                    <span className="flex items-center gap-1"><Calendar className="w-3.5 h-3.5 text-blue-700" /> {item.date}</span>
+                    <span className="flex items-center gap-1"><Clock className="w-3.5 h-3.5 text-blue-700" /> {item.readTime} min</span>
                   </div>
-                  <h2 className="font-serif text-lg font-bold text-slate-900 leading-tight flex-1 group-hover:text-blue-700 transition-colors">
+                  <h3 className="font-serif text-xl font-bold text-slate-950 leading-snug flex-1">
                     {item.title}
-                  </h2>
-                  <p className="text-xs text-slate-600 leading-relaxed line-clamp-3">{item.excerpt}</p>
-                  <Link href={`/actualites/${item.slug}`}
-                    className="inline-flex items-center gap-1.5 text-xs font-bold text-blue-600 hover:text-blue-800 transition-colors pt-2 border-t border-slate-100">
-                    <span>Lire l'article</span>
-                    <ArrowRight className="w-3 h-3" />
-                  </Link>
+                  </h3>
+                  <p className="text-xs sm:text-sm text-slate-700 leading-relaxed line-clamp-3">{item.excerpt}</p>
+                  <div className="pt-2 border-t border-slate-100">
+                    <Link href={`/actualites/${item.slug}`}
+                      className="inline-flex items-center gap-1.5 text-xs font-bold text-blue-700 hover:text-blue-900 uppercase tracking-wider transition-colors">
+                      <span>Lire l'article</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </Link>
+                  </div>
                 </div>
               </article>
             ))}

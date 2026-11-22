@@ -13,6 +13,7 @@ import {
   Scale,
   Award,
   ChevronDown,
+  CheckCircle2,
 } from 'lucide-react';
 import { NotaryFeeSimulator } from '@/components/public/NotaryFeeSimulator';
 
@@ -22,159 +23,209 @@ export default function HomePage() {
       icon: Building2,
       img: '/images/domaine_immobilier.jpg',
       num: '01',
+      tag: 'IMMOBILIER',
       title: 'Immobilier Résidentiel & Institutionnel',
-      sub: "Sécurisation des compromis, vérifications d'hypothèques, VEFA et actes authentiques.",
+      sub: "Sécurisation intégrale de vos opérations d'achat, de vente, VEFA et financements hypothécaires.",
+      points: [
+        'Rédaction de promesses unilatérales et compromis de vente',
+        'Purge des droits de préemption et contrôle hypothécaire sur 30 ans',
+        'Téléactes et télétransmission immédiate au fichier immobilier',
+      ],
     },
     {
       icon: HeartHandshake,
       img: '/images/domaine_famille.jpg',
       num: '02',
+      tag: 'FAMILLE',
       title: 'Droit de la Famille & Successions',
-      sub: 'Donation-partage, pactes civils, régimes matrimoniaux et règlements successoraux.',
+      sub: 'Anticiper pour protéger, pacifier et optimiser la dévolution de vos actifs civils.',
+      points: [
+        'Donation-partage transgénérationnelle avec réserve d’usufruit',
+        'Règlement successoral complet, inventaire et déclaration fiscale',
+        'Régimes matrimoniaux sur mesure, séparation de biens et PACS',
+      ],
     },
     {
       icon: Briefcase,
       img: '/images/domaine_entreprise.jpg',
       num: '03',
+      tag: 'ENTREPRISES',
       title: 'Ingénierie Sociétaire & Dirigeants',
-      sub: 'Transmission sous pacte Dutreil, cession de fonds de commerce et statuts sur mesure.',
+      sub: "Conseil juridique stratégique pour les chefs d'entreprise, holdings et repreneurs.",
+      points: [
+        'Transmission sous Pacte Dutreil : 75 % d’abattement fiscal légal',
+        'Constitution de sociétés civiles (SCI) et commerciales (SAS, SARL)',
+        'Cession de fonds de commerce, séquestre du prix et baux',
+      ],
     },
     {
       icon: TrendingUp,
       img: '/images/domaine_patrimoine.jpg',
       num: '04',
+      tag: 'PATRIMOINE',
       title: 'Fiscalité & Stratégie Patrimoniale',
-      sub: 'Audit patrimonial, démembrement, assurance-vie et structuration.',
+      sub: 'Une ingénierie juridique au service de la résilience et de la transmission de vos avoirs.',
+      points: [
+        'Audit patrimonial civil, fiscal et financier exhaustif',
+        'Clauses bénéficiaires démembrées d’assurance-vie',
+        'Optimisation de l’Impôt sur la Fortune Immobilière (IFI)',
+      ],
     },
     {
       icon: Globe2,
       img: '/images/domaine_international.jpg',
       num: '05',
+      tag: 'INTERNATIONAL',
       title: 'Droit Notarial International',
-      sub: 'Succession transfrontalière, acquisitions non-résidents, apostille.',
+      sub: 'Gestion sécurisée des dossiers transfrontaliers pour expatriés, binationaux et non-résidents.',
+      points: [
+        'Application du Règlement européen sur les successions (professio juris)',
+        'Acquisitions et cessions en France par des investisseurs étrangers',
+        'Procurations internationales certifiées, apostille et légalisation',
+      ],
     },
   ];
 
   const stats = [
     { value: '25+', label: "Années d'expérience" },
     { value: '1 800+', label: 'Actes reçus / an' },
-    { value: '99,4 %', label: 'Clients satisfaits' },
-    { value: '6', label: 'Associés & juristes' },
+    { value: '99,4 %', label: 'Dossiers satisfaits' },
+    { value: '6', label: 'Notaires & juristes' },
   ];
 
   return (
-    <div className="bg-[#F8FAFC]">
+    <div className="bg-[#F8FAFC] text-slate-900">
 
       {/* ═══════════════════════════════════
-          1. HERO — THÈME CLAIR & DOUBLE IMAGE
+          1. HERO — EXPERT UI/UX : 100% LISIBLE & IMMERSIF
       ════════════════════════════════════ */}
-      <section className="relative min-h-screen flex flex-col justify-center overflow-hidden">
+      <section className="relative min-h-[92vh] flex flex-col justify-center overflow-hidden pt-28 pb-16 lg:pt-36 lg:pb-24">
 
-        {/* Fond Mobile */}
-        <div className="absolute inset-0 md:hidden">
-          <Image
-            src="/images/arriere_mobile.jpg"
-            alt="Hero Aurelex Notaires Mobile"
-            fill
-            className="object-cover object-center"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-white/92 via-white/80 to-[#F8FAFC]" />
-        </div>
+        {/* Fond décoratif doux */}
+        <div className="absolute inset-0 bg-gradient-to-b from-blue-50/60 via-[#F8FAFC] to-[#F8FAFC] -z-10" />
 
-        {/* Fond Grand Écran */}
-        <div className="absolute inset-0 hidden md:block">
-          <Image
-            src="/images/arriere_grand_ecran.jpg"
-            alt="Hero Aurelex Notaires"
-            fill
-            className="object-cover object-center"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-white/96 via-white/82 to-white/40" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#F8FAFC] via-transparent to-transparent" />
-        </div>
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 w-full">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
 
-        {/* Lueurs azur subtiles en arrière-plan */}
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full blur-[140px] pointer-events-none opacity-30"
-          style={{ background: 'radial-gradient(circle, rgba(37,99,235,0.2) 0%, transparent 70%)' }} />
-        <div className="absolute bottom-1/3 right-1/4 w-80 h-80 rounded-full blur-[120px] pointer-events-none opacity-20"
-          style={{ background: 'radial-gradient(circle, rgba(14,165,233,0.25) 0%, transparent 70%)' }} />
+            {/* Colonne Gauche : Contenu textuel haute lisibilité */}
+            <div className="lg:col-span-7 space-y-7">
 
-        {/* Contenu Hero */}
-        <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pt-32 pb-24">
-          <div className="max-w-3xl space-y-8">
+              {/* Badge d'office */}
+              <div className="inline-flex items-center gap-2.5 bg-blue-100/90 text-blue-900 px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider border border-blue-200 shadow-xs">
+                <Scale className="w-4 h-4 text-blue-700" />
+                <span>Office Notarial · 18 Place Vendôme · Paris Ier</span>
+              </div>
 
-            {/* Badge de légitimité */}
-            <div className="inline-flex items-center gap-2.5 bg-white/90 backdrop-blur-md rounded-full px-4 py-2 text-[11px] font-bold uppercase tracking-widest text-blue-700 border border-slate-200/90 shadow-xs animate-fade-in-up">
-              <Scale className="w-3.5 h-3.5 text-blue-600" />
-              <span>Office Notarial · Place Vendôme · Paris Ier</span>
-            </div>
+              {/* Titre Principal */}
+              <div className="space-y-2">
+                <h1 className="font-serif leading-[1.08] text-slate-950">
+                  <span className="block text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-normal italic text-slate-800">
+                    L'Excellence de l'Acte,
+                  </span>
+                  <span className="block text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-[#0B1938]">
+                    L'Éternité du Droit.
+                  </span>
+                </h1>
+              </div>
 
-            {/* Titre Principal */}
-            <div className="space-y-3 animate-fade-in-up" style={{ animationDelay: '100ms' }}>
-              <h1 className="font-serif leading-tight">
-                <span className="block text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-light italic text-slate-800">
-                  L'Excellence de l'Acte,
-                </span>
-                <span className="block text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold blue-gradient-text">
-                  L'Éternité du Droit.
-                </span>
-              </h1>
-            </div>
+              {/* Paragraphe d'introduction */}
+              <p className="text-base sm:text-lg text-slate-700 leading-relaxed font-normal max-w-xl">
+                Officiers publics investis d'une délégation de puissance publique par le Garde des Sceaux. Nous conférons force probante et exécutoire à vos actes immobiliers, patrimoniaux et familiaux.
+              </p>
 
-            {/* Sous-titre */}
-            <p className="text-base sm:text-lg text-slate-600 max-w-xl leading-relaxed font-normal animate-fade-in-up"
-              style={{ animationDelay: '200ms' }}>
-              Officiers publics investis d'une mission de confiance par l'État — vos actes civils, familiaux et patrimoniaux sécurisés à force probante et exécutoire.
-            </p>
+              {/* Actions CTAs */}
+              <div className="flex flex-col sm:flex-row gap-4 pt-1">
+                <Link
+                  href="/rendez-vous"
+                  className="inline-flex items-center justify-center gap-2.5 px-8 py-4 bg-blue-700 hover:bg-blue-800 text-white rounded-full text-xs font-bold uppercase tracking-wider shadow-lg shadow-blue-700/25 transition-all transform hover:-translate-y-0.5"
+                >
+                  <Calendar className="w-4 h-4 text-white" />
+                  <span>Prendre rendez-vous</span>
+                </Link>
+                <Link
+                  href="/expertises"
+                  className="inline-flex items-center justify-center gap-2.5 px-8 py-4 bg-white hover:bg-slate-50 text-slate-900 rounded-full text-xs font-bold uppercase tracking-wider border-2 border-slate-300 shadow-xs transition-all"
+                >
+                  <span>Consulter nos domaines</span>
+                  <ArrowRight className="w-4 h-4 text-blue-700" />
+                </Link>
+              </div>
 
-            {/* CTAs */}
-            <div className="flex flex-col sm:flex-row gap-4 animate-fade-in-up" style={{ animationDelay: '300ms' }}>
-              <Link href="/rendez-vous" className="btn-liquid-primary">
-                <Calendar className="w-4 h-4 text-white" />
-                <span>Solliciter une consultation</span>
-              </Link>
-              <Link href="/expertises" className="btn-liquid-secondary">
-                <span>Nos domaines d'action</span>
-                <ArrowRight className="w-4 h-4 text-blue-600" />
-              </Link>
-            </div>
-
-            {/* Garanties institutionnelles */}
-            <div className="flex flex-wrap gap-4 pt-2 animate-fade-in-up" style={{ animationDelay: '400ms' }}>
-              {['Acte authentique électronique', 'Visioconférence certifiée', 'Membre CSN'].map((item) => (
-                <div key={item} className="inline-flex items-center gap-1.5 text-xs text-slate-600 font-medium">
-                  <Shield className="w-3.5 h-3.5 text-blue-600 shrink-0" />
-                  <span>{item}</span>
+              {/* Garanties institutionnelles */}
+              <div className="pt-2 flex flex-wrap gap-5 text-xs text-slate-700 font-semibold border-t border-slate-200">
+                <div className="flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-blue-700 shrink-0" />
+                  <span>Actes authentiques électroniques</span>
                 </div>
-              ))}
+                <div className="flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-blue-700 shrink-0" />
+                  <span>Visioconférence sécurisée</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-blue-700 shrink-0" />
+                  <span>Membre CSN & Chambre de Paris</span>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
 
-        {/* Curseur de défilement */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-60 animate-pulse-glow">
-          <ChevronDown className="w-5 h-5 text-blue-600" />
+            {/* Colonne Droite : Image Hero mise en valeur */}
+            <div className="lg:col-span-5">
+              <div className="relative rounded-3xl overflow-hidden border-2 border-slate-200 shadow-2xl bg-white aspect-[4/5] max-h-[560px]">
+                {/* Image mobile */}
+                <div className="block md:hidden absolute inset-0">
+                  <Image
+                    src="/images/arriere_mobile.jpg"
+                    alt="Office Aurelex Notaires Paris"
+                    fill
+                    className="object-cover object-center"
+                    priority
+                  />
+                </div>
+                {/* Image grand écran */}
+                <div className="hidden md:block absolute inset-0">
+                  <Image
+                    src="/images/arriere_grand_ecran.jpg"
+                    alt="Cabinet Notarial Aurelex Paris"
+                    fill
+                    className="object-cover object-center"
+                    priority
+                  />
+                </div>
+
+                {/* Badge institutionnel flottant */}
+                <div className="absolute bottom-5 inset-x-5 bg-white/95 backdrop-blur-md rounded-2xl p-4 border border-slate-200 shadow-lg">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-xl bg-blue-700 text-white flex items-center justify-center shrink-0">
+                      <Scale className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <div className="font-serif font-bold text-slate-950 text-sm">Aurelex Notaires</div>
+                      <div className="text-xs text-slate-600">Cabinet de prestige · 18 Place Vendôme</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
         </div>
       </section>
 
       {/* ═══════════════════════════════════
-          2. BANDE STATISTIQUES — CLAIR
+          2. BANDE STATISTIQUES — PARFAITEMENT LISIBLE
       ════════════════════════════════════ */}
-      <section className="border-y border-slate-200 bg-white shadow-xs">
+      <section className="bg-white border-y border-slate-200 py-8 shadow-xs">
         <div className="max-w-7xl mx-auto px-5 sm:px-8">
-          <div className="grid grid-cols-2 lg:grid-cols-4">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
             {stats.map((s, i) => (
               <div
                 key={i}
-                className={`py-10 px-6 text-center animate-blur-focus ${i < stats.length - 1 ? 'border-r border-slate-200/80' : ''}`}
-                style={{ animationDelay: `${i * 100}ms` }}
+                className={`py-4 px-4 text-center ${i < stats.length - 1 ? 'lg:border-r border-slate-200' : ''}`}
               >
-                <div className="font-serif text-3xl sm:text-4xl font-bold blue-gradient-text mb-1">
+                <div className="font-serif text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0B1938] mb-1">
                   {s.value}
                 </div>
-                <div className="text-[11px] uppercase tracking-widest text-slate-500 font-semibold">
+                <div className="text-xs uppercase tracking-wider text-slate-600 font-bold">
                   {s.label}
                 </div>
               </div>
@@ -184,168 +235,191 @@ export default function HomePage() {
       </section>
 
       {/* ═══════════════════════════════════
-          3. DOMAINES — BANDES IMMERSIVES LUMINEUSES
+          3. DOMAINES — CARTES ÉDITORIALES LUXE
       ════════════════════════════════════ */}
-      <section className="py-24 lg:py-32">
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 space-y-16">
+      <section className="py-20 lg:py-28">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 space-y-14">
 
-          {/* En-tête */}
-          <div className="text-center space-y-4 animate-fade-in-up">
-            <div className="inline-flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.3em] text-blue-700">
-              <span className="w-8 h-px bg-blue-600/40" />
-              <span>Champs d'intervention juridique</span>
-              <span className="w-8 h-px bg-blue-600/40" />
+          {/* En-tête de section */}
+          <div className="text-center space-y-4 max-w-2xl mx-auto">
+            <div className="inline-flex items-center gap-2.5 bg-blue-100 text-blue-900 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider">
+              <span>Compétences de l'Office</span>
             </div>
-            <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 leading-tight">
-              Nos Domaines{' '}
-              <span className="font-light italic blue-gradient-text">d'Expertise</span>
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-950">
+              Nos Domaines d'Expertise
             </h2>
-            <p className="text-base text-slate-600 max-w-xl mx-auto leading-relaxed">
-              Cinq piliers de compétences notariales au service de vos projets de vie et de patrimoine.
+            <p className="text-base text-slate-700 leading-relaxed">
+              Une assistance juridique et notariale rigoureuse pour sécuriser chacun des temps forts de votre vie privée et professionnelle.
             </p>
           </div>
 
-          {/* Bandes domaines */}
-          <div className="space-y-6">
+          {/* Cartes domaines avec séparation nette photo & contenu */}
+          <div className="space-y-8">
             {domaines.map((item, idx) => {
               const Icon = item.icon;
               const isEven = idx % 2 === 0;
+
               return (
                 <div
                   key={idx}
-                  className={`relative group overflow-hidden rounded-3xl min-h-[220px] sm:min-h-[250px] flex items-center border border-slate-200/90 shadow-md hover:shadow-xl transition-all duration-500 bg-white ${
-                    isEven ? 'animate-slide-left' : 'animate-slide-right'
-                  }`}
-                  style={{ animationDelay: `${idx * 80}ms` }}
+                  className="bg-white rounded-3xl border-2 border-slate-200 shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden"
                 >
-                  {/* Image fond avec overlay lumineux doux */}
-                  <div className="absolute inset-0">
-                    <Image
-                      src={item.img}
-                      alt={item.title}
-                      fill
-                      className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/88 to-white/40 group-hover:from-white/92 transition-all duration-500" />
-                  </div>
+                  <div className={`grid grid-cols-1 lg:grid-cols-12 items-stretch ${isEven ? '' : 'lg:flex-row-reverse'}`}>
 
-                  {/* Contenu */}
-                  <div className={`relative z-10 flex items-center gap-6 p-8 sm:p-10 w-full max-w-3xl ${isEven ? '' : 'ml-auto'}`}>
-                    {/* Numéro + Icône */}
-                    <div className="shrink-0 flex flex-col items-center gap-2">
-                      <span className="font-serif text-5xl font-light text-blue-600/25 leading-none select-none group-hover:text-blue-600/45 transition-colors duration-500">
-                        {item.num}
-                      </span>
-                      <div className="w-11 h-11 rounded-xl bg-white shadow-sm border border-slate-200 flex items-center justify-center group-hover:border-blue-400 group-hover:text-blue-700 transition-colors">
-                        <Icon className="w-5 h-5 text-blue-600" />
+                    {/* Image nette et éclatante */}
+                    <div className={`lg:col-span-5 relative min-h-[260px] sm:min-h-[300px] lg:min-h-full ${isEven ? '' : 'lg:order-2'}`}>
+                      <Image
+                        src={item.img}
+                        alt={item.title}
+                        fill
+                        className="object-cover object-center"
+                      />
+                      <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-md px-3 py-1.5 rounded-full border border-slate-200 text-xs font-bold text-blue-900 flex items-center gap-2 shadow-sm">
+                        <Icon className="w-3.5 h-3.5 text-blue-700" />
+                        <span>{item.tag}</span>
                       </div>
                     </div>
 
-                    {/* Texte */}
-                    <div className="space-y-2">
-                      <h3 className="font-serif text-2xl sm:text-3xl font-bold text-slate-900 group-hover:text-blue-700 transition-colors">
-                        {item.title}
-                      </h3>
-                      <div className="neon-line w-16 group-hover:w-32 transition-all duration-500" />
-                      <p className="text-sm text-slate-600 leading-relaxed max-w-md">
-                        {item.sub}
-                      </p>
+                    {/* Contenu textuel sur fond blanc 100% lisible */}
+                    <div className={`lg:col-span-7 p-7 sm:p-10 lg:p-12 flex flex-col justify-between space-y-6 ${isEven ? '' : 'lg:order-1'}`}>
+                      <div className="space-y-4">
+                        <div className="flex items-center gap-3">
+                          <span className="font-serif text-3xl font-extrabold text-blue-700">
+                            {item.num}.
+                          </span>
+                          <h3 className="font-serif text-2xl sm:text-3xl font-bold text-slate-950 leading-snug">
+                            {item.title}
+                          </h3>
+                        </div>
+
+                        <p className="text-sm sm:text-base text-slate-700 leading-relaxed font-normal">
+                          {item.sub}
+                        </p>
+
+                        {/* Points clés d'intervention */}
+                        <ul className="space-y-2.5 pt-2 border-t border-slate-100">
+                          {item.points.map((pt, pIdx) => (
+                            <li key={pIdx} className="flex items-start gap-3 text-xs sm:text-sm text-slate-800 font-medium">
+                              <CheckCircle2 className="w-4 h-4 text-blue-700 shrink-0 mt-0.5" />
+                              <span>{pt}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+
+                      {/* CTA vers rendez-vous ou détails */}
+                      <div className="pt-2 flex flex-wrap items-center gap-4">
+                        <Link
+                          href="/rendez-vous"
+                          className="inline-flex items-center gap-2 bg-blue-700 hover:bg-blue-800 text-white px-6 py-3 rounded-full text-xs font-bold uppercase tracking-wider shadow-sm transition-colors"
+                        >
+                          <Calendar className="w-4 h-4 text-white" />
+                          <span>Prendre rendez-vous</span>
+                        </Link>
+                        <Link
+                          href="/expertises"
+                          className="inline-flex items-center gap-2 text-xs font-bold text-slate-700 hover:text-blue-700 uppercase tracking-wider transition-colors"
+                        >
+                          <span>En savoir plus</span>
+                          <ArrowRight className="w-4 h-4 text-blue-700" />
+                        </Link>
+                      </div>
                     </div>
 
-                    {/* Bouton flèche hover */}
-                    <div className="ml-auto shrink-0 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-x-4 group-hover:translate-x-0">
-                      <Link
-                        href="/expertises"
-                        className="flex items-center gap-2 text-xs font-bold text-blue-600 uppercase tracking-wider bg-white/90 px-4 py-2 rounded-full border border-slate-200 shadow-xs"
-                      >
-                        <span>Découvrir</span>
-                        <ArrowRight className="w-4 h-4" />
-                      </Link>
-                    </div>
                   </div>
                 </div>
               );
             })}
           </div>
+
         </div>
       </section>
 
       {/* ═══════════════════════════════════
           4. SIMULATEUR FRAIS NOTARIAUX
       ════════════════════════════════════ */}
-      <section className="py-24 lg:py-32 bg-white border-t border-slate-200 animate-blur-focus">
+      <section className="py-20 lg:py-28 bg-white border-t border-slate-200">
         <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 space-y-12">
-          <div className="text-center space-y-4">
-            <div className="inline-flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.3em] text-blue-700">
-              <span className="w-8 h-px bg-blue-600/40" />
-              <span>Outil de simulation réglementé</span>
-              <span className="w-8 h-px bg-blue-600/40" />
+          <div className="text-center space-y-4 max-w-2xl mx-auto">
+            <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-900 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider">
+              <span>Barème Légal Officiel</span>
             </div>
-            <h2 className="font-serif text-4xl sm:text-5xl font-bold text-slate-900">
-              Estimez vos{' '}
-              <span className="font-light italic blue-gradient-text">frais notariaux</span>
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-950">
+              Estimez vos frais notariaux
             </h2>
+            <p className="text-base text-slate-700">
+              Calcul conforme au barème réglementé du Code de commerce (article A444-91).
+            </p>
           </div>
           <NotaryFeeSimulator />
         </div>
       </section>
 
       {/* ═══════════════════════════════════
-          5. MANIFESTE INSTITUTIONNEL
+          5. MANIFESTE & TRADITION LÉGISLATIVE
       ════════════════════════════════════ */}
-      <section className="relative py-28 lg:py-40 bg-slate-50 border-t border-slate-200 overflow-hidden animate-fade-in-up">
-        <div className="relative z-10 max-w-5xl mx-auto px-5 sm:px-8 text-center space-y-8">
-          <div className="inline-flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.3em] text-blue-700">
-            <span className="w-8 h-px bg-blue-600/40" />
-            <span>Tradition législative · Loi du 25 ventôse an XI</span>
-            <span className="w-8 h-px bg-blue-600/40" />
+      <section className="py-20 lg:py-28 bg-slate-100 border-t border-slate-200">
+        <div className="max-w-4xl mx-auto px-5 sm:px-8 text-center space-y-8">
+          <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-900 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider">
+            <Scale className="w-4 h-4 text-blue-700" />
+            <span>Tradition Républicaine · Loi du 25 ventôse an XI</span>
           </div>
 
-          <blockquote className="font-serif text-3xl sm:text-4xl lg:text-5xl font-light text-slate-900 leading-tight">
-            « Les notaires sont les officiers publics établis pour recevoir tous les actes et contrats… »
+          <blockquote className="font-serif text-2xl sm:text-3xl lg:text-4xl font-semibold text-slate-950 leading-snug">
+            « Les notaires sont les officiers publics établis pour recevoir tous les actes et contrats auxquels les parties doivent ou veulent faire donner le caractère d'authenticité… »
           </blockquote>
 
-          <div className="neon-line max-w-xs mx-auto" />
-
-          <p className="text-sm text-slate-600 max-w-2xl mx-auto leading-relaxed">
-            Ce texte fondateur n'est pas un vestige pour l'office <strong className="text-slate-900">Aurelex Notaires</strong> — c'est notre boussole quotidienne : certitude de la date, indiscutabilité du contenu, sauvegarde des droits.
+          <p className="text-base text-slate-700 max-w-2xl mx-auto leading-relaxed font-normal">
+            À l'office <strong className="text-slate-950 font-bold">Aurelex Notaires</strong>, nous honorons chaque jour ce serment : date certaine, force probante indiscutable et conservation séculaire au Minutier Central des notaires de France.
           </p>
 
-          <div className="flex flex-wrap justify-center gap-6 pt-4 text-xs text-slate-600">
-            {['Délégation par arrêté du Garde des Sceaux', 'Contrôle Chambre des Notaires de Paris', 'Membre Conseil Supérieur du Notariat'].map((item) => (
-              <div key={item} className="flex items-center gap-2">
-                <Shield className="w-3.5 h-3.5 text-blue-600 shrink-0" />
-                <span>{item}</span>
-              </div>
-            ))}
+          <div className="flex flex-wrap justify-center gap-6 pt-4 text-xs font-bold text-slate-800">
+            <div className="flex items-center gap-2 bg-white px-4 py-2 rounded-full border border-slate-200 shadow-xs">
+              <Shield className="w-4 h-4 text-blue-700 shrink-0" />
+              <span>Délégation par arrêté du Garde des Sceaux</span>
+            </div>
+            <div className="flex items-center gap-2 bg-white px-4 py-2 rounded-full border border-slate-200 shadow-xs">
+              <Shield className="w-4 h-4 text-blue-700 shrink-0" />
+              <span>Contrôle Chambre des Notaires de Paris</span>
+            </div>
+            <div className="flex items-center gap-2 bg-white px-4 py-2 rounded-full border border-slate-200 shadow-xs">
+              <Shield className="w-4 h-4 text-blue-700 shrink-0" />
+              <span>Membre Conseil Supérieur du Notariat</span>
+            </div>
           </div>
         </div>
       </section>
 
       {/* ═══════════════════════════════════
-          6. CTA FINALE
+          6. BANDE CTA FINALE
       ════════════════════════════════════ */}
-      <section className="py-24 lg:py-32 bg-gradient-to-b from-white to-blue-50/40 border-t border-slate-200 animate-fade-in-up">
-        <div className="max-w-3xl mx-auto px-5 text-center space-y-8">
-          <h2 className="font-serif text-4xl sm:text-5xl font-bold text-slate-900 leading-tight">
-            Initiez votre
-            <span className="block font-light italic blue-gradient-text">dossier notarial</span>
+      <section className="py-20 lg:py-24 bg-gradient-to-b from-white to-blue-50 border-t border-slate-200">
+        <div className="max-w-3xl mx-auto px-5 text-center space-y-6">
+          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-950">
+            Initiez votre dossier en toute confiance
           </h2>
-          <p className="text-sm text-slate-600 leading-relaxed max-w-lg mx-auto">
-            Consultation au cabinet Place Vendôme ou par visioconférence notariale certifiée. Réponse sous 24h ouvrées.
+          <p className="text-base text-slate-700 max-w-lg mx-auto">
+            Consultation en présentiel au cabinet Place Vendôme ou par visioconférence certifiée. Réponse sous 24h ouvrées.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/rendez-vous" className="btn-liquid-primary">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center pt-2">
+            <Link
+              href="/rendez-vous"
+              className="inline-flex items-center justify-center gap-2.5 px-8 py-4 bg-blue-700 hover:bg-blue-800 text-white rounded-full text-xs font-bold uppercase tracking-wider shadow-lg shadow-blue-700/20 transition-all"
+            >
               <Calendar className="w-4 h-4 text-white" />
               <span>Prendre rendez-vous</span>
             </Link>
-            <Link href="/contact" className="btn-liquid-secondary">
-              <span>Nous écrire</span>
-              <ArrowRight className="w-4 h-4 text-blue-600" />
+            <Link
+              href="/contact"
+              className="inline-flex items-center justify-center gap-2.5 px-8 py-4 bg-white hover:bg-slate-50 text-slate-900 rounded-full text-xs font-bold uppercase tracking-wider border-2 border-slate-300 shadow-xs transition-all"
+            >
+              <span>Poser une question</span>
+              <ArrowRight className="w-4 h-4 text-blue-700" />
             </Link>
           </div>
         </div>
       </section>
+
     </div>
   );
 }

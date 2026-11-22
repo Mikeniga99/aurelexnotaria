@@ -2,7 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import { Link } from '@/i18n/routing';
 import { useTranslations } from 'next-intl';
-import { Building, HeartHandshake, Briefcase, TrendingUp, Globe2, Calendar, ArrowRight } from 'lucide-react';
+import { Building, HeartHandshake, Briefcase, TrendingUp, Globe2, Calendar, ArrowRight, CheckCircle2 } from 'lucide-react';
 
 export default function ExpertisesPage() {
   const t = useTranslations('expertises');
@@ -12,160 +12,163 @@ export default function ExpertisesPage() {
       icon: Building,
       img: '/images/domaine_immobilier.jpg',
       num: '01',
+      tag: 'IMMOBILIER',
       title: 'Droit Immobilier & Actes Authentiques',
       subtitle: "Sécurisation intégrale de vos opérations d'achat, de vente et d'investissement foncier.",
       details: [
-        'Rédaction et signature de promesses unilatérales et compromis de vente.',
-        'Purges des droits de préemption urbains (DPU) et vérifications hypothécaires.',
-        'Règlements de copropriété, divisions parcellaires et servitudes.',
-        'Prêts immobiliers, hypothèques conventionnelles et inscriptions de privilèges.',
+        'Rédaction et signature de promesses unilatérales et compromis de vente avec conditions suspensives.',
+        'Purges des droits de préemption urbains (DPU) et vérifications des origines de propriété sur 30 ans.',
+        'Immobilier d’investissement, VEFA, baux commerciaux et divisions en copropriété.',
+        'Prêts immobiliers, hypothèques conventionnelles et radiation d’inscriptions.',
       ],
     },
     {
       icon: HeartHandshake,
       img: '/images/domaine_famille.jpg',
       num: '02',
-      title: 'Famille & Transmission',
+      tag: 'FAMILLE',
+      title: 'Famille, Successions & Transmission',
       subtitle: 'Accompagnement rigoureux des moments charnières de votre vie familiale.',
       details: [
-        'Donations simples, donations-partages et donations entre époux.',
-        'Successions : actes de notoriété, déclarations fiscales, partages amiables.',
-        'Contrats de mariage, conventions de PACS et régimes matrimoniaux.',
-        'Testaments authentiques, mandats de protection future.',
+        'Donations simples, donations-partages transgénérationnelles avec réserve d’usufruit.',
+        'Règlement complet des successions : acte de notoriété, inventaire notarié et déclaration fiscale.',
+        'Contrats de mariage sur mesure, conventions de PACS et changements de régimes matrimoniaux.',
+        'Testaments authentiques et mandats de protection future enregistrés au FCDDV.',
       ],
     },
     {
       icon: Briefcase,
       img: '/images/domaine_entreprise.jpg',
       num: '03',
+      tag: 'ENTREPRISES',
       title: 'Droit des Affaires & Sociétés',
       subtitle: 'Conseil stratégique pour les dirigeants, repreneurs et investisseurs.',
       details: [
-        'Constitution de sociétés civiles (SCI, SCEA) et commerciales (SAS, SARL).',
-        'Pacte Dutreil : exonération fiscale à concurrence de 75 % de la valeur des titres.',
-        'Cession de fonds de commerce, baux commerciaux et parts sociales.',
-        "Transmission intergénérationnelle d'entreprises familiales.",
+        'Mise en place de pactes Dutreil : exonération fiscale de 75 % de la valeur taxable des titres transmis.',
+        'Constitution de sociétés civiles immobilières (SCI) et sociétés commerciales (SAS, SARL).',
+        'Cession de fonds de commerce, séquestre du prix de vente et opposition des créanciers.',
+        'Pactes d’actionnaires, gouvernance familiale et transmission d’entreprises.',
       ],
     },
     {
       icon: TrendingUp,
       img: '/images/domaine_patrimoine.jpg',
       num: '04',
+      tag: 'PATRIMOINE',
       title: 'Fiscalité & Stratégie Patrimoniale',
       subtitle: 'Optimisation de la structuration et de la préservation de vos actifs.',
       details: [
-        'Audit patrimonial civil et fiscal sur mesure.',
-        'Démembrement de propriété (usufruit temporaire ou viager).',
-        'Assurance-vie et clauses bénéficiaires démembrées.',
-        "Stratégies de détention immobilière (SCI à l'IR vs IS).",
+        'Bilan patrimonial approfondi intégrant aspects civils, fiscaux et financiers.',
+        'Démembrement temporaire ou viager de la propriété immobilière ou mobilière.',
+        'Rédaction de clauses bénéficiaires testamentaires et d’assurance-vie démembrées.',
+        'Optimisation de l’Impôt sur la Fortune Immobilière (IFI) et des déductions d’emprunt.',
       ],
     },
     {
       icon: Globe2,
       img: '/images/domaine_international.jpg',
       num: '05',
+      tag: 'INTERNATIONAL',
       title: 'Droit Notarial International',
-      subtitle: 'Dossiers transfrontaliers pour expatriés et non-résidents.',
+      subtitle: 'Dossiers transfrontaliers pour expatriés, binationaux et non-résidents.',
       details: [
-        'Règlement européen des successions (choix de loi successorale).',
-        'Acquisitions immobilières en France par non-résidents.',
-        'Régimes matrimoniaux internationaux et conventions de La Haye.',
-        'Procurations authentiques internationales et apostille.',
+        'Règlement européen des successions : choix de la loi successorale applicable (professio juris).',
+        'Acquisitions et cessions immobilières en France par des investisseurs résidant à l’étranger.',
+        'Régimes matrimoniaux internationaux et conventions internationales de La Haye.',
+        'Procurations authentiques dématérialisées, apostille et légalisation consulaire.',
       ],
     },
   ];
 
   return (
-    <div className="bg-[#F8FAFC]">
+    <div className="bg-[#F8FAFC] text-slate-900">
 
-      {/* ── HERO avec image fond ── */}
-      <section className="relative min-h-[65vh] flex flex-col justify-center overflow-hidden">
-        <div className="absolute inset-0">
-          <Image src="/images/domaine_immobilier.jpg" alt="Expertises Aurelex" fill className="object-cover object-center" priority />
-          <div className="absolute inset-0 bg-gradient-to-b from-white/94 via-white/80 to-[#F8FAFC]" />
-        </div>
-        <div className="absolute top-1/3 right-1/4 w-72 h-72 rounded-full blur-[100px] pointer-events-none opacity-20"
-          style={{ background: 'radial-gradient(circle, rgba(37,99,235,0.3) 0%, transparent 70%)' }} />
-
-        <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pt-36 pb-20 text-center space-y-6">
-          <div className="inline-flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.3em] text-blue-700 animate-fade-in-up">
-            <span className="w-8 h-px bg-blue-600/40" />
-            <span>Champs d'action juridique</span>
-            <span className="w-8 h-px bg-blue-600/40" />
+      {/* ── HERO HAUTE LISIBILITÉ ── */}
+      <section className="pt-32 pb-16 lg:pt-40 lg:pb-20 bg-gradient-to-b from-blue-50/70 to-[#F8FAFC] border-b border-slate-200">
+        <div className="max-w-4xl mx-auto px-5 sm:px-8 text-center space-y-5">
+          <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-900 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider border border-blue-200">
+            <span>Champs d'Action Notariale</span>
           </div>
-          <h1 className="font-serif text-5xl sm:text-6xl lg:text-7xl font-bold text-slate-900 leading-tight animate-fade-in-up" style={{ animationDelay: '100ms' }}>
+          <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-950 leading-tight">
             {t('title')}
           </h1>
-          <p className="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-normal animate-fade-in-up" style={{ animationDelay: '200ms' }}>
+          <p className="text-base sm:text-lg text-slate-700 max-w-2xl mx-auto leading-relaxed font-normal">
             {t('subtitle')}
           </p>
         </div>
       </section>
 
-      {/* ── EXPERTISES IMMERSIVES CLAIR ── */}
-      <section className="py-20 lg:py-28">
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 space-y-8">
+      {/* ── CARTES ÉDITORIALES D'EXPERTISES ── */}
+      <section className="py-16 lg:py-24">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 space-y-10">
           {expertises.map((item, idx) => {
             const Icon = item.icon;
             const isEven = idx % 2 === 0;
+
             return (
               <div
                 key={idx}
-                className={`relative group overflow-hidden rounded-3xl border border-slate-200/90 shadow-md hover:shadow-xl transition-all duration-500 bg-white ${isEven ? 'animate-slide-left' : 'animate-slide-right'}`}
-                style={{ animationDelay: `${idx * 80}ms` }}
+                className="bg-white rounded-3xl border-2 border-slate-200 shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden"
               >
-                {/* Image fond avec overlay lumineux */}
-                <div className="absolute inset-0">
-                  <Image
-                    src={item.img}
-                    alt={item.title}
-                    fill
-                    className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
-                  />
-                  <div className={`absolute inset-0 ${isEven
-                    ? 'bg-gradient-to-r from-white/96 via-white/88 to-white/40'
-                    : 'bg-gradient-to-l from-white/96 via-white/88 to-white/40'
-                  } transition-all duration-500`} />
-                </div>
+                <div className="grid grid-cols-1 lg:grid-cols-12 items-stretch">
 
-                {/* Contenu */}
-                <div className="relative z-10 p-8 sm:p-12 lg:p-14 grid grid-cols-1 lg:grid-cols-2 gap-8 items-start min-h-[320px]">
-                  {/* Col Gauche : Header domaine */}
-                  <div className={`space-y-5 ${isEven ? '' : 'lg:col-start-2'}`}>
-                    <div className="flex items-center gap-4">
-                      <span className="font-serif text-6xl font-light text-blue-600/25 group-hover:text-blue-600/40 transition-colors leading-none select-none">
-                        {item.num}
-                      </span>
-                      <div className="w-12 h-12 rounded-xl bg-white shadow-sm border border-slate-200 flex items-center justify-center group-hover:border-blue-400 group-hover:text-blue-700 transition-colors">
-                        <Icon className="w-5 h-5 text-blue-600" />
-                      </div>
+                  {/* Photo du domaine */}
+                  <div className={`lg:col-span-5 relative min-h-[260px] sm:min-h-[320px] lg:min-h-full ${isEven ? '' : 'lg:order-2'}`}>
+                    <Image
+                      src={item.img}
+                      alt={item.title}
+                      fill
+                      className="object-cover object-center"
+                    />
+                    <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-slate-200 text-xs font-bold text-blue-900 flex items-center gap-2 shadow-sm">
+                      <Icon className="w-4 h-4 text-blue-700" />
+                      <span>{item.tag}</span>
                     </div>
-                    <h2 className="font-serif text-3xl sm:text-4xl font-bold text-slate-900 leading-tight group-hover:text-blue-700 transition-colors">
-                      {item.title}
-                    </h2>
-                    <div className="neon-line w-12 group-hover:w-28 transition-all duration-500" />
-                    <p className="text-sm text-slate-600 leading-relaxed max-w-sm">{item.subtitle}</p>
-                    <Link href="/rendez-vous" className="inline-flex items-center gap-2 text-xs font-bold text-blue-600 uppercase tracking-wider hover:text-blue-800 transition-colors">
-                      <Calendar className="w-3.5 h-3.5" />
-                      <span>Consultation dans ce domaine</span>
-                      <ArrowRight className="w-3 h-3" />
-                    </Link>
                   </div>
 
-                  {/* Col Droite : Liste prestations */}
-                  <div className={`bg-white/90 backdrop-blur-md rounded-2xl p-6 border border-slate-200 shadow-sm ${isEven ? '' : 'lg:col-start-1 lg:row-start-1'}`}>
-                    <h4 className="text-[10px] uppercase tracking-[0.3em] text-blue-700 font-bold mb-5">
-                      Prestations & Actes Authentiques
-                    </h4>
-                    <ul className="space-y-3.5">
-                      {item.details.map((d, di) => (
-                        <li key={di} className="flex items-start gap-3 text-sm text-slate-700">
-                          <div className="w-2 h-2 rounded-full bg-blue-600 shrink-0 mt-2" />
-                          <span className="leading-relaxed">{d}</span>
-                        </li>
-                      ))}
-                    </ul>
+                  {/* Contenu textuel 100% lisible */}
+                  <div className={`lg:col-span-7 p-7 sm:p-10 lg:p-12 space-y-6 ${isEven ? '' : 'lg:order-1'}`}>
+                    <div className="space-y-3">
+                      <div className="flex items-center gap-3">
+                        <span className="font-serif text-3xl font-extrabold text-blue-700">
+                          {item.num}.
+                        </span>
+                        <h2 className="font-serif text-2xl sm:text-3xl font-bold text-slate-950 leading-snug">
+                          {item.title}
+                        </h2>
+                      </div>
+                      <p className="text-sm sm:text-base text-slate-700 leading-relaxed font-medium">
+                        {item.subtitle}
+                      </p>
+                    </div>
+
+                    {/* Prestations détaillées */}
+                    <div className="bg-slate-50 rounded-2xl p-6 border border-slate-200 space-y-3">
+                      <h3 className="text-xs font-bold uppercase tracking-wider text-blue-900">
+                        Actes & Prestations Réglementées
+                      </h3>
+                      <ul className="space-y-3">
+                        {item.details.map((d, di) => (
+                          <li key={di} className="flex items-start gap-3 text-xs sm:text-sm text-slate-800 font-medium">
+                            <CheckCircle2 className="w-4 h-4 text-blue-700 shrink-0 mt-0.5" />
+                            <span className="leading-snug">{d}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    <div className="pt-2">
+                      <Link
+                        href="/rendez-vous"
+                        className="inline-flex items-center gap-2 bg-blue-700 hover:bg-blue-800 text-white px-6 py-3 rounded-full text-xs font-bold uppercase tracking-wider shadow-sm transition-colors"
+                      >
+                        <Calendar className="w-4 h-4 text-white" />
+                        <span>Prendre rendez-vous dans ce domaine</span>
+                        <ArrowRight className="w-4 h-4 text-white" />
+                      </Link>
+                    </div>
                   </div>
+
                 </div>
               </div>
             );
@@ -173,18 +176,22 @@ export default function ExpertisesPage() {
         </div>
       </section>
 
-      {/* ── CTA ── */}
-      <section className="py-20 bg-white border-t border-slate-200 animate-fade-in-up">
-        <div className="max-w-2xl mx-auto px-5 text-center space-y-6">
-          <h2 className="font-serif text-3xl sm:text-4xl font-bold text-slate-900">
-            Un dossier, <span className="font-light italic blue-gradient-text">une expertise dédiée</span>
+      {/* ── BANDE CTA ── */}
+      <section className="py-20 bg-white border-t border-slate-200">
+        <div className="max-w-3xl mx-auto px-5 text-center space-y-6">
+          <h2 className="font-serif text-3xl sm:text-4xl font-extrabold text-slate-950">
+            Un projet juridique spécifique ?
           </h2>
-          <Link href="/rendez-vous" className="btn-liquid-primary inline-flex">
+          <p className="text-base text-slate-700">
+            Nos notaires et juristes spécialisés étudient vos pièces et vous répondent dans un cadre strictement confidentiel.
+          </p>
+          <Link href="/rendez-vous" className="inline-flex items-center gap-2 bg-blue-700 hover:bg-blue-800 text-white px-8 py-4 rounded-full text-xs font-bold uppercase tracking-wider shadow-md transition-colors">
             <Calendar className="w-4 h-4 text-white" />
-            <span>Solliciter un entretien préliminaire</span>
+            <span>Initier une consultation notariale</span>
           </Link>
         </div>
       </section>
+
     </div>
   );
 }
