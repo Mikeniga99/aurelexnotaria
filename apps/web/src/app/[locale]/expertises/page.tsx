@@ -99,9 +99,6 @@ export default function ExpertisesPage() {
         </div>
 
         <div className="relative z-10 max-w-4xl mx-auto px-5 sm:px-8 text-center space-y-5">
-          <div className="inline-flex items-center gap-2 bg-[#D4B483]/15 border border-[#D4B483]/40 text-[#D4B483] px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider backdrop-blur-md">
-            <span>Champs d'Action Notariale</span>
-          </div>
           <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight drop-shadow-md">
             {t('title')}
           </h1>
