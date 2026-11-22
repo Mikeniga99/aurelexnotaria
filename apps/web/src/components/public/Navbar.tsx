@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { useTranslations, useLocale } from 'next-intl';
 import { Link, usePathname, useRouter } from '@/i18n/routing';
-import { Globe, Calendar, Scale, Phone } from 'lucide-react';
+import { Calendar, Search, ChevronDown, Menu, X, ArrowRight } from 'lucide-react';
 
 export function Navbar() {
   const t = useTranslations('nav');
@@ -12,149 +12,150 @@ export function Navbar() {
   const router = useRouter();
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
+    const onScroll = () => setScrolled(window.scrollY > 30);
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const toggleLocale = () => {
-    const nextLocale = locale === 'fr' ? 'en' : 'fr';
-    router.replace(pathname, { locale: nextLocale });
-  };
-
   const navLinks = [
-    { href: '/', label: t('home') },
-    { href: '/etude', label: t('about') },
-    { href: '/expertises', label: t('expertises') },
-    { href: '/equipe', label: t('team') },
-    { href: '/actualites', label: t('news') },
-    { href: '/contact', label: t('contact') },
+    { href: '/', label: 'Accueil' },
+    { href: '/etude', label: 'Le cabinet', hasDropdown: true },
+    { href: '/expertises', label: 'Nos services', hasDropdown: true },
+    { href: '/actualites', label: 'Actualités' },
+    { href: '/#simulateur', label: 'Simulateur' },
+    { href: '/contact', label: 'Contact' },
   ];
 
   return (
-    <header className="fixed top-0 inset-x-0 z-40 transition-all duration-300">
-      {/* ── Bande officielle supérieure ── */}
-      <div className="hidden lg:block bg-[#0B1938] text-white py-2 px-8 text-xs border-b border-slate-800">
-        <div className="max-w-7xl mx-auto flex justify-between items-center">
-          <div className="flex items-center gap-4">
-            <span className="flex items-center gap-1.5 text-cyan-300 font-bold tracking-wider uppercase text-[11px]">
-              <Scale className="w-3.5 h-3.5 text-cyan-400" />
-              <span>Office Notarial · 18 Place Vendôme · Paris Ier</span>
-            </span>
-            <span className="text-slate-500">|</span>
-            <span className="text-slate-200 font-medium">Actes Authentiques Électroniques & Visioconférence</span>
-          </div>
+    <header className="fixed top-0 inset-x-0 z-50 transition-all duration-300">
+      {/* ── Main Navigation Bar ── */}
+      <div
+        className={`transition-all duration-300 ${
+          scrolled
+            ? 'bg-[#0B1938]/95 backdrop-blur-md shadow-xl py-3 border-b border-white/10'
+            : 'bg-gradient-to-b from-black/70 via-black/30 to-transparent py-5'
+        }`}
+      >
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 flex items-center justify-between">
 
-          <div className="flex items-center gap-5 font-medium">
-            <a
-              href="tel:+33142862400"
-              className="flex items-center gap-1.5 text-white hover:text-cyan-300 transition-colors"
-            >
-              <Phone className="w-3.5 h-3.5 text-cyan-400" />
-              <span className="font-bold">01 42 86 24 00</span>
-            </a>
-            <span className="text-slate-500">|</span>
-            <a
-              href="/admin"
-              className="text-slate-300 hover:text-white transition-colors uppercase tracking-wider text-[11px] font-semibold"
-            >
-              Administration
-            </a>
-            <span className="text-slate-500">|</span>
-            <button
-              onClick={toggleLocale}
-              className="flex items-center gap-1 text-white hover:text-cyan-300 transition-colors uppercase font-bold text-[11px] bg-slate-800/80 px-2.5 py-0.5 rounded"
-            >
-              <Globe className="w-3 h-3 text-cyan-400" />
-              <span>{locale === 'fr' ? 'EN' : 'FR'}</span>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {/* ── Barre de Navigation Principale ── */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-2 sm:pt-3">
-        <div
-          className={`rounded-2xl transition-all duration-300 px-4 sm:px-6 py-3 flex items-center justify-between bg-white border-2 border-slate-200 shadow-md ${
-            scrolled ? 'shadow-lg border-slate-300 py-2.5' : ''
-          }`}
-        >
-          {/* Logo & Identité */}
+          {/* Logo & Identité (Identique à la maquette) */}
           <Link href="/" className="flex items-center gap-3 group">
-            <div className="relative w-11 h-11 rounded-xl overflow-hidden shadow-xs border border-slate-200 bg-white flex items-center justify-center group-hover:border-blue-600 transition-colors p-1">
-              <Image
-                src="/images/Logo_AURELEX.png"
-                alt="Aurelex Notaires Logo"
-                fill
-                className="object-contain"
-                priority
-              />
-            </div>
-            <div>
-              <span className="font-serif text-xl sm:text-2xl font-black tracking-tight text-[#0B1938] block group-hover:text-blue-700 transition-colors">
-                AURELEX
+            <div className="relative w-10 h-10 flex items-center justify-center shrink-0">
+              <span className="font-serif text-3xl font-light text-white tracking-widest">
+                A
               </span>
-              <span className="text-[9px] sm:text-[10px] uppercase tracking-[0.25em] text-[#6B0F1A] font-extrabold block -mt-1">
-                Notaires & Associés
+              <span className="absolute -bottom-0.5 inset-x-0 h-[1.5px] bg-[#D4B483] rounded-full scale-75 group-hover:scale-100 transition-transform" />
+            </div>
+            <div className="flex flex-col">
+              <span className="font-serif text-lg font-bold tracking-widest text-white leading-tight uppercase group-hover:text-[#D4B483] transition-colors">
+                Aurelex
+              </span>
+              <span className="text-[8px] uppercase tracking-[0.3em] text-[#D4B483] font-bold">
+                Notaire
               </span>
             </div>
           </Link>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden md:flex items-center gap-1 lg:gap-1.5">
+          <nav className="hidden lg:flex items-center gap-7 text-xs font-semibold tracking-wide">
             {navLinks.map((link) => {
               const isActive =
-                pathname === link.href || (link.href !== '/' && pathname.startsWith(link.href));
+                link.href === '/'
+                  ? pathname === '/'
+                  : pathname.startsWith(link.href) && !link.href.includes('#');
               return (
                 <Link
-                  key={link.href}
+                  key={link.label}
                   href={link.href}
-                  className={`px-4 py-2 rounded-xl text-xs font-bold tracking-wide transition-all relative ${
+                  className={`flex items-center gap-1 transition-colors relative py-1 ${
                     isActive
-                      ? 'text-blue-800 bg-blue-50 border border-blue-300'
-                      : 'text-slate-800 hover:text-blue-700 hover:bg-slate-50'
+                      ? 'text-white font-bold'
+                      : 'text-white/80 hover:text-[#D4B483]'
                   }`}
                 >
-                  {link.label}
+                  <span>{link.label}</span>
+                  {link.hasDropdown && (
+                    <ChevronDown className="w-3 h-3 text-white/60 -mr-0.5 mt-0.5" />
+                  )}
                   {isActive && (
-                    <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4 h-0.5 bg-blue-700 rounded-full" />
+                    <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-[#D4B483] rounded-full" />
                   )}
                 </Link>
               );
             })}
           </nav>
 
-          {/* Action Droite */}
-          <div className="flex items-center gap-3">
+          {/* Right Action (Desktop: Prendre rendez-vous pill + Search button) */}
+          <div className="hidden sm:flex items-center gap-3">
             <Link
               href="/rendez-vous"
-              className="hidden sm:inline-flex items-center gap-2 bg-blue-700 hover:bg-blue-800 text-white px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider shadow-md transition-colors"
+              className="inline-flex items-center gap-2 bg-[#060D1F]/90 hover:bg-[#060D1F] text-white px-5 py-2.5 rounded-full text-xs font-semibold tracking-wider border border-white/20 shadow-md hover:border-[#D4B483] transition-all"
             >
-              <Calendar className="w-3.5 h-3.5 text-white" />
-              <span>{t('appointment')}</span>
+              <Calendar className="w-3.5 h-3.5 text-[#D4B483]" />
+              <span>Prendre rendez-vous</span>
             </Link>
 
-            {/* Mobile Actions */}
-            <div className="flex md:hidden items-center gap-2">
-              <button
-                onClick={toggleLocale}
-                className="px-2.5 py-1.5 rounded-lg border-2 border-slate-300 text-xs font-bold text-slate-800 bg-slate-50 uppercase"
-              >
-                {locale === 'fr' ? 'EN' : 'FR'}
-              </button>
-              <a
-                href="tel:+33142862400"
-                className="p-2 rounded-xl bg-blue-700 text-white shadow-xs"
-                aria-label="Appeler l'office"
-              >
-                <Phone className="w-4 h-4" />
-              </a>
-            </div>
+            <Link
+              href="/#simulateur"
+              className="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 flex items-center justify-center text-white/90 hover:text-white transition-colors"
+              title="Rechercher / Outil de calcul"
+            >
+              <Search className="w-4 h-4" />
+            </Link>
           </div>
+
+          {/* Mobile Hamburger Button */}
+          <div className="flex lg:hidden items-center gap-3">
+            <Link
+              href="/rendez-vous"
+              className="inline-flex sm:hidden items-center gap-1.5 bg-[#D4B483] text-slate-950 font-bold px-3 py-1.5 rounded-full text-[11px]"
+            >
+              <Calendar className="w-3 h-3" />
+              <span>RDV</span>
+            </Link>
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="p-2 rounded-xl bg-white/10 text-white"
+              aria-label="Menu"
+            >
+              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            </button>
+          </div>
+
         </div>
       </div>
+
+      {/* Mobile Drawer Menu */}
+      {mobileMenuOpen && (
+        <div className="lg:hidden bg-[#0B1938] border-b border-white/10 px-6 py-6 space-y-4 shadow-2xl animate-fade-in-up">
+          <nav className="flex flex-col space-y-3">
+            {navLinks.map((link) => (
+              <Link
+                key={link.label}
+                href={link.href}
+                onClick={() => setMobileMenuOpen(false)}
+                className="text-sm font-semibold text-white/90 hover:text-[#D4B483] py-2 flex items-center justify-between border-b border-white/5"
+              >
+                <span>{link.label}</span>
+                <ArrowRight className="w-3.5 h-3.5 text-white/40" />
+              </Link>
+            ))}
+          </nav>
+          <div className="pt-2">
+            <Link
+              href="/rendez-vous"
+              onClick={() => setMobileMenuOpen(false)}
+              className="w-full inline-flex items-center justify-center gap-2 bg-[#D4B483] text-slate-950 font-bold py-3 rounded-full text-xs uppercase tracking-wider"
+            >
+              <Calendar className="w-4 h-4" />
+              <span>Prendre rendez-vous en ligne</span>
+            </Link>
+          </div>
+        </div>
+      )}
     </header>
   );
 }

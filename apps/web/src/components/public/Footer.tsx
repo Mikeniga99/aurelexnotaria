@@ -1,123 +1,151 @@
+'use client';
+
 import React from 'react';
 import Image from 'next/image';
 import { Link } from '@/i18n/routing';
 import { useTranslations } from 'next-intl';
-import { ShieldCheck, MapPin, Phone, Mail, Clock, Scale, ArrowRight } from 'lucide-react';
+import { Phone, Mail, MapPin, ArrowUp, Linkedin, Youtube } from 'lucide-react';
 
 export function Footer() {
   const t = useTranslations('footer');
-  const tNav = useTranslations('nav');
-  const tContact = useTranslations('contact');
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   return (
-    <footer className="bg-[#0B1938] text-white border-t border-slate-800">
-      {/* Ligne d'accentuation bleue */}
-      <div className="h-1 bg-gradient-to-r from-blue-700 via-blue-500 to-indigo-600" />
-
+    <footer className="bg-[#060D1F] text-white border-t border-slate-800">
+      {/* ── Zone Principale du Footer ── */}
       <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pt-16 pb-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 items-start">
 
-          {/* Identité */}
-          <div className="lg:col-span-4 space-y-6">
-            <div className="flex items-center gap-3">
-              <div className="relative w-11 h-11 rounded-xl overflow-hidden border border-white/20 bg-white shrink-0 p-1">
-                <Image src="/images/Logo_AURELEX.png" alt="Aurelex" fill className="object-contain" />
+          {/* Colonne 1 : Identité & Slogan (Identique à la maquette) */}
+          <div className="lg:col-span-4 space-y-4">
+            <Link href="/" className="flex items-center gap-3 group">
+              <div className="relative w-10 h-10 flex items-center justify-center shrink-0">
+                <span className="font-serif text-3xl font-light text-white tracking-widest">
+                  A
+                </span>
+                <span className="absolute -bottom-0.5 inset-x-0 h-[1.5px] bg-[#D4B483] rounded-full" />
               </div>
-              <div>
-                <span className="font-serif text-2xl font-bold text-white tracking-tight block">AURELEX</span>
-                <span className="text-[9px] uppercase tracking-[0.25em] text-blue-300 font-bold block">Notaires & Associés</span>
+              <div className="flex flex-col">
+                <span className="font-serif text-xl font-bold tracking-widest text-white leading-tight uppercase">
+                  Aurelex
+                </span>
+                <span className="text-[9px] uppercase tracking-[0.3em] text-[#D4B483] font-bold">
+                  Notaire
+                </span>
               </div>
-            </div>
-            <p className="text-sm text-slate-200 leading-relaxed font-normal">{t('tagline')}</p>
-            <div className="space-y-2 text-xs">
-              <div className="flex items-center gap-2 text-cyan-300 font-semibold">
-                <Scale className="w-4 h-4 shrink-0 text-cyan-400" />
-                <span>Officiers Publics & Ministériels</span>
-              </div>
-              <div className="flex items-center gap-2 text-slate-300">
-                <ShieldCheck className="w-4 h-4 shrink-0 text-cyan-400" />
-                <span>Membre du Conseil Supérieur du Notariat</span>
-              </div>
-            </div>
-            <div>
-              <Link href="/rendez-vous"
-                className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-white bg-blue-600 hover:bg-blue-500 rounded-full px-5 py-2.5 shadow-md transition-colors">
-                <span>Prendre rendez-vous</span>
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-            </div>
+            </Link>
+            <p className="text-sm text-slate-400 font-normal leading-relaxed max-w-xs">
+              Conseiller aujourd'hui, sécuriser demain.
+            </p>
           </div>
 
-          {/* Navigation */}
-          <div className="lg:col-span-2">
-            <h3 className="text-xs uppercase tracking-[0.25em] text-cyan-300 font-bold mb-5">Navigation</h3>
-            <ul className="space-y-3">
-              {[
-                { href: '/', label: tNav('home') },
-                { href: '/etude', label: tNav('about') },
-                { href: '/expertises', label: tNav('expertises') },
-                { href: '/equipe', label: tNav('team') },
-                { href: '/actualites', label: tNav('news') },
-                { href: '/contact', label: tNav('contact') },
-              ].map((item) => (
-                <li key={item.href}>
-                  <Link href={item.href}
-                    className="text-sm text-slate-200 hover:text-white hover:underline transition-colors flex items-center gap-2 group">
-                    <span className="w-2 h-0.5 bg-blue-400 group-hover:w-3.5 transition-all" />
-                    <span>{item.label}</span>
-                  </Link>
-                </li>
-              ))}
+          {/* Colonne 2 : Liens de navigation centraux */}
+          <div className="lg:col-span-4">
+            <ul className="flex flex-wrap lg:flex-col gap-4 text-xs font-semibold tracking-wide text-slate-300">
+              <li>
+                <Link href="/etude" className="hover:text-[#D4B483] transition-colors">
+                  Le cabinet
+                </Link>
+              </li>
+              <li>
+                <Link href="/expertises" className="hover:text-[#D4B483] transition-colors">
+                  Nos services
+                </Link>
+              </li>
+              <li>
+                <Link href="/actualites" className="hover:text-[#D4B483] transition-colors">
+                  Actualités
+                </Link>
+              </li>
+              <li>
+                <Link href="/#simulateur" className="hover:text-[#D4B483] transition-colors">
+                  Simulateur & FAQ
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact" className="hover:text-[#D4B483] transition-colors">
+                  Contact
+                </Link>
+              </li>
             </ul>
           </div>
 
-          {/* Domaines */}
-          <div className="lg:col-span-3">
-            <h3 className="text-xs uppercase tracking-[0.25em] text-cyan-300 font-bold mb-5">Domaines</h3>
-            <ul className="space-y-3">
-              {['Droit Immobilier', 'Famille & Succession', 'Droit des Sociétés', 'Fiscalité Patrimoniale', 'Droit International'].map((item) => (
-                <li key={item}>
-                  <Link href="/expertises"
-                    className="text-sm text-slate-200 hover:text-white hover:underline transition-colors flex items-center gap-2 group">
-                    <span className="w-2 h-0.5 bg-blue-400 group-hover:w-3.5 transition-all" />
-                    <span>{item}</span>
-                  </Link>
-                </li>
-              ))}
+          {/* Colonne 3 : Coordonnées & Réseaux sociaux */}
+          <div className="lg:col-span-4 space-y-4">
+            <ul className="space-y-3 text-xs text-slate-300">
+              <li className="flex items-center gap-3">
+                <Phone className="w-4 h-4 text-[#D4B483] shrink-0" />
+                <a href="tel:0142934567" className="hover:text-white transition-colors font-medium">
+                  01 42 93 45 67
+                </a>
+              </li>
+              <li className="flex items-center gap-3">
+                <Mail className="w-4 h-4 text-[#D4B483] shrink-0" />
+                <a href="mailto:contact@aurelex-notaire.fr" className="hover:text-white transition-colors">
+                  contact@aurelex-notaire.fr
+                </a>
+              </li>
+              <li className="flex items-start gap-3">
+                <MapPin className="w-4 h-4 text-[#D4B483] shrink-0 mt-0.5" />
+                <span>12 Place de la République, 75001 Paris</span>
+              </li>
             </ul>
+
+            {/* Réseaux sociaux */}
+            <div className="flex items-center gap-3 pt-2">
+              <a
+                href="https://linkedin.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-8 h-8 rounded-full bg-slate-800 hover:bg-[#D4B483] text-white hover:text-slate-950 flex items-center justify-center transition-colors text-xs font-bold"
+                aria-label="LinkedIn"
+              >
+                <Linkedin className="w-4 h-4" />
+              </a>
+              <a
+                href="https://youtube.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-8 h-8 rounded-full bg-slate-800 hover:bg-[#D4B483] text-white hover:text-slate-950 flex items-center justify-center transition-colors text-xs font-bold"
+                aria-label="YouTube"
+              >
+                <Youtube className="w-4 h-4" />
+              </a>
+            </div>
           </div>
 
-          {/* Coordonnées */}
-          <div className="lg:col-span-3">
-            <h3 className="text-xs uppercase tracking-[0.25em] text-cyan-300 font-bold mb-5">L'Office</h3>
-            <ul className="space-y-4">
-              {[
-                { icon: MapPin, value: tContact('address') },
-                { icon: Phone, value: tContact('phone') },
-                { icon: Mail, value: tContact('email') },
-                { icon: Clock, value: tContact('openingHours') },
-              ].map(({ icon: Icon, value }) => (
-                <li key={value} className="flex items-start gap-3 text-sm text-slate-200">
-                  <Icon className="w-4 h-4 text-cyan-400 shrink-0 mt-0.5" />
-                  <span className="leading-snug">{value}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
         </div>
       </div>
 
-      {/* Barre basse */}
-      <div className="border-t border-slate-800 bg-[#060D1F] max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-5">
-        <div className="flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-slate-400">
-          <p>{t('copyright')}</p>
-          <div className="flex items-center gap-5">
-            <Link href="/mentions-legales" className="hover:text-white transition-colors">{t('legalNotice')}</Link>
-            <span className="text-slate-600">·</span>
-            <Link href="/confidentialite" className="hover:text-white transition-colors">{t('privacyPolicy')}</Link>
-            <span className="text-slate-600">·</span>
-            <a href="/admin" className="hover:text-white transition-colors font-semibold">Administration</a>
+      {/* ── Barre Basse de Copyright ── */}
+      <div className="border-t border-slate-800/80 bg-[#040814] py-5">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-slate-400">
+          <p>© 2025 AURELEX Notaire. Tous droits réservés.</p>
+
+          <div className="flex items-center gap-4">
+            <Link href="/mentions-legales" className="hover:text-white transition-colors">
+              Mentions légales
+            </Link>
+            <span className="text-slate-700">|</span>
+            <Link href="/confidentialite" className="hover:text-white transition-colors">
+              Politique de confidentialité
+            </Link>
+            <span className="text-slate-700">|</span>
+            <Link href="/contact" className="hover:text-white transition-colors">
+              Plan du site
+            </Link>
           </div>
+
+          <button
+            onClick={scrollToTop}
+            className="w-8 h-8 rounded-full bg-slate-800 hover:bg-[#D4B483] text-white hover:text-slate-950 flex items-center justify-center transition-colors"
+            aria-label="Retour en haut"
+          >
+            <ArrowUp className="w-4 h-4" />
+          </button>
         </div>
       </div>
     </footer>
