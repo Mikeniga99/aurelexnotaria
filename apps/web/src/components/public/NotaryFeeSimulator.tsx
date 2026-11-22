@@ -53,45 +53,43 @@ export function NotaryFeeSimulator() {
   }, [propertyPrice, propertyType]);
 
   return (
-    <div className="bg-white rounded-3xl border-2 border-aurelex-champagne/30 shadow-2xl p-6 sm:p-10 relative overflow-hidden">
-      {/* Subtle gold ribbon top right */}
-      <div className="absolute top-0 right-0 w-32 h-32 overflow-hidden pointer-events-none">
-        <div className="bg-gradient-to-r from-aurelex-champagne to-aurelex-bordeaux text-white text-[9px] font-bold uppercase tracking-widest py-1 text-center transform rotate-45 translate-x-8 translate-y-4 shadow-md">
+    <div className="liquid-glass-dark rounded-3xl p-6 sm:p-10 relative overflow-hidden">
+      {/* Badge réglementaire */}
+      <div className="absolute top-4 right-4">
+        <span className="liquid-glass-pill rounded-full px-3 py-1 text-[10px] font-bold text-cyan-300 uppercase tracking-wider">
           Barème Légal
-        </div>
+        </span>
       </div>
 
       <div className="max-w-3xl">
-        <div className="flex items-center gap-2.5 text-xs font-bold uppercase tracking-[0.2em] text-aurelex-champagne-hover">
-          <Calculator className="w-4 h-4 text-aurelex-champagne" />
+        <div className="flex items-center gap-2.5 text-xs font-bold uppercase tracking-[0.2em] text-cyan-400">
+          <Calculator className="w-4 h-4" />
           <span>Outil d'Aide à la Décision</span>
         </div>
-
-        <h3 className="font-serif text-2xl sm:text-3xl font-bold text-aurelex-bordeaux mt-2">
+        <h3 className="font-serif text-2xl sm:text-3xl font-bold text-white mt-2">
           Simulateur Réglementé des Frais d'Acquisition Immobilière
         </h3>
-        <p className="text-xs sm:text-sm text-aurelex-ebene/75 mt-1 leading-relaxed">
-          En France, les frais dits « de notaire » sont strictement fixés par le Code de commerce. 
-          Plus de <strong>80 % de cette somme</strong> est reversée au Trésor Public au titre des droits de mutation.
+        <p className="text-xs sm:text-sm text-white/55 mt-1 leading-relaxed">
+          En France, les frais dits « de notaire » sont strictement fixés par le Code de commerce.
+          Plus de <strong className="text-white/80">80 % de cette somme</strong> est reversée au Trésor Public.
         </p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mt-8 items-center">
         {/* Inputs */}
         <div className="lg:col-span-6 space-y-6">
-          {/* Type of property */}
           <div>
-            <label className="block text-xs font-bold uppercase tracking-wider text-aurelex-ebene/70 mb-2">
+            <label className="block text-xs font-bold uppercase tracking-wider text-white/60 mb-3">
               Type de bien immobilier
             </label>
             <div className="grid grid-cols-2 gap-3">
               <button
                 type="button"
                 onClick={() => setPropertyType('ancien')}
-                className={`py-3 px-4 rounded-xl text-xs font-bold border transition-all ${
+                className={`py-3 px-4 rounded-xl text-xs font-bold transition-all ${
                   propertyType === 'ancien'
-                    ? 'bg-aurelex-bordeaux text-white border-aurelex-bordeaux shadow-md'
-                    : 'bg-aurelex-ivoire text-aurelex-ebene/70 border-aurelex-beige-border hover:bg-aurelex-beige/40'
+                    ? 'btn-liquid-primary'
+                    : 'liquid-glass-pill text-white/70 hover:text-white'
                 }`}
               >
                 Logement Ancien (~7-8%)
@@ -99,10 +97,10 @@ export function NotaryFeeSimulator() {
               <button
                 type="button"
                 onClick={() => setPropertyType('neuf')}
-                className={`py-3 px-4 rounded-xl text-xs font-bold border transition-all ${
+                className={`py-3 px-4 rounded-xl text-xs font-bold transition-all ${
                   propertyType === 'neuf'
-                    ? 'bg-aurelex-bordeaux text-white border-aurelex-bordeaux shadow-md'
-                    : 'bg-aurelex-ivoire text-aurelex-ebene/70 border-aurelex-beige-border hover:bg-aurelex-beige/40'
+                    ? 'btn-liquid-primary'
+                    : 'liquid-glass-pill text-white/70 hover:text-white'
                 }`}
               >
                 Neuf / VEFA (~2-3%)
@@ -110,13 +108,12 @@ export function NotaryFeeSimulator() {
             </div>
           </div>
 
-          {/* Amount slider and input */}
           <div>
-            <div className="flex justify-between items-center mb-2">
-              <label className="text-xs font-bold uppercase tracking-wider text-aurelex-ebene/70">
+            <div className="flex justify-between items-center mb-3">
+              <label className="text-xs font-bold uppercase tracking-wider text-white/60">
                 Prix d'acquisition net vendeur
               </label>
-              <span className="font-serif text-lg font-bold text-aurelex-bordeaux">
+              <span className="font-serif text-xl font-bold blue-gradient-text">
                 {propertyPrice.toLocaleString('fr-FR')} €
               </span>
             </div>
@@ -127,69 +124,59 @@ export function NotaryFeeSimulator() {
               step="10000"
               value={propertyPrice}
               onChange={(e) => setPropertyPrice(parseInt(e.target.value, 10))}
-              className="w-full h-2 bg-aurelex-beige-border rounded-lg appearance-none cursor-pointer accent-aurelex-bordeaux"
+              className="w-full h-2 rounded-lg appearance-none cursor-pointer accent-cyan-400"
+              style={{ background: `linear-gradient(to right, #2563EB ${((propertyPrice - 50000) / (2500000 - 50000)) * 100}%, rgba(255,255,255,0.1) 0%)` }}
             />
-            <div className="flex justify-between text-[10px] text-aurelex-ebene/50 mt-1 font-mono">
+            <div className="flex justify-between text-[10px] text-white/35 mt-1.5 font-mono">
               <span>50 000 €</span>
               <span>1 000 000 €</span>
               <span>2 500 000 €</span>
             </div>
           </div>
 
-          {/* Guarantee info */}
-          <div className="p-3.5 rounded-xl bg-aurelex-champagne-soft/50 border border-aurelex-champagne/30 text-xs text-aurelex-ebene/80 flex items-start gap-2.5">
-            <ShieldCheck className="w-4 h-4 text-aurelex-champagne shrink-0 mt-0.5" />
-            <span>
-              Tarification nationale uniforme : chaque étude notariale applique rigoureusement le même barème d'émoluments fixé par l'État.
-            </span>
+          <div className="p-4 rounded-xl bg-aurelex-blue/10 border border-aurelex-blue/30 text-xs text-white/60 flex items-start gap-2.5">
+            <ShieldCheck className="w-4 h-4 text-cyan-400 shrink-0 mt-0.5" />
+            <span>Tarification nationale uniforme : chaque étude notariale applique le même barème d'émoluments fixé par l'État.</span>
           </div>
         </div>
 
         {/* Results Card */}
-        <div className="lg:col-span-6 bg-gradient-to-br from-aurelex-ebene to-aurelex-bordeaux-dark text-white p-6 sm:p-8 rounded-2xl shadow-xl border border-aurelex-champagne/30 space-y-5">
+        <div className="lg:col-span-6 liquid-glass-blue rounded-2xl p-6 sm:p-8 space-y-5">
           <div className="flex justify-between items-baseline border-b border-white/10 pb-4">
             <div>
-              <span className="text-xs uppercase tracking-widest text-aurelex-champagne font-semibold block">
-                Estimation Globale
-              </span>
+              <span className="text-[10px] uppercase tracking-widest text-cyan-400 font-bold block">Estimation Globale</span>
               <div className="font-serif text-3xl sm:text-4xl font-bold text-white mt-1">
                 {calculation.total.toLocaleString('fr-FR')} €
               </div>
             </div>
             <div className="text-right">
-              <span className="text-xs text-white/60 block">Ratio indicatif</span>
-              <span className="text-base font-bold text-aurelex-champagne-light">
-                ~ {calculation.percentage} %
-              </span>
+              <span className="text-xs text-white/50 block">Ratio indicatif</span>
+              <span className="text-base font-bold blue-gradient-text">~ {calculation.percentage} %</span>
             </div>
           </div>
 
-          {/* Detailed breakdown */}
-          <div className="space-y-2.5 text-xs">
-            <div className="flex justify-between items-center text-white/80">
-              <span>Taxes et droits versés au Trésor Public (État & Département) :</span>
-              <strong className="font-mono text-white">{calculation.taxes.toLocaleString('fr-FR')} €</strong>
-            </div>
-            <div className="flex justify-between items-center text-white/80">
-              <span>Émoluments réglementés du notaire (TTC) :</span>
-              <strong className="font-mono text-aurelex-champagne-light">{calculation.emolumentsTTC.toLocaleString('fr-FR')} €</strong>
-            </div>
-            <div className="flex justify-between items-center text-white/80">
-              <span>Débours & formalités administratives certifiées :</span>
-              <strong className="font-mono text-white">{calculation.debours.toLocaleString('fr-FR')} €</strong>
-            </div>
-            <div className="flex justify-between items-center text-white/80">
-              <span>Contribution de Sécurité Immobilière (CSI) :</span>
-              <strong className="font-mono text-white">{calculation.csi.toLocaleString('fr-FR')} €</strong>
-            </div>
+          <div className="space-y-3 text-xs">
+            {[
+              { label: 'Taxes et droits versés au Trésor Public :', value: calculation.taxes, highlight: false },
+              { label: 'Émoluments réglementés du notaire (TTC) :', value: calculation.emolumentsTTC, highlight: true },
+              { label: 'Débours & formalités administratives :', value: calculation.debours, highlight: false },
+              { label: 'Contribution de Sécurité Immobilière (CSI) :', value: calculation.csi, highlight: false },
+            ].map(({ label, value, highlight }) => (
+              <div key={label} className="flex justify-between items-center text-white/70">
+                <span>{label}</span>
+                <strong className={`font-mono ${highlight ? 'text-cyan-300' : 'text-white'}`}>
+                  {value.toLocaleString('fr-FR')} €
+                </strong>
+              </div>
+            ))}
           </div>
 
           <div className="pt-2">
             <Link
               href="/rendez-vous"
-              className="w-full inline-flex items-center justify-center gap-2 bg-gradient-to-r from-aurelex-champagne to-aurelex-champagne-light text-aurelex-ebene text-xs font-bold py-3 rounded-xl shadow-lg hover:shadow-xl hover:scale-[1.01] transition-all"
+              className="btn-liquid-primary w-full justify-center"
             >
-              <span>Authentifier votre acquisition avec un notaire</span>
+              <span>Authentifier votre acquisition</span>
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>

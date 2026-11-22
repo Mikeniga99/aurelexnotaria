@@ -4,6 +4,7 @@ import { NextIntlClientProvider } from 'next-intl';
 import { routing } from '@/i18n/routing';
 import { Navbar } from '@/components/public/Navbar';
 import { Footer } from '@/components/public/Footer';
+import { BottomNav } from '@/components/public/BottomNav';
 
 export default async function LocaleLayout({
   children,
@@ -23,8 +24,9 @@ export default async function LocaleLayout({
   return (
     <NextIntlClientProvider locale={locale} messages={messages}>
       <Navbar />
-      <main className="flex-1">{children}</main>
+      <main className="flex-1 pb-24 md:pb-0">{children}</main>
       <Footer />
+      <BottomNav />
     </NextIntlClientProvider>
   );
 }

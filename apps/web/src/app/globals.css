@@ -1,20 +1,25 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --background: #FAF7F2;
-  --foreground: #23070B;
+  --background: #060D1F;
+  --foreground: #F8FAFC;
+  --navy: #0B1938;
+  --navy-deep: #060D1F;
+  --blue-vibrant: #2563EB;
+  --blue-electric: #38BDF8;
   --bordeaux: #6B0F1A;
-  --bordeaux-dark: #3E070F;
-  --bordeaux-deep: #240509;
-  --champagne: #C59B27;
-  --champagne-light: #E2C063;
-  --champagne-foil: linear-gradient(135deg, #F0DB92 0%, #C59B27 50%, #9A7718 100%);
-  --ivoire: #FAF7F2;
-  --beige: #F3ECE2;
+}
+
+/* ═══════════════════════════════════════
+   BASE STYLES
+═══════════════════════════════════════ */
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
@@ -22,78 +27,219 @@ body {
   background-color: var(--background);
   font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
   overflow-x: hidden;
-  background-image: radial-gradient(#C59B27 0.75px, transparent 0.75px);
-  background-size: 24px 24px;
-  background-color: #FAF7F2;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Luxury Utilities */
+/* ═══════════════════════════════════════
+   TYPOGRAPHY
+═══════════════════════════════════════ */
+
 .font-serif {
   font-family: 'Cormorant Garamond', Georgia, serif;
+  font-feature-settings: "liga" 1, "kern" 1;
 }
 
 .font-sans {
   font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
 }
 
-/* Metallic gold gradients */
-.gold-gradient-text {
-  background: linear-gradient(135deg, #D4AF37 0%, #C59B27 40%, #E8CD78 70%, #9B771A 100%);
+/* ═══════════════════════════════════════
+   LIQUID GLASS (EFFETS DE VERRE LIQUIDE)
+═══════════════════════════════════════ */
+
+/* Liquid Glass Sombre (pour sections sombres / Hero / Bottom Bar) */
+.liquid-glass-dark {
+  background: rgba(11, 25, 56, 0.65);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.5),
+              inset 0 1px 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* Liquid Glass Lumineux (avec halo bleu azur) */
+.liquid-glass-blue {
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.15) 0%, rgba(11, 25, 56, 0.6) 100%);
+  backdrop-filter: blur(24px) saturate(190%);
+  -webkit-backdrop-filter: blur(24px) saturate(190%);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  box-shadow: 0 20px 45px -12px rgba(37, 99, 235, 0.25),
+              inset 0 1px 2px 0 rgba(56, 189, 248, 0.35);
+}
+
+/* Liquid Glass Ultra-Clear (pour boutons et badges) */
+.liquid-glass-pill {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.25);
+}
+
+.liquid-glass-pill:hover {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(56, 189, 248, 0.45);
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.3), inset 0 1px 0 0 rgba(255, 255, 255, 0.4);
+}
+
+/* ═══════════════════════════════════════
+   DÉGRADÉS BLEUS & LUMINESCENCE
+═══════════════════════════════════════ */
+
+.blue-gradient-text {
+  background: linear-gradient(135deg, #FFFFFF 0%, #BAE6FD 40%, #38BDF8 75%, #2563EB 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
-.gold-gradient-bg {
-  background: linear-gradient(135deg, #E2C063 0%, #C59B27 50%, #A47F1D 100%);
+.blue-glow-text {
+  text-shadow: 0 0 25px rgba(56, 189, 248, 0.5);
 }
 
-.gold-gradient-border {
-  border-image: linear-gradient(135deg, #E2C063, #C59B27, #6B0F1A) 1;
-}
-
-/* Velvet Bordeaux Dark Cards */
-.bordeaux-velvet {
-  background: radial-gradient(circle at top left, #5B0C15 0%, #30060C 60%, #1A0307 100%);
-}
-
-/* Luxury Glassmorphism */
-.glass-gold {
-  background: rgba(250, 247, 242, 0.85);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(197, 155, 39, 0.25);
-}
-
-.glass-dark {
-  background: rgba(35, 7, 11, 0.85);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(197, 155, 39, 0.3);
-}
-
-/* Ornamental Lines */
-.ornament-line {
+/* Ligne néon azur fluide */
+.neon-line {
   height: 1px;
-  background: linear-gradient(90deg, transparent 0%, #C59B27 50%, transparent 100%);
+  background: linear-gradient(90deg, transparent 0%, rgba(56, 189, 248, 0.6) 50%, transparent 100%);
 }
 
-/* Custom Scrollbar */
+/* ═══════════════════════════════════════
+   ANIMATIONS AU DÉFILEMENT & APPARITION
+═══════════════════════════════════════ */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes blurFocus {
+  from {
+    opacity: 0;
+    filter: blur(12px);
+    transform: scale(0.97);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: scale(1);
+  }
+}
+
+@keyframes pulseSubtle {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-slide-left {
+  animation: slideInLeft 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-slide-right {
+  animation: slideInRight 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-blur-focus {
+  animation: blurFocus 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-pulse-glow {
+  animation: pulseSubtle 4s ease-in-out infinite;
+}
+
+/* ═══════════════════════════════════════
+   BOUTONS MODERNES SANS BORDURES LOURDES
+═══════════════════════════════════════ */
+
+.btn-liquid-primary {
+  @apply relative inline-flex items-center justify-center gap-2.5 px-7 py-3.5 
+         text-xs uppercase tracking-widest font-bold text-white
+         rounded-full overflow-hidden transition-all duration-300;
+  background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 50%, #1E40AF 100%);
+  box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.45),
+              inset 0 1px 1px rgba(255, 255, 255, 0.3);
+}
+
+.btn-liquid-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 35px -5px rgba(56, 189, 248, 0.55),
+              inset 0 1px 2px rgba(255, 255, 255, 0.45);
+}
+
+.btn-liquid-secondary {
+  @apply relative inline-flex items-center justify-center gap-2.5 px-7 py-3.5 
+         text-xs uppercase tracking-widest font-semibold text-white/90
+         rounded-full overflow-hidden transition-all duration-300;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.btn-liquid-secondary:hover {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(56, 189, 248, 0.5);
+  color: #FFFFFF;
+  transform: translateY(-2px);
+}
+
+/* ═══════════════════════════════════════
+   SCROLLBAR FLUIDE
+═══════════════════════════════════════ */
+
 ::-webkit-scrollbar {
-  width: 7px;
-  height: 7px;
+  width: 6px;
+  height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #FAF7F2;
+  background: #060D1F;
 }
 ::-webkit-scrollbar-thumb {
-  background: #C59B27;
+  background: #1B3B6F;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #6B0F1A;
+  background: #2563EB;
 }
 
 ::selection {
-  background-color: #6B0F1A;
-  color: #FAF7F2;
+  background-color: #2563EB;
+  color: #FFFFFF;
 }

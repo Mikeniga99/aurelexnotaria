@@ -10,35 +10,34 @@ const config: Config = {
     extend: {
       colors: {
         aurelex: {
+          navy: {
+            DEFAULT: '#0B1938',
+            deep: '#060D1F',
+            surface: '#102146',
+            light: '#1B3B6F',
+            soft: '#244B8A',
+          },
+          blue: {
+            DEFAULT: '#2563EB',
+            vibrant: '#3B82F6',
+            electric: '#38BDF8',
+            cyan: '#06B6D4',
+            glow: '#60A5FA',
+            muted: '#93C5FD',
+          },
+          ice: {
+            DEFAULT: '#F8FAFC',
+            soft: '#F1F5F9',
+            border: '#E2E8F0',
+            dark: '#CBD5E1',
+          },
           bordeaux: {
             DEFAULT: '#6B0F1A',
             hover: '#540A13',
             dark: '#38060E',
             deep: '#200307',
             light: '#851422',
-            subtle: '#FAF0F1',
-          },
-          champagne: {
-            DEFAULT: '#C59B27',
-            hover: '#AF881E',
-            light: '#E2C063',
-            pale: '#F6EED8',
-            soft: '#F4ECE1',
-          },
-          ivoire: {
-            DEFAULT: '#FAF7F2',
-            light: '#FDFBF9',
-            muted: '#F0EAE1',
-          },
-          beige: {
-            DEFAULT: '#F3ECE2',
-            border: '#E2D5C3',
-            dark: '#C8B69E',
-          },
-          ebene: {
-            DEFAULT: '#23070B',
-            soft: '#360D13',
-            text: '#1C0609',
+            subtle: '#FDF2F4',
           },
         },
       },
@@ -47,10 +46,11 @@ const config: Config = {
         sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
       },
       boxShadow: {
-        'gold-sm': '0 2px 10px rgba(197, 155, 39, 0.15)',
-        'gold-md': '0 8px 30px rgba(197, 155, 39, 0.20)',
-        'gold-lg': '0 20px 45px rgba(197, 155, 39, 0.25)',
-        'bordeaux-lg': '0 20px 45px rgba(54, 6, 14, 0.35)',
+        'liquid-blue': '0 8px 32px 0 rgba(37, 99, 235, 0.25)',
+        'liquid-cyan': '0 8px 32px 0 rgba(56, 189, 248, 0.25)',
+        'liquid-dark': '0 20px 50px 0 rgba(6, 13, 31, 0.45)',
+        'glow-sm': '0 0 15px rgba(56, 189, 248, 0.35)',
+        'glow-md': '0 0 30px rgba(37, 99, 235, 0.30)',
       },
     },
   },

@@ -56,24 +56,25 @@ export function AppointmentForm() {
 
   if (successData) {
     return (
-      <div className="bg-white rounded-3xl p-8 sm:p-12 border-2 border-aurelex-champagne/40 shadow-xl text-center space-y-6">
-        <div className="w-16 h-16 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center mx-auto">
+      <div className="liquid-glass-dark rounded-3xl p-8 sm:p-12 text-center space-y-6">
+        <div className="w-16 h-16 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto ring-2 ring-emerald-400/40">
           <CheckCircle2 className="w-10 h-10" />
         </div>
 
-        <h3 className="font-serif text-3xl font-bold text-aurelex-bordeaux">
+        <h3 className="font-serif text-3xl font-bold text-white">
           {t('successTitle')}
         </h3>
 
-        <p className="text-base text-aurelex-ebene/80 max-w-lg mx-auto leading-relaxed">
+        <p className="text-base text-white/70 max-w-lg mx-auto leading-relaxed">
           {t('successMessage')}
         </p>
 
-        <div className="p-4 rounded-xl bg-aurelex-ivoire border border-aurelex-beige-border text-xs text-aurelex-ebene/70 space-y-1">
+        <div className="p-4 rounded-xl bg-white/5 border border-white/10 text-xs text-white/60 space-y-1">
           <div>
-            <strong>Numéro de dossier :</strong> <span className="font-mono text-aurelex-bordeaux">{successData.id}</span>
+            <strong className="text-white/80">Numéro de dossier :</strong>{' '}
+            <span className="font-mono text-cyan-400">{successData.id}</span>
           </div>
-          <div className="flex items-center justify-center gap-1.5 text-amber-700 font-medium">
+          <div className="flex items-center justify-center gap-1.5 text-amber-400 font-medium">
             <Clock className="w-3.5 h-3.5" />
             <span>Statut : En attente de confirmation par l'étude</span>
           </div>
@@ -81,7 +82,7 @@ export function AppointmentForm() {
 
         <button
           onClick={() => setSuccessData(null)}
-          className="inline-flex items-center gap-2 bg-aurelex-bordeaux text-white text-sm font-semibold px-6 py-2.5 rounded-lg hover:bg-aurelex-bordeaux-hover transition-colors"
+          className="btn-liquid-secondary text-sm font-semibold px-6 py-2.5 rounded-xl"
         >
           Nouvelle demande
         </button>
@@ -92,10 +93,10 @@ export function AppointmentForm() {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="bg-white rounded-3xl p-8 sm:p-12 border border-aurelex-beige-border shadow-xl space-y-6"
+      className="liquid-glass-dark rounded-3xl p-8 sm:p-12 space-y-6"
     >
       {errorMessage && (
-        <div className="p-4 rounded-xl bg-red-50 border border-red-200 text-red-700 text-sm flex items-start gap-3">
+        <div className="p-4 rounded-xl bg-red-500/10 border border-red-500/30 text-red-400 text-sm flex items-start gap-3">
           <AlertCircle className="w-5 h-5 shrink-0 mt-0.5" />
           <span>{errorMessage}</span>
         </div>
@@ -104,36 +105,36 @@ export function AppointmentForm() {
       {/* Row 1: Nom & Email */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
         <div>
-          <label className="block text-xs font-semibold uppercase tracking-wider text-aurelex-ebene/70 mb-2">
+          <label className="block text-xs font-semibold uppercase tracking-wider text-cyan-400/80 mb-2">
             {t('fullName')} *
           </label>
           <input
             type="text"
             placeholder="Ex : Maître ou M. Jean Dupont"
             {...register('fullName')}
-            className={`w-full px-4 py-3 rounded-xl border text-sm transition-all focus:outline-none focus:ring-2 focus:ring-aurelex-champagne ${
-              errors.fullName ? 'border-red-500 bg-red-50/30' : 'border-aurelex-beige-border bg-aurelex-ivoire/30'
+            className={`w-full px-4 py-3 rounded-xl border bg-white/5 text-white placeholder-white/30 text-sm transition-all focus:outline-none focus:ring-2 focus:ring-cyan-400/50 ${
+              errors.fullName ? 'border-red-500/60' : 'border-white/10 hover:border-white/20'
             }`}
           />
           {errors.fullName && (
-            <p className="text-xs text-red-500 mt-1">{errors.fullName.message}</p>
+            <p className="text-xs text-red-400 mt-1">{errors.fullName.message}</p>
           )}
         </div>
 
         <div>
-          <label className="block text-xs font-semibold uppercase tracking-wider text-aurelex-ebene/70 mb-2">
+          <label className="block text-xs font-semibold uppercase tracking-wider text-cyan-400/80 mb-2">
             {t('email')} *
           </label>
           <input
             type="email"
             placeholder="jean.dupont@exemple.fr"
             {...register('email')}
-            className={`w-full px-4 py-3 rounded-xl border text-sm transition-all focus:outline-none focus:ring-2 focus:ring-aurelex-champagne ${
-              errors.email ? 'border-red-500 bg-red-50/30' : 'border-aurelex-beige-border bg-aurelex-ivoire/30'
+            className={`w-full px-4 py-3 rounded-xl border bg-white/5 text-white placeholder-white/30 text-sm transition-all focus:outline-none focus:ring-2 focus:ring-cyan-400/50 ${
+              errors.email ? 'border-red-500/60' : 'border-white/10 hover:border-white/20'
             }`}
           />
           {errors.email && (
-            <p className="text-xs text-red-500 mt-1">{errors.email.message}</p>
+            <p className="text-xs text-red-400 mt-1">{errors.email.message}</p>
           )}
         </div>
       </div>
@@ -141,29 +142,29 @@ export function AppointmentForm() {
       {/* Row 2: Téléphone & Motif */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
         <div>
-          <label className="block text-xs font-semibold uppercase tracking-wider text-aurelex-ebene/70 mb-2">
+          <label className="block text-xs font-semibold uppercase tracking-wider text-cyan-400/80 mb-2">
             {t('phone')} *
           </label>
           <input
             type="tel"
             placeholder="01 42 68 00 00"
             {...register('phone')}
-            className={`w-full px-4 py-3 rounded-xl border text-sm transition-all focus:outline-none focus:ring-2 focus:ring-aurelex-champagne ${
-              errors.phone ? 'border-red-500 bg-red-50/30' : 'border-aurelex-beige-border bg-aurelex-ivoire/30'
+            className={`w-full px-4 py-3 rounded-xl border bg-white/5 text-white placeholder-white/30 text-sm transition-all focus:outline-none focus:ring-2 focus:ring-cyan-400/50 ${
+              errors.phone ? 'border-red-500/60' : 'border-white/10 hover:border-white/20'
             }`}
           />
           {errors.phone && (
-            <p className="text-xs text-red-500 mt-1">{errors.phone.message}</p>
+            <p className="text-xs text-red-400 mt-1">{errors.phone.message}</p>
           )}
         </div>
 
         <div>
-          <label className="block text-xs font-semibold uppercase tracking-wider text-aurelex-ebene/70 mb-2">
+          <label className="block text-xs font-semibold uppercase tracking-wider text-cyan-400/80 mb-2">
             {t('motif')} *
           </label>
           <select
             {...register('motif')}
-            className="w-full px-4 py-3 rounded-xl border border-aurelex-beige-border bg-aurelex-ivoire/30 text-sm transition-all focus:outline-none focus:ring-2 focus:ring-aurelex-champagne text-aurelex-ebene"
+            className="w-full px-4 py-3 rounded-xl border border-white/10 bg-[#0B1938] text-white text-sm transition-all focus:outline-none focus:ring-2 focus:ring-cyan-400/50"
           >
             <option value={AppointmentMotif.IMMOBILIER}>{t('motifImmo')}</option>
             <option value={AppointmentMotif.FAMILLE}>{t('motifFamily')}</option>
@@ -172,7 +173,7 @@ export function AppointmentForm() {
             <option value={AppointmentMotif.AUTRE}>{t('motifOther')}</option>
           </select>
           {errors.motif && (
-            <p className="text-xs text-red-500 mt-1">{errors.motif.message}</p>
+            <p className="text-xs text-red-400 mt-1">{errors.motif.message}</p>
           )}
         </div>
       </div>
@@ -180,29 +181,29 @@ export function AppointmentForm() {
       {/* Row 3: Date & TimeSlot */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
         <div>
-          <label className="block text-xs font-semibold uppercase tracking-wider text-aurelex-ebene/70 mb-2">
+          <label className="block text-xs font-semibold uppercase tracking-wider text-cyan-400/80 mb-2">
             {t('preferredDate')} *
           </label>
           <input
             type="text"
             placeholder="Ex : Dès que possible ou Semaine du 15 décembre"
             {...register('preferredDate')}
-            className={`w-full px-4 py-3 rounded-xl border text-sm transition-all focus:outline-none focus:ring-2 focus:ring-aurelex-champagne ${
-              errors.preferredDate ? 'border-red-500 bg-red-50/30' : 'border-aurelex-beige-border bg-aurelex-ivoire/30'
+            className={`w-full px-4 py-3 rounded-xl border bg-white/5 text-white placeholder-white/30 text-sm transition-all focus:outline-none focus:ring-2 focus:ring-cyan-400/50 ${
+              errors.preferredDate ? 'border-red-500/60' : 'border-white/10 hover:border-white/20'
             }`}
           />
           {errors.preferredDate && (
-            <p className="text-xs text-red-500 mt-1">{errors.preferredDate.message}</p>
+            <p className="text-xs text-red-400 mt-1">{errors.preferredDate.message}</p>
           )}
         </div>
 
         <div>
-          <label className="block text-xs font-semibold uppercase tracking-wider text-aurelex-ebene/70 mb-2">
+          <label className="block text-xs font-semibold uppercase tracking-wider text-cyan-400/80 mb-2">
             {t('preferredTimeSlot')}
           </label>
           <select
             {...register('preferredTimeSlot')}
-            className="w-full px-4 py-3 rounded-xl border border-aurelex-beige-border bg-aurelex-ivoire/30 text-sm transition-all focus:outline-none focus:ring-2 focus:ring-aurelex-champagne text-aurelex-ebene"
+            className="w-full px-4 py-3 rounded-xl border border-white/10 bg-[#0B1938] text-white text-sm transition-all focus:outline-none focus:ring-2 focus:ring-cyan-400/50"
           >
             <option value="Matin (09h00 - 12h00)">{t('morning')}</option>
             <option value="Après-midi (14h00 - 18h00)">{t('afternoon')}</option>
@@ -213,20 +214,20 @@ export function AppointmentForm() {
 
       {/* Row 4: Message */}
       <div>
-        <label className="block text-xs font-semibold uppercase tracking-wider text-aurelex-ebene/70 mb-2">
+        <label className="block text-xs font-semibold uppercase tracking-wider text-cyan-400/80 mb-2">
           {t('message')}
         </label>
         <textarea
           rows={4}
           placeholder="Décrivez brièvement les enjeux ou éléments de votre dossier (ex: vente appartement, donation parent-enfant)..."
           {...register('message')}
-          className="w-full px-4 py-3 rounded-xl border border-aurelex-beige-border bg-aurelex-ivoire/30 text-sm transition-all focus:outline-none focus:ring-2 focus:ring-aurelex-champagne"
+          className="w-full px-4 py-3 rounded-xl border border-white/10 bg-white/5 text-white placeholder-white/30 text-sm transition-all focus:outline-none focus:ring-2 focus:ring-cyan-400/50 hover:border-white/20"
         />
       </div>
 
       {/* Disclaimer */}
-      <div className="flex items-start gap-3 p-4 rounded-xl bg-aurelex-beige/40 border border-aurelex-beige-border text-xs text-aurelex-ebene/70 leading-relaxed">
-        <ShieldCheck className="w-5 h-5 text-aurelex-champagne shrink-0 mt-0.5" />
+      <div className="flex items-start gap-3 p-4 rounded-xl bg-cyan-400/5 border border-cyan-400/15 text-xs text-white/50 leading-relaxed">
+        <ShieldCheck className="w-5 h-5 text-cyan-400/70 shrink-0 mt-0.5" />
         <span>{t('disclaimer')}</span>
       </div>
 
@@ -234,16 +235,16 @@ export function AppointmentForm() {
       <button
         type="submit"
         disabled={isSubmitting}
-        className="w-full inline-flex items-center justify-center gap-2 bg-gradient-to-r from-aurelex-bordeaux to-aurelex-bordeaux-hover text-white text-base font-semibold py-4 rounded-xl shadow-lg hover:shadow-xl hover:from-aurelex-bordeaux-hover hover:to-aurelex-bordeaux-dark transition-all transform active:scale-[0.99] disabled:opacity-60"
+        className="btn-liquid-primary w-full py-4 text-base font-semibold disabled:opacity-50"
       >
         {isSubmitting ? (
           <>
-            <Loader2 className="w-5 h-5 animate-spin text-aurelex-champagne-light" />
+            <Loader2 className="w-5 h-5 animate-spin" />
             <span>{t('submitting')}</span>
           </>
         ) : (
           <>
-            <Calendar className="w-5 h-5 text-aurelex-champagne-light" />
+            <Calendar className="w-5 h-5" />
             <span>{t('submit')}</span>
           </>
         )}
