@@ -109,16 +109,9 @@ export function Navbar() {
 
           {/* Mobile Hamburger Button */}
           <div className="flex lg:hidden items-center gap-3">
-            <Link
-              href="/rendez-vous"
-              className="inline-flex sm:hidden items-center gap-1.5 bg-[#D4B483] text-slate-950 font-bold px-3 py-1.5 rounded-full text-[11px]"
-            >
-              <Calendar className="w-3 h-3" />
-              <span>RDV</span>
-            </Link>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-xl bg-white/10 text-white"
+              className="p-2 rounded-xl bg-white/10 text-white hover:bg-white/20 transition-colors"
               aria-label="Menu"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
