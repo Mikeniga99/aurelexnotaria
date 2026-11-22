@@ -51,8 +51,8 @@ export default function AdminLayout({
       {/* Mobile Top Header */}
       <div className="lg:hidden bg-aurelex-ebene text-white p-4 flex items-center justify-between border-b border-aurelex-bordeaux">
         <div className="flex items-center gap-3">
-          <div className="relative w-8 h-8 rounded-lg overflow-hidden border border-[#D4B483]">
-            <Image src="/images/favicon.png" alt="Logo" fill className="object-cover" />
+          <div className="relative w-8 h-8 rounded-lg overflow-hidden border border-[#D4B483] bg-white p-0.5">
+            <Image src="/images/favicon.png" alt="Logo" fill className="object-contain" />
           </div>
           <span className="font-serif font-bold text-lg text-aurelex-champagne">Aurelex CMS</span>
         </div>
@@ -73,8 +73,8 @@ export default function AdminLayout({
         <div>
           {/* Logo & Office Name */}
           <div className="p-6 border-b border-white/10 flex items-center gap-3.5">
-            <div className="relative w-10 h-10 rounded-xl overflow-hidden border border-[#D4B483]/60 shrink-0">
-              <Image src="/images/favicon.png" alt="Aurelex Logo" fill className="object-cover" />
+            <div className="relative w-10 h-10 rounded-xl overflow-hidden border border-[#D4B483]/60 shrink-0 bg-white p-0.5">
+              <Image src="/images/favicon.png" alt="Aurelex Logo" fill className="object-contain" />
             </div>
             <div>
               <div className="font-serif font-bold text-lg text-white tracking-wide">AURELEX</div>

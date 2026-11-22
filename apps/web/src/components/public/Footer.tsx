@@ -22,12 +22,12 @@ export function Footer() {
           {/* Colonne 1 : Identité & Slogan */}
           <div className="lg:col-span-4 space-y-4">
             <Link href="/" className="flex items-center gap-3.5 group">
-              <div className="relative w-11 h-11 rounded-xl overflow-hidden shadow-lg border border-[#D4B483]/50 group-hover:border-[#D4B483] transition-colors shrink-0 bg-[#0B1938]">
+              <div className="relative w-11 h-11 rounded-xl overflow-hidden shadow-lg border border-[#D4B483]/50 group-hover:border-[#D4B483] transition-colors shrink-0 bg-white/95 p-0.5">
                 <Image
                   src="/images/favicon.png"
                   alt="Aurelex Notaire"
                   fill
-                  className="object-cover"
+                  className="object-contain"
                 />
               </div>
               <div className="flex flex-col">

@@ -43,12 +43,12 @@ export function Navbar() {
 
           {/* Logo & Identité officielle */}
           <Link href="/" className="flex items-center gap-3 group">
-            <div className="relative w-10 h-10 rounded-xl overflow-hidden shadow-md border border-[#D4B483]/50 group-hover:border-[#D4B483] transition-all shrink-0 bg-[#0B1938]">
+            <div className="relative w-10 h-10 rounded-xl overflow-hidden shadow-md border border-[#D4B483]/50 group-hover:border-[#D4B483] transition-all shrink-0 bg-white/95 p-0.5">
               <Image
                 src="/images/favicon.png"
                 alt="Aurelex Notaire"
                 fill
-                className="object-cover"
+                className="object-contain"
                 priority
               />
             </div>
