@@ -18,8 +18,8 @@ export function BottomNav() {
 
   return (
     <nav className="md:hidden fixed bottom-4 inset-x-3.5 sm:inset-x-8 max-w-md mx-auto z-50 pointer-events-auto">
-      {/* Liquid Glass Pill Container avec dimensions harmonieuses */}
-      <div className="relative rounded-[28px] bg-[#081226]/85 backdrop-blur-2xl backdrop-saturate-150 border border-white/20 border-t-white/35 shadow-[0_12px_36px_rgba(0,0,0,0.55),inset_0_1px_1px_rgba(255,255,255,0.2)] h-[66px] px-1">
+      {/* Liquid Glass Pill Container */}
+      <div className="relative rounded-[28px] bg-[#081226]/85 backdrop-blur-2xl backdrop-saturate-150 border border-white/20 border-t-white/35 shadow-[0_12px_36px_rgba(0,0,0,0.55),inset_0_1px_1px_rgba(255,255,255,0.2)] h-[68px] px-1">
         
         {/* Reflet spéculaire de surface incurvé */}
         <div className="absolute inset-0 rounded-[28px] bg-gradient-to-b from-white/15 via-transparent to-black/20 pointer-events-none" />
@@ -36,13 +36,13 @@ export function BottomNav() {
                 <div key={item.href} className="relative flex justify-center items-center h-full">
                   <Link
                     href={item.href}
-                    className="absolute -top-4 flex flex-col items-center group z-20"
+                    className="absolute -top-2 flex flex-col items-center group z-20"
                     aria-label={item.label}
                   >
-                    {/* Bouton RDV surélevé en or champagne */}
-                    <div className="w-13 h-13 rounded-full bg-gradient-to-tr from-[#D4B483] via-[#F5E7D3] to-[#C29B67] p-0.5 shadow-[0_6px_20px_rgba(212,180,131,0.5)] transition-transform duration-200 group-active:scale-95 group-hover:scale-105 flex items-center justify-center">
-                      <div className="w-full h-full rounded-full bg-gradient-to-b from-[#E2C9A0] to-[#BFA173] flex items-center justify-center shadow-inner">
-                        <Icon className="w-5 h-5 text-[#0B1938] stroke-[2.4]" />
+                    {/* Bouton RDV agrandi, parfaitement circulaire et abaissé */}
+                    <div className="w-[54px] h-[54px] rounded-full aspect-square bg-gradient-to-tr from-[#D4B483] via-[#F8EBD9] to-[#BF9761] p-0.5 shadow-[0_8px_24px_rgba(212,180,131,0.5)] transition-transform duration-200 group-active:scale-95 group-hover:scale-105 flex items-center justify-center shrink-0">
+                      <div className="w-full h-full rounded-full aspect-square bg-gradient-to-b from-[#E5CCA5] to-[#B89668] flex items-center justify-center shadow-inner">
+                        <Icon className="w-6 h-6 text-[#0B1938] stroke-[2.3]" />
                       </div>
                     </div>
                     <span className="text-[10px] font-bold text-[#D4B483] uppercase tracking-wider mt-1 drop-shadow-[0_1px_2px_rgba(0,0,0,0.9)]">
