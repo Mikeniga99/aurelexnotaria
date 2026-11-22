@@ -172,7 +172,7 @@ export function Footer() {
 
           {/* Copyright */}
           <p className="text-xs text-slate-400 text-center md:text-left order-2 md:order-1 font-normal">
-            © 2025 AURELEX Notaire. Tous droits réservés.
+            © 2026 AURELEX Notaire. Tous droits réservés.
           </p>
 
           {/* Bouton retour en haut ergonomique */}
