@@ -27,12 +27,12 @@ export default function AppointmentPage() {
         </div>
 
         <div className="relative z-10 max-w-4xl mx-auto px-5 sm:px-8 text-center space-y-5">
-          <ScrollReveal variant="right" delay={150}>
+          <ScrollReveal variant="title" delay={120}>
             <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight drop-shadow-md">
               {t('title')}
             </h1>
           </ScrollReveal>
-          <ScrollReveal variant="right" delay={260}>
+          <ScrollReveal variant="focus" delay={220}>
             <p className="text-base sm:text-lg text-slate-200 max-w-2xl mx-auto leading-relaxed font-normal drop-shadow-sm">
               {t('subtitle')}
             </p>
@@ -45,22 +45,22 @@ export default function AppointmentPage() {
         <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
 
-            {/* Infos pratiques animées depuis la droite */}
+            {/* Infos pratiques */}
             <div className="lg:col-span-4 space-y-6">
               <div className="space-y-3">
-                <ScrollReveal variant="blur" delay={100}>
+                <ScrollReveal variant="eyebrow" delay={80}>
                   <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-900 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
                     <span>Modalités de consultation</span>
                   </div>
                 </ScrollReveal>
 
-                <ScrollReveal variant="right" delay={180}>
+                <ScrollReveal variant="title" delay={150}>
                   <h2 className="font-serif text-2xl sm:text-3xl font-extrabold text-slate-950 leading-tight">
                     Votre rendez-vous selon vos disponibilités
                   </h2>
                 </ScrollReveal>
 
-                <ScrollReveal variant="right" delay={260}>
+                <ScrollReveal variant="focus" delay={220}>
                   <p className="text-sm text-slate-700 leading-relaxed font-normal">
                     Rendez-vous physique au cabinet Place Vendôme ou par visioconférence sécurisée avec un notaire de l'étude.
                   </p>
@@ -74,7 +74,7 @@ export default function AppointmentPage() {
                   { icon: Phone, title: 'Entretien préalable gratuit', desc: '15–20 min pour qualifier vos enjeux juridiques.' },
                   { icon: Clock, title: 'Délai de réponse garanti', desc: 'Prise de contact sous 24h ouvrées.' },
                 ].map(({ icon: Icon, title, desc }, idx) => (
-                  <ScrollReveal key={title} variant="pop" delay={idx * 100}>
+                  <ScrollReveal key={title} variant="card" delay={idx * 60}>
                     <div className="bg-white rounded-2xl p-4.5 border-2 border-slate-200 shadow-xs flex items-start gap-4 hover:border-blue-300 transition-colors">
                       <div className="w-10 h-10 rounded-xl bg-blue-100 text-blue-800 flex items-center justify-center shrink-0">
                         <Icon className="w-5 h-5 text-blue-700" />
@@ -88,7 +88,7 @@ export default function AppointmentPage() {
                 ))}
               </div>
 
-              <ScrollReveal variant="blur" delay={240}>
+              <ScrollReveal variant="focus" delay={200}>
                 <div className="bg-white border border-slate-200 rounded-2xl p-4.5 flex items-start gap-3.5 text-xs text-slate-600 shadow-xs">
                   <Shield className="w-5 h-5 text-blue-700 shrink-0 mt-0.5" />
                   <span className="leading-relaxed">
@@ -100,7 +100,7 @@ export default function AppointmentPage() {
 
             {/* Formulaire */}
             <div className="lg:col-span-8">
-              <ScrollReveal variant="bottom" delay={200}>
+              <ScrollReveal variant="card" delay={120}>
                 <AppointmentForm />
               </ScrollReveal>
             </div>

@@ -291,20 +291,15 @@ h1, h2, h3 {
 }
 
 /* ═══════════════════════════════════════
-   SCROLL REVEAL & APPLE SPRING TEXT ANIMATIONS
+   LUXURY EDITORIAL MOTION & APPLE DESIGN SYSTEM
+   Régit la cinétique typographique selon la hiérarchie visuelle
 ═══════════════════════════════════════ */
 
-@keyframes bounceInRight {
+/* 1. Grands Titres : Masked Editorial Rise (Apple WWDC Display) */
+@keyframes editorialMaskUp {
   0% {
     opacity: 0;
-    transform: translate3d(70px, 0, 0);
-  }
-  60% {
-    opacity: 1;
-    transform: translate3d(-10px, 0, 0);
-  }
-  80% {
-    transform: translate3d(4px, 0, 0);
+    transform: translate3d(0, 36px, 0);
   }
   100% {
     opacity: 1;
@@ -312,65 +307,12 @@ h1, h2, h3 {
   }
 }
 
-@keyframes bounceInLeft {
+/* 2. Paragraphes & Sous-titres : Lens Focus (Défloutage optique d'encre) */
+@keyframes lensFocusIn {
   0% {
     opacity: 0;
-    transform: translate3d(-70px, 0, 0);
-  }
-  60% {
-    opacity: 1;
-    transform: translate3d(10px, 0, 0);
-  }
-  80% {
-    transform: translate3d(-4px, 0, 0);
-  }
-  100% {
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
-  }
-}
-
-@keyframes bounceInUp {
-  0% {
-    opacity: 0;
-    transform: translate3d(0, 45px, 0) scale(0.96);
-  }
-  65% {
-    opacity: 1;
-    transform: translate3d(0, -8px, 0) scale(1.02);
-  }
-  85% {
-    transform: translate3d(0, 2px, 0) scale(0.998);
-  }
-  100% {
-    opacity: 1;
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-}
-
-@keyframes bouncePop {
-  0% {
-    opacity: 0;
-    transform: scale(0.85);
-  }
-  65% {
-    opacity: 1;
-    transform: scale(1.05);
-  }
-  85% {
-    transform: scale(0.98);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-@keyframes blurFadeIn {
-  0% {
-    opacity: 0;
-    filter: blur(8px);
-    transform: translate3d(0, 15px, 0);
+    filter: blur(6px);
+    transform: translate3d(0, 14px, 0);
   }
   100% {
     opacity: 1;
@@ -379,6 +321,83 @@ h1, h2, h3 {
   }
 }
 
+/* 3. Glissement Latéral Soyeux Droite -> Centre (Silk Glide Right - Damping 1.0) */
+@keyframes silkGlideRight {
+  0% {
+    opacity: 0;
+    transform: translate3d(40px, 0, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/* 4. Glissement Latéral Soyeux Gauche -> Centre (Silk Glide Left) */
+@keyframes silkGlideLeft {
+  0% {
+    opacity: 0;
+    transform: translate3d(-40px, 0, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/* 5. Cartes & Modules : Élévation Ambiante (Ambient Card Float) */
+@keyframes ambientCardFloat {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 24px, 0) scale(0.985);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+/* 6. Surtitres & Badges : Expansion Typographique & Fil doré */
+@keyframes eyebrowExpand {
+  0% {
+    opacity: 0;
+    letter-spacing: 0.12em;
+    transform: translate3d(0, 8px, 0);
+  }
+  100% {
+    opacity: 1;
+    letter-spacing: 0.25em;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/* 7. Citations & Témoignages : Editorial Unfold */
+@keyframes quoteUnfold {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 18px, 0) scale(0.98);
+    filter: blur(4px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+    filter: blur(0);
+  }
+}
+
+/* 8. Chiffres & Compteurs : Counter Reveal */
+@keyframes counterReveal {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 20px, 0) scale(0.92);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+/* Base d'initialisation et déclenchement sans à-coups */
 .reveal-init {
   opacity: 0;
   visibility: hidden;
@@ -388,28 +407,49 @@ h1, h2, h3 {
 .reveal-visible {
   visibility: visible;
   animation-fill-mode: forwards;
-  animation-duration: 0.85s;
+  animation-duration: 0.8s;
   animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.reveal-from-right {
-  animation-name: bounceInRight;
+/* Classes utilitaires modulaires */
+.anim-title-rise {
+  animation-name: editorialMaskUp;
+  animation-duration: 0.85s;
 }
 
-.reveal-from-left {
-  animation-name: bounceInLeft;
+.anim-lens-focus {
+  animation-name: lensFocusIn;
+  animation-duration: 0.75s;
 }
 
-.reveal-from-bottom {
-  animation-name: bounceInUp;
+.anim-silk-right {
+  animation-name: silkGlideRight;
+  animation-duration: 0.8s;
 }
 
-.reveal-pop {
-  animation-name: bouncePop;
+.anim-silk-left {
+  animation-name: silkGlideLeft;
+  animation-duration: 0.8s;
 }
 
-.reveal-blur {
-  animation-name: blurFadeIn;
+.anim-card-float {
+  animation-name: ambientCardFloat;
+  animation-duration: 0.75s;
+}
+
+.anim-eyebrow {
+  animation-name: eyebrowExpand;
+  animation-duration: 0.7s;
+}
+
+.anim-quote {
+  animation-name: quoteUnfold;
+  animation-duration: 0.85s;
+}
+
+.anim-counter {
+  animation-name: counterReveal;
+  animation-duration: 0.7s;
 }
 
 @media (prefers-reduced-motion: reduce) {

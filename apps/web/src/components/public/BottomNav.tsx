@@ -57,6 +57,12 @@ export function BottomNav() {
               <Link
                 key={item.href}
                 href={item.href}
+                onClick={(e) => {
+                  if (item.href === '/' && pathname === '/') {
+                    e.preventDefault();
+                    window.location.reload();
+                  }
+                }}
                 className="relative z-10 flex flex-col items-center justify-center h-full py-1 group transition-all duration-150 active:scale-[0.92]"
               >
                 <div className="relative flex flex-col items-center">

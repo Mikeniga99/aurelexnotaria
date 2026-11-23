@@ -100,12 +100,12 @@ export default function ExpertisesPage() {
         </div>
 
         <div className="relative z-10 max-w-4xl mx-auto px-5 sm:px-8 text-center space-y-5">
-          <ScrollReveal variant="right" delay={150}>
+          <ScrollReveal variant="title" delay={120}>
             <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight drop-shadow-md">
               {t('title')}
             </h1>
           </ScrollReveal>
-          <ScrollReveal variant="right" delay={260}>
+          <ScrollReveal variant="focus" delay={220}>
             <p className="text-base sm:text-lg text-slate-200 max-w-2xl mx-auto leading-relaxed font-normal drop-shadow-sm">
               {t('subtitle')}
             </p>
@@ -129,7 +129,7 @@ export default function ExpertisesPage() {
 
                   {/* Photo du domaine */}
                   <div className={`lg:col-span-5 relative min-h-[260px] sm:min-h-[320px] lg:min-h-full ${isEven ? '' : 'lg:order-2'}`}>
-                    <ScrollReveal variant={isEven ? 'left' : 'right'} className="w-full h-full min-h-[260px] sm:min-h-[320px] lg:min-h-full relative">
+                    <ScrollReveal variant={isEven ? 'glide-left' : 'glide-right'} className="w-full h-full min-h-[260px] sm:min-h-[320px] lg:min-h-full relative">
                       <Image
                         src={item.img}
                         alt={item.title}
@@ -143,10 +143,10 @@ export default function ExpertisesPage() {
                     </ScrollReveal>
                   </div>
 
-                  {/* Contenu textuel avec rebond de la droite */}
+                  {/* Contenu textuel avec hiérarchie Apple */}
                   <div className={`lg:col-span-7 p-7 sm:p-10 lg:p-12 space-y-6 ${isEven ? '' : 'lg:order-1'}`}>
-                    <ScrollReveal variant={isEven ? 'right' : 'left'} delay={150}>
-                      <div className="space-y-3">
+                    <div className="space-y-3">
+                      <ScrollReveal variant="title" delay={120}>
                         <div className="flex items-center gap-3">
                           <span className="font-serif text-3xl font-extrabold text-blue-700">
                             {item.num}.
@@ -155,14 +155,17 @@ export default function ExpertisesPage() {
                             {item.title}
                           </h2>
                         </div>
+                      </ScrollReveal>
+
+                      <ScrollReveal variant="focus" delay={180}>
                         <p className="text-sm sm:text-base text-slate-700 leading-relaxed font-medium">
                           {item.subtitle}
                         </p>
-                      </div>
-                    </ScrollReveal>
+                      </ScrollReveal>
+                    </div>
 
                     {/* Prestations détaillées */}
-                    <ScrollReveal variant="bottom" delay={250}>
+                    <ScrollReveal variant="card" delay={220}>
                       <div className="bg-slate-50 rounded-2xl p-6 border border-slate-200 space-y-3">
                         <h3 className="text-xs font-bold uppercase tracking-wider text-blue-900">
                           Actes & Prestations Réglementées
@@ -178,7 +181,7 @@ export default function ExpertisesPage() {
                       </div>
                     </ScrollReveal>
 
-                    <ScrollReveal variant="bottom" delay={320}>
+                    <ScrollReveal variant="card" delay={280}>
                       <div className="pt-2">
                         <Link
                           href="/rendez-vous"
@@ -202,17 +205,17 @@ export default function ExpertisesPage() {
       {/* ── BANDE CTA ── */}
       <section className="py-20 bg-white border-t border-slate-200">
         <div className="max-w-3xl mx-auto px-5 text-center space-y-6">
-          <ScrollReveal variant="right">
+          <ScrollReveal variant="title">
             <h2 className="font-serif text-3xl sm:text-4xl font-extrabold text-slate-950">
               Un projet juridique spécifique ?
             </h2>
           </ScrollReveal>
-          <ScrollReveal variant="right" delay={150}>
+          <ScrollReveal variant="focus" delay={120}>
             <p className="text-base text-slate-700">
               Nos notaires et juristes spécialisés étudient vos pièces et vous répondent dans un cadre strictement confidentiel.
             </p>
           </ScrollReveal>
-          <ScrollReveal variant="pop" delay={240}>
+          <ScrollReveal variant="card" delay={200}>
             <Link href="/rendez-vous" className="inline-flex items-center gap-2 bg-blue-700 hover:bg-blue-800 text-white px-8 py-4 rounded-full text-xs font-bold uppercase tracking-wider shadow-md transition-all hover:-translate-y-0.5 active:scale-[0.96]">
               <Calendar className="w-4 h-4 text-white" />
               <span>Initier une consultation notariale</span>

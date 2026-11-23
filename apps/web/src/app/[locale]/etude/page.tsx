@@ -34,12 +34,12 @@ export default function AboutPage() {
         </div>
 
         <div className="relative z-10 max-w-4xl mx-auto px-5 sm:px-8 text-center space-y-5">
-          <ScrollReveal variant="right" delay={150}>
+          <ScrollReveal variant="title" delay={120}>
             <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight drop-shadow-md">
               {t('title')}
             </h1>
           </ScrollReveal>
-          <ScrollReveal variant="right" delay={260}>
+          <ScrollReveal variant="focus" delay={220}>
             <p className="text-base sm:text-lg text-slate-200 max-w-2xl mx-auto leading-relaxed font-normal drop-shadow-sm">
               {t('description')}
             </p>
@@ -54,7 +54,7 @@ export default function AboutPage() {
 
             {/* Carte institutionnelle de prestige */}
             <div className="lg:col-span-5">
-              <ScrollReveal variant="left">
+              <ScrollReveal variant="card">
                 <div className="bg-gradient-to-br from-[#0B1938] to-[#060D1F] rounded-3xl p-8 sm:p-10 text-white border border-[#D4B483]/30 shadow-xl space-y-7 relative overflow-hidden">
                   <div className="absolute top-0 right-0 w-48 h-48 bg-[#D4B483]/10 rounded-full blur-3xl pointer-events-none" />
                   <div className="relative w-16 h-16 rounded-2xl overflow-hidden shadow-lg border border-[#D4B483]/50 shrink-0 bg-white/95 p-1">
@@ -90,21 +90,21 @@ export default function AboutPage() {
               </ScrollReveal>
             </div>
 
-            {/* Contenu textuel avec rebond depuis la droite */}
+            {/* Contenu textuel */}
             <div className="lg:col-span-7 space-y-7">
-              <ScrollReveal variant="blur" delay={100}>
+              <ScrollReveal variant="eyebrow" delay={80}>
                 <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-900 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
                   <span>Authenticité & Rigueur</span>
                 </div>
               </ScrollReveal>
 
-              <ScrollReveal variant="right" delay={180}>
+              <ScrollReveal variant="title" delay={150}>
                 <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-950 leading-tight">
                   Une charge inscrite dans le temps long
                 </h2>
               </ScrollReveal>
 
-              <ScrollReveal variant="right" delay={260}>
+              <ScrollReveal variant="focus" delay={230}>
                 <div className="space-y-4 text-base text-slate-700 leading-relaxed font-normal">
                   <p>
                     Fondée sur les principes séculaires du notariat français, l'étude <strong className="text-slate-950 font-bold">Aurelex Notaires</strong> perpétue une tradition d'authenticité absolue, investie d'une délégation de puissance publique par le Garde des Sceaux.
@@ -116,7 +116,7 @@ export default function AboutPage() {
               </ScrollReveal>
 
               {/* Capacités techniques */}
-              <ScrollReveal variant="bottom" delay={340}>
+              <ScrollReveal variant="glide-right" delay={300}>
                 <div className="bg-white rounded-2xl p-6 sm:p-7 border-2 border-slate-200 shadow-sm space-y-4">
                   <h3 className="font-serif font-bold text-slate-950 text-lg">Infrastructure & Outils Notariaux</h3>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
@@ -144,13 +144,13 @@ export default function AboutPage() {
       <section className="py-20 lg:py-28 bg-white border-t border-slate-200">
         <div className="max-w-4xl mx-auto px-5 sm:px-8 space-y-16">
           <div className="text-center space-y-3">
-            <ScrollReveal variant="blur" delay={100}>
+            <ScrollReveal variant="eyebrow" delay={80}>
               <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-900 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider">
                 <span>Grandes Étapes</span>
               </div>
             </ScrollReveal>
 
-            <ScrollReveal variant="right" delay={180}>
+            <ScrollReveal variant="title" delay={150}>
               <h2 className="font-serif text-3xl sm:text-4xl font-extrabold text-slate-950">
                 Vingt-cinq ans de confiance partagée
               </h2>
@@ -164,8 +164,8 @@ export default function AboutPage() {
               {timeline.map((item, i) => (
                 <div key={i} className={`flex flex-col md:flex-row items-center gap-6 ${i % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
                   <ScrollReveal
-                    variant={i % 2 === 0 ? 'left' : 'right'}
-                    delay={i * 70}
+                    variant={i % 2 === 0 ? 'glide-left' : 'glide-right'}
+                    delay={i * 60}
                     className="flex-1 w-full"
                   >
                     <div className={`bg-[#F8FAFC] p-6 rounded-2xl border border-slate-200 shadow-xs ${i % 2 === 0 ? 'md:text-right' : 'md:text-left'}`}>
@@ -188,13 +188,13 @@ export default function AboutPage() {
       <section className="py-20 lg:py-28 bg-slate-100 border-t border-slate-200">
         <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 space-y-14">
           <div className="text-center space-y-3">
-            <ScrollReveal variant="blur" delay={100}>
+            <ScrollReveal variant="eyebrow" delay={80}>
               <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-900 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider">
                 <span>Engagements Déontologiques</span>
               </div>
             </ScrollReveal>
 
-            <ScrollReveal variant="right" delay={180}>
+            <ScrollReveal variant="title" delay={150}>
               <h2 className="font-serif text-3xl sm:text-4xl font-extrabold text-slate-950">{t('valuesTitle')}</h2>
             </ScrollReveal>
           </div>
@@ -205,7 +205,7 @@ export default function AboutPage() {
               { icon: Award, title: t('value2Title'), desc: t('value2Desc'), num: '02' },
               { icon: Users, title: t('value3Title'), desc: t('value3Desc'), num: '03' },
             ].map(({ icon: Icon, title, desc, num }, idx) => (
-              <ScrollReveal key={num} variant="pop" delay={idx * 120}>
+              <ScrollReveal key={num} variant="card" delay={idx * 100}>
                 <div className="bg-white rounded-3xl p-8 relative border-2 border-slate-200 shadow-md space-y-4 hover:border-blue-400 transition-colors">
                   <span className="font-serif text-4xl font-extrabold text-blue-700/30">
                     {num}
@@ -225,11 +225,11 @@ export default function AboutPage() {
       {/* ── CTA ── */}
       <section className="py-20 bg-white border-t border-slate-200">
         <div className="max-w-2xl mx-auto px-5 text-center space-y-6">
-          <ScrollReveal variant="blur">
+          <ScrollReveal variant="quote">
             <p className="font-serif text-2xl sm:text-3xl font-bold text-slate-950 italic">« Votre confiance est notre engagement. »</p>
           </ScrollReveal>
 
-          <ScrollReveal variant="bottom" delay={180}>
+          <ScrollReveal variant="card" delay={140}>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/rendez-vous" className="inline-flex items-center justify-center gap-2 bg-blue-700 hover:bg-blue-800 text-white px-8 py-4 rounded-full text-xs font-bold uppercase tracking-wider shadow-md transition-colors active:scale-[0.96]">
                 <Calendar className="w-4 h-4 text-white" />

@@ -27,12 +27,12 @@ export default function ContactPage() {
         </div>
 
         <div className="relative z-10 max-w-4xl mx-auto px-5 sm:px-8 text-center space-y-5">
-          <ScrollReveal variant="right" delay={150}>
+          <ScrollReveal variant="title" delay={120}>
             <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight drop-shadow-md">
               {t('title')}
             </h1>
           </ScrollReveal>
-          <ScrollReveal variant="right" delay={260}>
+          <ScrollReveal variant="focus" delay={220}>
             <p className="text-base sm:text-lg text-slate-200 max-w-2xl mx-auto leading-relaxed font-normal drop-shadow-sm">
               {t('subtitle')}
             </p>
@@ -45,11 +45,11 @@ export default function ContactPage() {
         <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
 
-            {/* Colonne gauche : Coordonnées animées depuis la gauche */}
+            {/* Colonne gauche : Coordonnées */}
             <div className="lg:col-span-4 space-y-6">
 
               {/* Carte principale */}
-              <ScrollReveal variant="left" delay={100}>
+              <ScrollReveal variant="glide-left" delay={100}>
                 <div className="bg-white rounded-3xl overflow-hidden border-2 border-slate-200 shadow-md">
                   {/* Header uni et contrasté */}
                   <div className="bg-[#0B1938] px-7 py-6 text-white relative">
@@ -81,7 +81,7 @@ export default function ContactPage() {
               </ScrollReveal>
 
               {/* Mentions RGPD */}
-              <ScrollReveal variant="blur" delay={200}>
+              <ScrollReveal variant="focus" delay={180}>
                 <div className="bg-white border border-slate-200 rounded-2xl p-5 flex items-start gap-3.5 text-xs text-slate-600 shadow-xs">
                   <ShieldCheck className="w-5 h-5 text-blue-700 shrink-0 mt-0.5" />
                   <span className="leading-relaxed">
@@ -93,7 +93,7 @@ export default function ContactPage() {
 
             {/* Colonne droite : Formulaire */}
             <div className="lg:col-span-8">
-              <ScrollReveal variant="bottom" delay={150}>
+              <ScrollReveal variant="card" delay={120}>
                 <ContactForm />
               </ScrollReveal>
             </div>

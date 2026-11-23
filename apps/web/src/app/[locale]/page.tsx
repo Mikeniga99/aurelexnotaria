@@ -101,8 +101,8 @@ export default function HomePage() {
         <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 w-full">
           <div className="max-w-2xl space-y-6">
 
-            {/* Surtitre doré avec tirets */}
-            <ScrollReveal variant="blur" delay={100}>
+            {/* Surtitre doré avec expansion typographique */}
+            <ScrollReveal variant="eyebrow" delay={80}>
               <div className="flex items-center gap-3 text-[11px] sm:text-xs font-semibold tracking-[0.25em] text-[#D4B483] uppercase">
                 <span className="w-8 h-px bg-[#D4B483]" />
                 <span>CONSEIL · ACCOMPAGNEMENT · SÉCURITÉ</span>
@@ -110,27 +110,29 @@ export default function HomePage() {
               </div>
             </ScrollReveal>
 
-            {/* Titre & Sous-titres animés depuis la droite avec rebond */}
-            <ScrollReveal variant="right" delay={200}>
-              <div className="space-y-1">
-                <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight text-white uppercase leading-none">
-                  Aurelex Notaire
-                </h1>
-                <p className="font-serif text-3xl sm:text-4xl lg:text-5xl font-light italic text-white/95 leading-tight pt-2">
-                  À vos côtés, à chaque étape de votre vie
-                </p>
-              </div>
+            {/* Titre principal : Révélation éditoriale masquée (Apple Display Rise) */}
+            <ScrollReveal variant="title" delay={160}>
+              <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight text-white uppercase leading-none">
+                Aurelex Notaire
+              </h1>
+            </ScrollReveal>
+
+            {/* Sous-titre cursif : Défloutage d'encre optique */}
+            <ScrollReveal variant="focus" delay={240}>
+              <p className="font-serif text-3xl sm:text-4xl lg:text-5xl font-light italic text-white/95 leading-tight pt-1">
+                À vos côtés, à chaque étape de votre vie
+              </p>
             </ScrollReveal>
 
             {/* Paragraphe descriptif */}
-            <ScrollReveal variant="right" delay={320}>
+            <ScrollReveal variant="focus" delay={320}>
               <p className="text-sm sm:text-base text-white/80 max-w-lg leading-relaxed font-normal">
                 Un accompagnement juridique sur mesure, avec rigueur et bienveillance.
               </p>
             </ScrollReveal>
 
-            {/* Boutons d'action Apple-grade (Tactile instant response §1) */}
-            <ScrollReveal variant="bottom" delay={420}>
+            {/* Boutons d'action Apple-grade */}
+            <ScrollReveal variant="card" delay={380}>
               <div className="flex flex-wrap items-center gap-4 pt-3">
                 {/* Bouton Or Plein */}
                 <Link
@@ -168,8 +170,8 @@ export default function HomePage() {
             return (
               <ScrollReveal
                 key={idx}
-                variant="bottom"
-                delay={idx * 80}
+                variant="card"
+                delay={idx * 60}
                 className="h-full"
               >
                 <div
@@ -230,7 +232,7 @@ export default function HomePage() {
 
             {/* Colonne Gauche : Immeuble Haussmannien de prestige */}
             <div className="lg:col-span-5">
-              <ScrollReveal variant="left">
+              <ScrollReveal variant="glide-left">
                 <div className="relative aspect-[4/5] max-h-[500px] overflow-hidden rounded-[2.5rem] shadow-xl border-2 border-slate-100 bg-white">
                   <Image
                     src="/images/etude_paris.jpg"
@@ -242,36 +244,36 @@ export default function HomePage() {
               </ScrollReveal>
             </div>
 
-            {/* Colonne Centre : Descriptif et engagement animés depuis la droite */}
+            {/* Colonne Centre : Descriptif et engagement */}
             <div className="lg:col-span-4 space-y-6">
-              {/* Surtitre or */}
-              <ScrollReveal variant="blur" delay={100}>
+              {/* Surtitre or avec expansion */}
+              <ScrollReveal variant="eyebrow" delay={80}>
                 <div className="flex items-center gap-2 text-xs font-bold tracking-[0.25em] text-[#C5A065] uppercase">
                   <span>NOTRE ÉTUDE</span>
                   <span className="w-8 h-px bg-[#C5A065]" />
                 </div>
               </ScrollReveal>
 
-              {/* Titre avec rebond depuis la droite */}
-              <ScrollReveal variant="right" delay={180}>
+              {/* Titre : Révélation éditoriale majestueuse */}
+              <ScrollReveal variant="title" delay={150}>
                 <h2 className="font-serif text-3xl sm:text-4xl font-bold text-slate-950 leading-tight">
                   Une étude notariale moderne et engagée
                 </h2>
               </ScrollReveal>
 
-              {/* Texte */}
-              <ScrollReveal variant="right" delay={280}>
+              {/* Texte : Défloutage d'encre */}
+              <ScrollReveal variant="focus" delay={230}>
                 <p className="text-sm text-slate-600 leading-relaxed font-normal">
                   Installés au cœur de votre région, nous mettons notre expertise juridique au service de vos projets, avec une approche humaine et une exigence de qualité.
                 </p>
               </ScrollReveal>
 
               {/* Bouton sombre pilule */}
-              <ScrollReveal variant="right" delay={380}>
+              <ScrollReveal variant="glide-right" delay={300}>
                 <div>
                   <Link
                     href="/etude"
-                    className="inline-flex items-center gap-2 bg-[#060D1F] hover:bg-[#0B1938] text-white px-7 py-3.5 rounded-full text-xs font-semibold uppercase tracking-wider shadow-md transition-colors"
+                    className="inline-flex items-center gap-2 bg-[#060D1F] hover:bg-[#0B1938] text-white px-7 py-3.5 rounded-full text-xs font-semibold uppercase tracking-wider shadow-md transition-all hover:-translate-y-0.5 active:scale-[0.96]"
                   >
                     <span>En savoir plus</span>
                     <ArrowRight className="w-4 h-4" />
@@ -289,7 +291,7 @@ export default function HomePage() {
               ].map((item, idx) => {
                 const IconComp = item.icon;
                 return (
-                  <ScrollReveal key={idx} variant="pop" delay={idx * 120}>
+                  <ScrollReveal key={idx} variant="counter" delay={idx * 90}>
                     <div className="flex items-center gap-4 bg-white p-4 rounded-2xl border border-slate-100 shadow-xs hover:border-[#D4B483]/50 transition-colors">
                       <div className="w-12 h-12 rounded-xl bg-[#F9F5EE] text-[#C5A065] flex items-center justify-center shrink-0">
                         <IconComp className="w-5 h-5" />
@@ -313,25 +315,27 @@ export default function HomePage() {
       <section className="py-16 lg:py-24 bg-[#F8FAFC]">
         <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 space-y-8">
 
-          {/* Surtitre & Titre avec animation depuis la droite */}
-          <ScrollReveal variant="right">
-            <div className="space-y-2">
+          {/* Surtitre & Titre */}
+          <div className="space-y-2">
+            <ScrollReveal variant="eyebrow">
               <div className="flex items-center gap-2 text-xs font-bold tracking-[0.25em] text-[#C5A065] uppercase">
                 <span className="w-6 h-px bg-[#C5A065]" />
                 <span>ILS NOUS FONT CONFIANCE</span>
               </div>
+            </ScrollReveal>
+            <ScrollReveal variant="title" delay={120}>
               <h2 className="font-serif text-3xl sm:text-4xl font-bold text-slate-950">
                 Leur satisfaction, notre plus belle réussite
               </h2>
-            </div>
-          </ScrollReveal>
+            </ScrollReveal>
+          </div>
 
           {/* Disposition Split : Carte Témoignage gauche + Découpe Stylo droite */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
 
             {/* Carte Avis Blanc Luxe */}
             <div className="lg:col-span-6 space-y-6">
-              <ScrollReveal variant="left" delay={150}>
+              <ScrollReveal variant="quote" delay={140}>
                 <div className="bg-white rounded-3xl p-8 sm:p-10 border border-slate-100 shadow-lg relative space-y-5">
                   {/* Guillemet doré */}
                   <div className="text-4xl font-serif text-[#D4B483] leading-none select-none">
@@ -358,7 +362,7 @@ export default function HomePage() {
               </ScrollReveal>
 
               {/* Boutons flèches de navigation carrousel */}
-              <ScrollReveal variant="bottom" delay={250}>
+              <ScrollReveal variant="card" delay={220}>
                 <div className="flex items-center gap-3">
                   <button
                     className="w-10 h-10 rounded-full bg-white border border-slate-200 hover:border-slate-400 text-slate-700 flex items-center justify-center shadow-xs transition-colors"
@@ -378,7 +382,7 @@ export default function HomePage() {
 
             {/* Photo Découpée en Biseau : Stylo de prestige sur cuir */}
             <div className="lg:col-span-6">
-              <ScrollReveal variant="right" delay={200}>
+              <ScrollReveal variant="glide-right" delay={180}>
                 <div className="relative h-[260px] sm:h-[320px] rounded-3xl overflow-hidden shadow-xl border border-slate-100">
                   <Image
                     src="/images/domaine_patrimoine.jpg"
@@ -401,26 +405,26 @@ export default function HomePage() {
       <section id="simulateur" className="py-16 lg:py-24 bg-white border-t border-slate-200">
         <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 space-y-10">
           <div className="text-center space-y-3 max-w-2xl mx-auto">
-            <ScrollReveal variant="blur" delay={100}>
+            <ScrollReveal variant="eyebrow" delay={80}>
               <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-900 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider">
                 <span>Barème Légal Officiel</span>
               </div>
             </ScrollReveal>
 
-            <ScrollReveal variant="right" delay={180}>
+            <ScrollReveal variant="title" delay={150}>
               <h2 className="font-serif text-3xl sm:text-4xl font-extrabold text-slate-950">
                 Simulateur Réglementé des Frais Notariaux
               </h2>
             </ScrollReveal>
 
-            <ScrollReveal variant="right" delay={260}>
+            <ScrollReveal variant="focus" delay={230}>
               <p className="text-sm text-slate-600">
                 Estimez immédiatement les débours, droits de mutation et émoluments réglementés de votre acquisition.
               </p>
             </ScrollReveal>
           </div>
 
-          <ScrollReveal variant="bottom" delay={300}>
+          <ScrollReveal variant="card" delay={260}>
             <NotaryFeeSimulator />
           </ScrollReveal>
         </div>
@@ -445,8 +449,8 @@ export default function HomePage() {
 
           <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-8">
 
-            {/* Gauche : Icône calendrier + Textes avec rebond de la droite */}
-            <ScrollReveal variant="right" delay={150}>
+            {/* Gauche : Icône calendrier + Textes */}
+            <ScrollReveal variant="glide-left" delay={120}>
               <div className="flex items-center gap-6 text-center lg:text-left flex-col sm:flex-row">
                 <div className="w-14 h-14 rounded-2xl bg-white/10 border border-white/20 flex items-center justify-center shrink-0">
                   <Calendar className="w-7 h-7 text-[#D4B483]" />
@@ -463,7 +467,7 @@ export default function HomePage() {
             </ScrollReveal>
 
             {/* Droite : Bouton Pilule Doré */}
-            <ScrollReveal variant="pop" delay={250}>
+            <ScrollReveal variant="card" delay={200}>
               <div className="shrink-0">
                 <Link
                   href="/rendez-vous"

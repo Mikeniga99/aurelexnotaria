@@ -3,11 +3,26 @@
 import React from 'react';
 import Image from 'next/image';
 import { Link } from '@/i18n/routing';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { Phone, Mail, MapPin, Linkedin, Youtube, ShieldCheck } from 'lucide-react';
 
 export function Footer() {
   const t = useTranslations('footer');
+  const locale = useLocale();
+
+  const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    const homeUrl = `/${locale}`;
+    if (
+      window.location.pathname === homeUrl ||
+      window.location.pathname === '/' ||
+      window.location.pathname === `${homeUrl}/`
+    ) {
+      window.location.reload();
+    } else {
+      window.location.href = homeUrl;
+    }
+  };
 
   return (
     <footer className="bg-[#050B18] text-white border-t border-white/10">
@@ -17,7 +32,12 @@ export function Footer() {
 
           {/* Colonne 1 : Identité & Slogan officiel */}
           <div className="lg:col-span-4 space-y-5">
-            <Link href="/" className="inline-flex items-center gap-3.5 group">
+            <a
+              href={`/${locale}`}
+              onClick={handleLogoClick}
+              className="inline-flex items-center gap-3.5 group cursor-pointer"
+              title="Accueil Aurelex Notaire (Actualiser)"
+            >
               <div className="relative w-12 h-12 rounded-xl overflow-hidden shadow-lg border border-[#D4B483]/50 group-hover:border-[#D4B483] transition-colors shrink-0 bg-white/95 p-0.5">
                 <Image
                   src="/images/favicon.png"
@@ -34,7 +54,7 @@ export function Footer() {
                   Notaire
                 </span>
               </div>
-            </Link>
+            </a>
 
             <p className="text-sm text-slate-300 font-normal leading-relaxed max-w-sm">
               Conseiller aujourd'hui, sécuriser demain.

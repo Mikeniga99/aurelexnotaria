@@ -2,7 +2,21 @@
 
 import React, { useEffect, useRef, useState, ElementType } from 'react';
 
-export type RevealVariant = 'right' | 'left' | 'bottom' | 'pop' | 'blur';
+export type RevealVariant =
+  | 'title'        // Grands titres H1/H2 : Révélation éditoriale masquée (Apple display rise)
+  | 'focus'        // Paragraphes & sous-titres : Défloutage d'encre optique
+  | 'glide-right'  // Glissement fluide droite -> centre (sans à-coups)
+  | 'glide-left'   // Glissement fluide gauche -> centre
+  | 'card'         // Conteneurs, cartes de services & réassurance : Élévation d'ensemble
+  | 'eyebrow'      // Surtitres dorés & rubans : Expansion typographique
+  | 'quote'        // Citations & témoignages : Déploiement éditorial
+  | 'counter'      // Chiffres clés & années : Montée en puissance
+  // Alias de rétrocompatibilité
+  | 'right'
+  | 'left'
+  | 'bottom'
+  | 'pop'
+  | 'blur';
 
 interface ScrollRevealProps {
   children: React.ReactNode;
@@ -11,21 +25,21 @@ interface ScrollRevealProps {
   duration?: number; // Duration in seconds
   className?: string;
   as?: ElementType;
-  threshold?: number;
+  threshold?: number | number[];
   rootMargin?: string;
-  once?: boolean;
+  once?: boolean; // false par défaut pour s'activer en scroll montant et descendant
 }
 
 export function ScrollReveal({
   children,
-  variant = 'right',
+  variant = 'title',
   delay = 0,
   duration,
   className = '',
   as: Component = 'div',
-  threshold = 0.12,
-  rootMargin = '0px 0px -40px 0px',
-  once = true,
+  threshold = [0, 0.08],
+  rootMargin = '-15px 0px -15px 0px',
+  once = false, // Répète l'animation à chaque passage (haut & bas)
 }: ScrollRevealProps) {
   const elementRef = useRef<HTMLElement | null>(null);
   const [isVisible, setIsVisible] = useState(false);
@@ -34,7 +48,6 @@ export function ScrollReveal({
     const node = elementRef.current;
     if (!node) return;
 
-    // Fallback if IntersectionObserver is not supported
     if (!('IntersectionObserver' in window)) {
       setIsVisible(true);
       return;
@@ -42,13 +55,17 @@ export function ScrollReveal({
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
+        // Déclenche l'animation dès que l'élément pénètre dans le viewport (vers le bas comme vers le haut)
+        if (entry.isIntersecting && entry.intersectionRatio >= 0.06) {
           setIsVisible(true);
           if (once) {
             observer.unobserve(node);
           }
-        } else if (!once) {
-          setIsVisible(false);
+        } else if (!entry.isIntersecting || entry.intersectionRatio <= 0.01) {
+          // Se réinitialise silencieusement dès qu'il sort du champ de vision
+          if (!once) {
+            setIsVisible(false);
+          }
         }
       },
       {
@@ -64,13 +81,22 @@ export function ScrollReveal({
     };
   }, [threshold, rootMargin, once]);
 
-  // Variant class mapping
+  // Variant class mapping vers les animations éditoriales de luxe
   const variantClassMap: Record<RevealVariant, string> = {
-    right: 'reveal-from-right',
-    left: 'reveal-from-left',
-    bottom: 'reveal-from-bottom',
-    pop: 'reveal-pop',
-    blur: 'reveal-blur',
+    title: 'anim-title-rise',
+    focus: 'anim-lens-focus',
+    'glide-right': 'anim-silk-right',
+    'glide-left': 'anim-silk-left',
+    card: 'anim-card-float',
+    eyebrow: 'anim-eyebrow',
+    quote: 'anim-quote',
+    counter: 'anim-counter',
+    // Mappings rétrocompatibles
+    right: 'anim-silk-right',
+    left: 'anim-silk-left',
+    bottom: 'anim-card-float',
+    pop: 'anim-counter',
+    blur: 'anim-lens-focus',
   };
 
   const animationClass = isVisible

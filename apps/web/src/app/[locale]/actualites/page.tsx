@@ -66,12 +66,12 @@ export default function NewsPage() {
         </div>
 
         <div className="relative z-10 max-w-4xl mx-auto px-5 sm:px-8 text-center space-y-5">
-          <ScrollReveal variant="right" delay={150}>
+          <ScrollReveal variant="title" delay={120}>
             <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight drop-shadow-md">
               Actualités & Guides Notariaux
             </h1>
           </ScrollReveal>
-          <ScrollReveal variant="right" delay={260}>
+          <ScrollReveal variant="focus" delay={220}>
             <p className="text-base sm:text-lg text-slate-200 max-w-2xl mx-auto leading-relaxed font-normal drop-shadow-sm">
               Les notaires de l'étude Aurelex analysent les évolutions législatives, fiscales et jurisprudentielles pour éclairer vos décisions patrimoniales.
             </p>
@@ -82,7 +82,7 @@ export default function NewsPage() {
       {/* ── ARTICLE VEDETTE ── */}
       <section className="py-16 border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
-          <ScrollReveal variant="blur" delay={100}>
+          <ScrollReveal variant="eyebrow" delay={80}>
             <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-900 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-8">
               <span>Article à la Une</span>
             </div>
@@ -91,7 +91,7 @@ export default function NewsPage() {
           <article className="bg-white rounded-3xl grid grid-cols-1 lg:grid-cols-12 border-2 border-slate-200 shadow-lg overflow-hidden">
             {/* Image */}
             <div className="lg:col-span-5 relative min-h-[280px] lg:min-h-full">
-              <ScrollReveal variant="left" className="w-full h-full min-h-[280px] lg:min-h-full relative">
+              <ScrollReveal variant="glide-left" className="w-full h-full min-h-[280px] lg:min-h-full relative">
                 <Image
                   src={featured.img}
                   alt={featured.title}
@@ -100,9 +100,9 @@ export default function NewsPage() {
                 />
               </ScrollReveal>
             </div>
-            {/* Contenu textuel avec rebondissement depuis la droite */}
+            {/* Contenu textuel */}
             <div className="lg:col-span-7 p-8 sm:p-10 lg:p-12 flex flex-col justify-center space-y-5">
-              <ScrollReveal variant="right" delay={150}>
+              <ScrollReveal variant="eyebrow" delay={120}>
                 <div className="flex flex-wrap items-center gap-4 text-xs font-semibold text-slate-600">
                   <span className="bg-blue-100 text-blue-900 px-3 py-1 rounded-full font-bold">
                     {featured.category}
@@ -118,17 +118,17 @@ export default function NewsPage() {
                 </div>
               </ScrollReveal>
 
-              <ScrollReveal variant="right" delay={240}>
+              <ScrollReveal variant="title" delay={180}>
                 <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-950 leading-snug">
                   {featured.title}
                 </h2>
               </ScrollReveal>
 
-              <ScrollReveal variant="right" delay={320}>
+              <ScrollReveal variant="focus" delay={260}>
                 <p className="text-sm sm:text-base text-slate-700 leading-relaxed font-normal">{featured.excerpt}</p>
               </ScrollReveal>
 
-              <ScrollReveal variant="bottom" delay={380}>
+              <ScrollReveal variant="card" delay={320}>
                 <div className="pt-2">
                   <Link href={`/actualites/${featured.slug}`}
                     className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-white bg-blue-700 hover:bg-blue-800 px-6 py-3 rounded-full shadow-sm transition-all hover:-translate-y-0.5 active:scale-[0.96]">
@@ -145,7 +145,7 @@ export default function NewsPage() {
       {/* ── GRILLE ARTICLES ── */}
       <section className="py-20 lg:py-28">
         <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 space-y-12">
-          <ScrollReveal variant="blur" delay={100}>
+          <ScrollReveal variant="eyebrow" delay={80}>
             <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-900 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider">
               <span>Dernières publications de l'étude</span>
             </div>
@@ -155,8 +155,8 @@ export default function NewsPage() {
             {rest.map((item, idx) => (
               <ScrollReveal
                 key={idx}
-                variant="bottom"
-                delay={idx * 120}
+                variant="card"
+                delay={idx * 80}
                 className="h-full"
               >
                 <article

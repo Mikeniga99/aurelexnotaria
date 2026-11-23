@@ -14,6 +14,21 @@ export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+  const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    setMobileMenuOpen(false);
+    const homeUrl = `/${locale}`;
+    if (
+      window.location.pathname === homeUrl ||
+      window.location.pathname === '/' ||
+      window.location.pathname === `${homeUrl}/`
+    ) {
+      window.location.reload();
+    } else {
+      window.location.href = homeUrl;
+    }
+  };
+
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 30);
     window.addEventListener('scroll', onScroll, { passive: true });
@@ -42,7 +57,12 @@ export function Navbar() {
         <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 flex items-center justify-between">
 
           {/* Logo & Identité officielle */}
-          <Link href="/" className="flex items-center gap-3 group">
+          <a
+            href={`/${locale}`}
+            onClick={handleLogoClick}
+            className="flex items-center gap-3 group cursor-pointer"
+            title="Accueil Aurelex Notaire (Actualiser)"
+          >
             <div className="relative w-10 h-10 rounded-xl overflow-hidden shadow-md border border-[#D4B483]/50 group-hover:border-[#D4B483] transition-all shrink-0 bg-white/95 p-0.5">
               <Image
                 src="/images/favicon.png"
@@ -60,7 +80,7 @@ export function Navbar() {
                 Notaire
               </span>
             </div>
-          </Link>
+          </a>
 
           {/* Desktop Navigation Links */}
           <nav className="hidden lg:flex items-center gap-7 text-xs font-semibold tracking-wide">

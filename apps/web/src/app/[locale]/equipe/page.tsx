@@ -70,12 +70,12 @@ export default function TeamPage() {
         </div>
 
         <div className="relative z-10 max-w-4xl mx-auto px-5 sm:px-8 text-center space-y-5">
-          <ScrollReveal variant="right" delay={150}>
+          <ScrollReveal variant="title" delay={120}>
             <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight drop-shadow-md">
               {t('title')}
             </h1>
           </ScrollReveal>
-          <ScrollReveal variant="right" delay={260}>
+          <ScrollReveal variant="focus" delay={220}>
             <p className="text-base sm:text-lg text-slate-200 max-w-2xl mx-auto leading-relaxed font-normal drop-shadow-sm">
               {t('subtitle')}
             </p>
@@ -90,8 +90,8 @@ export default function TeamPage() {
             {members.map((member, idx) => (
               <ScrollReveal
                 key={idx}
-                variant={idx % 2 === 0 ? 'left' : 'right'}
-                delay={idx * 100}
+                variant="card"
+                delay={idx * 75}
                 className="h-full"
               >
                 <div
