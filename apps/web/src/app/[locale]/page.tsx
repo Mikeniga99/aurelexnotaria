@@ -122,12 +122,12 @@ export default function HomePage() {
               Un accompagnement juridique sur mesure, avec rigueur et bienveillance.
             </p>
 
-            {/* Boutons d'action (Bouton Or + Bouton Verre Dépoli) */}
+            {/* Boutons d'action Apple-grade (Tactile instant response §1) */}
             <div className="flex flex-wrap items-center gap-4 pt-3">
               {/* Bouton Or Plein */}
               <Link
                 href="/rendez-vous"
-                className="inline-flex items-center gap-2 bg-[#D4B483] hover:bg-[#c5a065] text-slate-950 font-bold px-7 py-3.5 rounded-full text-xs uppercase tracking-wider shadow-lg shadow-black/30 transition-transform hover:-translate-y-0.5"
+                className="inline-flex items-center gap-2 bg-[#D4B483] hover:bg-[#c5a065] text-slate-950 font-bold px-7 py-3.5 rounded-full text-xs uppercase tracking-wider shadow-lg shadow-black/30 transition-all duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-0.5 active:scale-[0.96]"
               >
                 <span>Prendre rendez-vous</span>
                 <ArrowRight className="w-4 h-4" />
@@ -136,7 +136,7 @@ export default function HomePage() {
               {/* Bouton Verre Dépoli Translucide avec Play */}
               <Link
                 href="/etude"
-                className="inline-flex items-center gap-3 bg-white/10 hover:bg-white/20 text-white font-semibold px-6 py-3.5 rounded-full text-xs uppercase tracking-wider border border-white/30 backdrop-blur-md transition-colors"
+                className="inline-flex items-center gap-3 bg-white/10 hover:bg-white/20 text-white font-semibold px-6 py-3.5 rounded-full text-xs uppercase tracking-wider border border-white/30 backdrop-blur-md transition-all duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-0.5 active:scale-[0.96]"
               >
                 <div className="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center">
                   <Play className="w-2.5 h-2.5 text-white fill-white ml-0.5" />
@@ -159,7 +159,7 @@ export default function HomePage() {
             return (
               <div
                 key={idx}
-                className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden flex flex-col border border-slate-100 group"
+                className="bg-white rounded-2xl shadow-[0_6px_25px_rgba(0,0,0,0.06),0_1px_3px_rgba(0,0,0,0.04)] hover:shadow-[0_18px_40px_rgba(0,0,0,0.12),0_4px_10px_rgba(0,0,0,0.04)] transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1.5 active:scale-[0.98] overflow-hidden flex flex-col border border-slate-100 group"
               >
                 {/* Photo en haut */}
                 <div className="h-32 sm:h-36 relative overflow-hidden bg-slate-100">

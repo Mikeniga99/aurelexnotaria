@@ -95,7 +95,7 @@ export function Navbar() {
           <div className="hidden sm:flex items-center gap-3">
             <Link
               href="/rendez-vous"
-              className="inline-flex items-center gap-2 bg-[#060D1F]/90 hover:bg-[#060D1F] text-white px-5 py-2.5 rounded-full text-xs font-semibold tracking-wider border border-white/20 shadow-md hover:border-[#D4B483] transition-all"
+              className="inline-flex items-center gap-2 bg-[#060D1F]/90 hover:bg-[#060D1F] text-white px-5 py-2.5 rounded-full text-xs font-semibold tracking-wider border border-white/20 shadow-md hover:border-[#D4B483] transition-all duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-0.5 active:scale-[0.96]"
             >
               <Calendar className="w-3.5 h-3.5 text-[#D4B483]" />
               <span>Prendre rendez-vous</span>
@@ -103,7 +103,7 @@ export function Navbar() {
 
             <Link
               href="/#simulateur"
-              className="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 flex items-center justify-center text-white/90 hover:text-white transition-colors"
+              className="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 flex items-center justify-center text-white/90 hover:text-white transition-all duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] hover:scale-105 active:scale-[0.94]"
               title="Rechercher / Outil de calcul"
             >
               <Search className="w-4 h-4" />

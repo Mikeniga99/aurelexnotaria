@@ -57,7 +57,7 @@ export function BottomNav() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="relative z-10 flex flex-col items-center justify-center h-full py-1 group transition-colors duration-200"
+                className="relative z-10 flex flex-col items-center justify-center h-full py-1 group transition-all duration-150 active:scale-[0.92]"
               >
                 <div className="relative flex flex-col items-center">
                   <Icon

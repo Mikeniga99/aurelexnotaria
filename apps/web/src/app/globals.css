@@ -15,20 +15,58 @@
 }
 
 /* ═══════════════════════════════════════
-   BASE STYLES — THÈME CLAIR LUXE
+   BASE STYLES — THÈME CLAIR LUXE (APPLE DESIGN PHILOSOPHY)
 ═══════════════════════════════════════ */
+
+:root {
+  --apple-ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --apple-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
 
 html {
   scroll-behavior: smooth;
+  text-rendering: optimizeLegibility;
 }
 
 body {
   color: var(--foreground);
   background-color: var(--background);
-  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Apple-style Instant Response & Manipulation (§1 & §2) ── */
+button, 
+a, 
+input, 
+select, 
+textarea {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Smooth active micro-press feedback */
+.apple-press {
+  transition: transform 120ms var(--apple-ease), opacity 120ms var(--apple-ease);
+}
+.apple-press:active {
+  transform: scale(0.97);
+}
+
+/* ── Apple-style Optical Typography (§15) ── */
+h1, h2, h3 {
+  text-wrap: balance;
+  letter-spacing: -0.025em;
+}
+
+.tracking-display {
+  letter-spacing: -0.03em;
+}
+
+.leading-display {
+  line-height: 1.05;
 }
 
 /* ═══════════════════════════════════════
