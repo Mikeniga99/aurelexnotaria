@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { Link } from '@/i18n/routing';
 import { useTranslations } from 'next-intl';
 import { Mail, Award, GraduationCap, Scale, Calendar } from 'lucide-react';
+import { ScrollReveal } from '@/components/public/ScrollReveal';
 
 export default function TeamPage() {
   const t = useTranslations('team');
@@ -69,12 +70,16 @@ export default function TeamPage() {
         </div>
 
         <div className="relative z-10 max-w-4xl mx-auto px-5 sm:px-8 text-center space-y-5">
-          <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight drop-shadow-md">
-            {t('title')}
-          </h1>
-          <p className="text-base sm:text-lg text-slate-200 max-w-2xl mx-auto leading-relaxed font-normal drop-shadow-sm">
-            {t('subtitle')}
-          </p>
+          <ScrollReveal variant="right" delay={150}>
+            <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight drop-shadow-md">
+              {t('title')}
+            </h1>
+          </ScrollReveal>
+          <ScrollReveal variant="right" delay={260}>
+            <p className="text-base sm:text-lg text-slate-200 max-w-2xl mx-auto leading-relaxed font-normal drop-shadow-sm">
+              {t('subtitle')}
+            </p>
+          </ScrollReveal>
         </div>
       </section>
 
@@ -83,58 +88,68 @@ export default function TeamPage() {
         <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {members.map((member, idx) => (
-              <div
+              <ScrollReveal
                 key={idx}
-                className="bg-white rounded-3xl overflow-hidden border-2 border-slate-200 shadow-md hover:shadow-xl transition-all duration-300"
+                variant={idx % 2 === 0 ? 'left' : 'right'}
+                delay={idx * 100}
+                className="h-full"
               >
-                {/* En-tête avec fond sombre uni et contrasté */}
-                <div className={`${member.headerBg} px-8 py-7 text-white relative`}>
-                  <div className="flex items-center gap-4">
-                    <div className="w-16 h-16 rounded-full border-2 border-white bg-white/10 flex items-center justify-center shrink-0">
-                      <span className="font-serif text-2xl font-extrabold text-white">{member.initials}</span>
+                <div
+                  className="bg-white rounded-3xl overflow-hidden border-2 border-slate-200 shadow-md hover:shadow-xl transition-all duration-300 h-full flex flex-col justify-between"
+                >
+                  {/* En-tête avec fond sombre uni et contrasté */}
+                  <div className={`${member.headerBg} px-8 py-7 text-white relative`}>
+                    <div className="flex items-center gap-4">
+                      <div className="w-16 h-16 rounded-full border-2 border-white bg-white/10 flex items-center justify-center shrink-0">
+                        <span className="font-serif text-2xl font-extrabold text-white">{member.initials}</span>
+                      </div>
+                      <div>
+                        <span className="text-[10px] uppercase tracking-[0.25em] text-blue-200 font-extrabold block">{member.role}</span>
+                        <h2 className="font-serif text-2xl font-bold text-white mt-0.5 leading-tight">{member.name}</h2>
+                      </div>
                     </div>
-                    <div>
-                      <span className="text-[10px] uppercase tracking-[0.25em] text-blue-200 font-extrabold block">{member.role}</span>
-                      <h2 className="font-serif text-2xl font-bold text-white mt-0.5 leading-tight">{member.name}</h2>
+                  </div>
+
+                  {/* Corps de la carte */}
+                  <div className="p-7 space-y-5 flex-1 flex flex-col justify-between">
+                    <div className="space-y-4">
+                      <div className="space-y-2 pb-4 border-b border-slate-200">
+                        <div className="flex items-start gap-2.5 text-xs text-slate-900 font-bold">
+                          <Award className="w-4 h-4 text-blue-700 shrink-0 mt-0.5" />
+                          <span>{member.specialty}</span>
+                        </div>
+                        <div className="flex items-start gap-2.5 text-xs text-slate-600 font-medium">
+                          <GraduationCap className="w-4 h-4 text-slate-500 shrink-0 mt-0.5" />
+                          <span>{member.degree}</span>
+                        </div>
+                      </div>
+
+                      <p className="text-sm text-slate-700 leading-relaxed font-normal">{member.bio}</p>
+                    </div>
+
+                    <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
+                      <a href={`mailto:${member.email}`}
+                        className="flex items-center gap-2 text-xs font-bold text-blue-700 hover:text-blue-900 transition-colors">
+                        <Mail className="w-4 h-4" />
+                        <span>{member.email}</span>
+                      </a>
+                      <Link href="/rendez-vous"
+                        className="flex items-center gap-1.5 text-xs font-bold text-slate-700 hover:text-blue-700 transition-all active:scale-[0.96] bg-slate-100 hover:bg-slate-200 px-3.5 py-1.5 rounded-full">
+                        <Calendar className="w-3.5 h-3.5" />
+                        <span>Rendez-vous</span>
+                      </Link>
                     </div>
                   </div>
                 </div>
-
-                {/* Corps de la carte */}
-                <div className="p-7 space-y-5">
-                  <div className="space-y-2 pb-4 border-b border-slate-200">
-                    <div className="flex items-start gap-2.5 text-xs text-slate-900 font-bold">
-                      <Award className="w-4 h-4 text-blue-700 shrink-0 mt-0.5" />
-                      <span>{member.specialty}</span>
-                    </div>
-                    <div className="flex items-start gap-2.5 text-xs text-slate-600 font-medium">
-                      <GraduationCap className="w-4 h-4 text-slate-500 shrink-0 mt-0.5" />
-                      <span>{member.degree}</span>
-                    </div>
-                  </div>
-
-                  <p className="text-sm text-slate-700 leading-relaxed font-normal">{member.bio}</p>
-
-                  <div className="pt-3 border-t border-slate-100 flex items-center justify-between">
-                    <a href={`mailto:${member.email}`}
-                      className="flex items-center gap-2 text-xs font-bold text-blue-700 hover:text-blue-900 transition-colors">
-                      <Mail className="w-4 h-4" />
-                      <span>{member.email}</span>
-                    </a>
-                    <Link href="/rendez-vous"
-                      className="flex items-center gap-1.5 text-xs font-bold text-slate-700 hover:text-blue-700 transition-colors bg-slate-100 hover:bg-slate-200 px-3.5 py-1.5 rounded-full">
-                      <Calendar className="w-3.5 h-3.5" />
-                      <span>Rendez-vous</span>
-                    </Link>
-                  </div>
-                </div>
-              </div>
+              </ScrollReveal>
             ))}
           </div>
 
-          <div className="mt-12 bg-white border border-slate-200 rounded-2xl p-5 text-center text-xs text-slate-600 max-w-2xl mx-auto shadow-xs font-medium">
-            Conformément au sujet du test technique, les noms, profils et adresses des collaborateurs sont entièrement fictifs.
-          </div>
+          <ScrollReveal variant="blur" delay={200}>
+            <div className="mt-12 bg-white border border-slate-200 rounded-2xl p-5 text-center text-xs text-slate-600 max-w-2xl mx-auto shadow-xs font-medium">
+              Conformément au sujet du test technique, les noms, profils et adresses des collaborateurs sont entièrement fictifs.
+            </div>
+          </ScrollReveal>
         </div>
       </section>
     </div>

@@ -2,6 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import { Link } from '@/i18n/routing';
 import { BookOpen, Calendar, ArrowRight, Tag, Clock } from 'lucide-react';
+import { ScrollReveal } from '@/components/public/ScrollReveal';
 
 export default function NewsPage() {
   const articles = [
@@ -65,57 +66,77 @@ export default function NewsPage() {
         </div>
 
         <div className="relative z-10 max-w-4xl mx-auto px-5 sm:px-8 text-center space-y-5">
-          <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight drop-shadow-md">
-            Actualités & Guides Notariaux
-          </h1>
-          <p className="text-base sm:text-lg text-slate-200 max-w-2xl mx-auto leading-relaxed font-normal drop-shadow-sm">
-            Les notaires de l'étude Aurelex analysent les évolutions législatives, fiscales et jurisprudentielles pour éclairer vos décisions patrimoniales.
-          </p>
+          <ScrollReveal variant="right" delay={150}>
+            <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight drop-shadow-md">
+              Actualités & Guides Notariaux
+            </h1>
+          </ScrollReveal>
+          <ScrollReveal variant="right" delay={260}>
+            <p className="text-base sm:text-lg text-slate-200 max-w-2xl mx-auto leading-relaxed font-normal drop-shadow-sm">
+              Les notaires de l'étude Aurelex analysent les évolutions législatives, fiscales et jurisprudentielles pour éclairer vos décisions patrimoniales.
+            </p>
+          </ScrollReveal>
         </div>
       </section>
 
       {/* ── ARTICLE VEDETTE ── */}
       <section className="py-16 border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
-          <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-900 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-8">
-            <span>Article à la Une</span>
-          </div>
+          <ScrollReveal variant="blur" delay={100}>
+            <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-900 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-8">
+              <span>Article à la Une</span>
+            </div>
+          </ScrollReveal>
+
           <article className="bg-white rounded-3xl grid grid-cols-1 lg:grid-cols-12 border-2 border-slate-200 shadow-lg overflow-hidden">
             {/* Image */}
             <div className="lg:col-span-5 relative min-h-[280px] lg:min-h-full">
-              <Image
-                src={featured.img}
-                alt={featured.title}
-                fill
-                className="object-cover"
-              />
+              <ScrollReveal variant="left" className="w-full h-full min-h-[280px] lg:min-h-full relative">
+                <Image
+                  src={featured.img}
+                  alt={featured.title}
+                  fill
+                  className="object-cover"
+                />
+              </ScrollReveal>
             </div>
-            {/* Contenu */}
+            {/* Contenu textuel avec rebondissement depuis la droite */}
             <div className="lg:col-span-7 p-8 sm:p-10 lg:p-12 flex flex-col justify-center space-y-5">
-              <div className="flex flex-wrap items-center gap-4 text-xs font-semibold text-slate-600">
-                <span className="bg-blue-100 text-blue-900 px-3 py-1 rounded-full font-bold">
-                  {featured.category}
-                </span>
-                <span className="flex items-center gap-1.5">
-                  <Clock className="w-3.5 h-3.5 text-blue-700" />
-                  {featured.readTime} min de lecture
-                </span>
-                <span className="flex items-center gap-1.5">
-                  <Calendar className="w-3.5 h-3.5 text-blue-700" />
-                  {featured.date}
-                </span>
-              </div>
-              <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-950 leading-snug">
-                {featured.title}
-              </h2>
-              <p className="text-sm sm:text-base text-slate-700 leading-relaxed font-normal">{featured.excerpt}</p>
-              <div className="pt-2">
-                <Link href={`/actualites/${featured.slug}`}
-                  className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-white bg-blue-700 hover:bg-blue-800 px-6 py-3 rounded-full shadow-sm transition-colors">
-                  <span>Lire l'analyse complète</span>
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
-              </div>
+              <ScrollReveal variant="right" delay={150}>
+                <div className="flex flex-wrap items-center gap-4 text-xs font-semibold text-slate-600">
+                  <span className="bg-blue-100 text-blue-900 px-3 py-1 rounded-full font-bold">
+                    {featured.category}
+                  </span>
+                  <span className="flex items-center gap-1.5">
+                    <Clock className="w-3.5 h-3.5 text-blue-700" />
+                    {featured.readTime} min de lecture
+                  </span>
+                  <span className="flex items-center gap-1.5">
+                    <Calendar className="w-3.5 h-3.5 text-blue-700" />
+                    {featured.date}
+                  </span>
+                </div>
+              </ScrollReveal>
+
+              <ScrollReveal variant="right" delay={240}>
+                <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-950 leading-snug">
+                  {featured.title}
+                </h2>
+              </ScrollReveal>
+
+              <ScrollReveal variant="right" delay={320}>
+                <p className="text-sm sm:text-base text-slate-700 leading-relaxed font-normal">{featured.excerpt}</p>
+              </ScrollReveal>
+
+              <ScrollReveal variant="bottom" delay={380}>
+                <div className="pt-2">
+                  <Link href={`/actualites/${featured.slug}`}
+                    className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-white bg-blue-700 hover:bg-blue-800 px-6 py-3 rounded-full shadow-sm transition-all hover:-translate-y-0.5 active:scale-[0.96]">
+                    <span>Lire l'analyse complète</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
+                </div>
+              </ScrollReveal>
             </div>
           </article>
         </div>
@@ -124,50 +145,61 @@ export default function NewsPage() {
       {/* ── GRILLE ARTICLES ── */}
       <section className="py-20 lg:py-28">
         <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 space-y-12">
-          <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-900 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider">
-            <span>Dernières publications de l'étude</span>
-          </div>
+          <ScrollReveal variant="blur" delay={100}>
+            <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-900 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider">
+              <span>Dernières publications de l'étude</span>
+            </div>
+          </ScrollReveal>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {rest.map((item, idx) => (
-              <article
+              <ScrollReveal
                 key={idx}
-                className="bg-white rounded-3xl overflow-hidden border-2 border-slate-200 shadow-md hover:shadow-xl transition-all duration-300 flex flex-col"
+                variant="bottom"
+                delay={idx * 120}
+                className="h-full"
               >
-                {/* Image */}
-                <div className="relative h-48 overflow-hidden">
-                  <Image
-                    src={item.img}
-                    alt={item.title}
-                    fill
-                    className="object-cover"
-                  />
-                  <div className="absolute top-4 left-4">
-                    <span className="bg-white/95 backdrop-blur-md rounded-full px-3 py-1 text-xs font-bold text-blue-900 uppercase tracking-wider border border-slate-200 shadow-xs">
-                      {item.category}
-                    </span>
+                <article
+                  className="bg-white rounded-3xl overflow-hidden border-2 border-slate-200 shadow-md hover:shadow-xl transition-all duration-300 flex flex-col h-full"
+                >
+                  {/* Image */}
+                  <div className="relative h-48 overflow-hidden">
+                    <Image
+                      src={item.img}
+                      alt={item.title}
+                      fill
+                      className="object-cover"
+                    />
+                    <div className="absolute top-4 left-4">
+                      <span className="bg-white/95 backdrop-blur-md rounded-full px-3 py-1 text-xs font-bold text-blue-900 uppercase tracking-wider border border-slate-200 shadow-xs">
+                        {item.category}
+                      </span>
+                    </div>
                   </div>
-                </div>
 
-                {/* Contenu */}
-                <div className="p-6 sm:p-7 flex flex-col flex-1 space-y-4">
-                  <div className="flex items-center gap-3 text-xs text-slate-600 font-medium">
-                    <span className="flex items-center gap-1"><Calendar className="w-3.5 h-3.5 text-blue-700" /> {item.date}</span>
-                    <span className="flex items-center gap-1"><Clock className="w-3.5 h-3.5 text-blue-700" /> {item.readTime} min</span>
+                  {/* Contenu */}
+                  <div className="p-6 sm:p-7 flex flex-col flex-1 justify-between space-y-4">
+                    <div className="space-y-3">
+                      <div className="flex items-center gap-3 text-xs text-slate-600 font-medium">
+                        <span className="flex items-center gap-1"><Calendar className="w-3.5 h-3.5 text-blue-700" /> {item.date}</span>
+                        <span className="flex items-center gap-1"><Clock className="w-3.5 h-3.5 text-blue-700" /> {item.readTime} min</span>
+                      </div>
+                      <h3 className="font-serif text-xl font-bold text-slate-950 leading-snug">
+                        {item.title}
+                      </h3>
+                      <p className="text-xs sm:text-sm text-slate-700 leading-relaxed line-clamp-3">{item.excerpt}</p>
+                    </div>
+
+                    <div className="pt-3 border-t border-slate-100">
+                      <Link href={`/actualites/${item.slug}`}
+                        className="inline-flex items-center gap-1.5 text-xs font-bold text-blue-700 hover:text-blue-900 uppercase tracking-wider transition-colors active:scale-[0.96]">
+                        <span>Lire l'article</span>
+                        <ArrowRight className="w-3.5 h-3.5" />
+                      </Link>
+                    </div>
                   </div>
-                  <h3 className="font-serif text-xl font-bold text-slate-950 leading-snug flex-1">
-                    {item.title}
-                  </h3>
-                  <p className="text-xs sm:text-sm text-slate-700 leading-relaxed line-clamp-3">{item.excerpt}</p>
-                  <div className="pt-2 border-t border-slate-100">
-                    <Link href={`/actualites/${item.slug}`}
-                      className="inline-flex items-center gap-1.5 text-xs font-bold text-blue-700 hover:text-blue-900 uppercase tracking-wider transition-colors">
-                      <span>Lire l'article</span>
-                      <ArrowRight className="w-3.5 h-3.5" />
-                    </Link>
-                  </div>
-                </div>
-              </article>
+                </article>
+              </ScrollReveal>
             ))}
           </div>
         </div>

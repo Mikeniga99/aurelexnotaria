@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { ContactForm } from '@/components/public/ContactForm';
 import { MapPin, Phone, Mail, Clock, ShieldCheck, Scale } from 'lucide-react';
+import { ScrollReveal } from '@/components/public/ScrollReveal';
 
 export default function ContactPage() {
   const t = useTranslations('contact');
@@ -26,12 +27,16 @@ export default function ContactPage() {
         </div>
 
         <div className="relative z-10 max-w-4xl mx-auto px-5 sm:px-8 text-center space-y-5">
-          <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight drop-shadow-md">
-            {t('title')}
-          </h1>
-          <p className="text-base sm:text-lg text-slate-200 max-w-2xl mx-auto leading-relaxed font-normal drop-shadow-sm">
-            {t('subtitle')}
-          </p>
+          <ScrollReveal variant="right" delay={150}>
+            <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight drop-shadow-md">
+              {t('title')}
+            </h1>
+          </ScrollReveal>
+          <ScrollReveal variant="right" delay={260}>
+            <p className="text-base sm:text-lg text-slate-200 max-w-2xl mx-auto leading-relaxed font-normal drop-shadow-sm">
+              {t('subtitle')}
+            </p>
+          </ScrollReveal>
         </div>
       </section>
 
@@ -40,51 +45,57 @@ export default function ContactPage() {
         <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
 
-            {/* Colonne gauche : Coordonnées */}
+            {/* Colonne gauche : Coordonnées animées depuis la gauche */}
             <div className="lg:col-span-4 space-y-6">
 
               {/* Carte principale */}
-              <div className="bg-white rounded-3xl overflow-hidden border-2 border-slate-200 shadow-md">
-                {/* Header uni et contrasté */}
-                <div className="bg-[#0B1938] px-7 py-6 text-white relative">
-                  <h2 className="font-serif text-xl font-bold text-white">Aurelex Notaires</h2>
-                  <p className="text-xs text-blue-300 mt-1 uppercase tracking-wider font-semibold">Office notarial · Paris Ier</p>
-                </div>
+              <ScrollReveal variant="left" delay={100}>
+                <div className="bg-white rounded-3xl overflow-hidden border-2 border-slate-200 shadow-md">
+                  {/* Header uni et contrasté */}
+                  <div className="bg-[#0B1938] px-7 py-6 text-white relative">
+                    <h2 className="font-serif text-xl font-bold text-white">Aurelex Notaires</h2>
+                    <p className="text-xs text-blue-300 mt-1 uppercase tracking-wider font-semibold">Office notarial · Paris Ier</p>
+                  </div>
 
-                {/* Infos détaillées */}
-                <div className="p-6 space-y-5">
-                  {[
-                    { icon: MapPin, title: 'Adresse', value: t('address'), sub: 'Métro Concorde / Madeleine / Opéra' },
-                    { icon: Phone, title: 'Standard téléphonique', value: t('phone'), sub: 'Du lundi au vendredi de 9h à 18h30' },
-                    { icon: Mail, title: 'Courriel officiel', value: t('email'), sub: 'Réponse sous 24h ouvrées' },
-                    { icon: Clock, title: 'Horaires d’accueil', value: t('openingHours'), sub: 'Sur rendez-vous' },
-                  ].map(({ icon: Icon, title, value, sub }) => (
-                    <div key={title} className="flex items-start gap-4 pb-4 border-b border-slate-100 last:border-0 last:pb-0">
-                      <div className="w-10 h-10 rounded-xl bg-blue-100 text-blue-800 flex items-center justify-center shrink-0">
-                        <Icon className="w-5 h-5 text-blue-700" />
+                  {/* Infos détaillées */}
+                  <div className="p-6 space-y-5">
+                    {[
+                      { icon: MapPin, title: 'Adresse', value: t('address'), sub: 'Métro Concorde / Madeleine / Opéra' },
+                      { icon: Phone, title: 'Standard téléphonique', value: t('phone'), sub: 'Du lundi au vendredi de 9h à 18h30' },
+                      { icon: Mail, title: 'Courriel officiel', value: t('email'), sub: 'Réponse sous 24h ouvrées' },
+                      { icon: Clock, title: 'Horaires d’accueil', value: t('openingHours'), sub: 'Sur rendez-vous' },
+                    ].map(({ icon: Icon, title, value, sub }) => (
+                      <div key={title} className="flex items-start gap-4 pb-4 border-b border-slate-100 last:border-0 last:pb-0">
+                        <div className="w-10 h-10 rounded-xl bg-blue-100 text-blue-800 flex items-center justify-center shrink-0">
+                          <Icon className="w-5 h-5 text-blue-700" />
+                        </div>
+                        <div>
+                          <h3 className="font-serif font-bold text-slate-950 text-base">{title}</h3>
+                          <p className="text-sm text-slate-800 font-semibold mt-0.5">{value}</p>
+                          {sub && <p className="text-xs text-slate-500 mt-0.5 font-medium">{sub}</p>}
+                        </div>
                       </div>
-                      <div>
-                        <h3 className="font-serif font-bold text-slate-950 text-base">{title}</h3>
-                        <p className="text-sm text-slate-800 font-semibold mt-0.5">{value}</p>
-                        {sub && <p className="text-xs text-slate-500 mt-0.5 font-medium">{sub}</p>}
-                      </div>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
                 </div>
-              </div>
+              </ScrollReveal>
 
               {/* Mentions RGPD */}
-              <div className="bg-white border border-slate-200 rounded-2xl p-5 flex items-start gap-3.5 text-xs text-slate-600 shadow-xs">
-                <ShieldCheck className="w-5 h-5 text-blue-700 shrink-0 mt-0.5" />
-                <span className="leading-relaxed">
-                  Conformité RGPD : Les informations transmises via ce formulaire sont strictement protégées par le secret professionnel notarial.
-                </span>
-              </div>
+              <ScrollReveal variant="blur" delay={200}>
+                <div className="bg-white border border-slate-200 rounded-2xl p-5 flex items-start gap-3.5 text-xs text-slate-600 shadow-xs">
+                  <ShieldCheck className="w-5 h-5 text-blue-700 shrink-0 mt-0.5" />
+                  <span className="leading-relaxed">
+                    Conformité RGPD : Les informations transmises via ce formulaire sont strictement protégées par le secret professionnel notarial.
+                  </span>
+                </div>
+              </ScrollReveal>
             </div>
 
             {/* Colonne droite : Formulaire */}
             <div className="lg:col-span-8">
-              <ContactForm />
+              <ScrollReveal variant="bottom" delay={150}>
+                <ContactForm />
+              </ScrollReveal>
             </div>
 
           </div>

@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { Link } from '@/i18n/routing';
 import { useTranslations } from 'next-intl';
 import { Building, HeartHandshake, Briefcase, TrendingUp, Globe2, Calendar, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { ScrollReveal } from '@/components/public/ScrollReveal';
 
 export default function ExpertisesPage() {
   const t = useTranslations('expertises');
@@ -99,18 +100,22 @@ export default function ExpertisesPage() {
         </div>
 
         <div className="relative z-10 max-w-4xl mx-auto px-5 sm:px-8 text-center space-y-5">
-          <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight drop-shadow-md">
-            {t('title')}
-          </h1>
-          <p className="text-base sm:text-lg text-slate-200 max-w-2xl mx-auto leading-relaxed font-normal drop-shadow-sm">
-            {t('subtitle')}
-          </p>
+          <ScrollReveal variant="right" delay={150}>
+            <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight drop-shadow-md">
+              {t('title')}
+            </h1>
+          </ScrollReveal>
+          <ScrollReveal variant="right" delay={260}>
+            <p className="text-base sm:text-lg text-slate-200 max-w-2xl mx-auto leading-relaxed font-normal drop-shadow-sm">
+              {t('subtitle')}
+            </p>
+          </ScrollReveal>
         </div>
       </section>
 
       {/* ── CARTES ÉDITORIALES D'EXPERTISES ── */}
       <section className="py-16 lg:py-24">
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 space-y-10">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 space-y-12">
           {expertises.map((item, idx) => {
             const Icon = item.icon;
             const isEven = idx % 2 === 0;
@@ -124,59 +129,67 @@ export default function ExpertisesPage() {
 
                   {/* Photo du domaine */}
                   <div className={`lg:col-span-5 relative min-h-[260px] sm:min-h-[320px] lg:min-h-full ${isEven ? '' : 'lg:order-2'}`}>
-                    <Image
-                      src={item.img}
-                      alt={item.title}
-                      fill
-                      className="object-cover object-center"
-                    />
-                    <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-slate-200 text-xs font-bold text-blue-900 flex items-center gap-2 shadow-sm">
-                      <Icon className="w-4 h-4 text-blue-700" />
-                      <span>{item.tag}</span>
-                    </div>
+                    <ScrollReveal variant={isEven ? 'left' : 'right'} className="w-full h-full min-h-[260px] sm:min-h-[320px] lg:min-h-full relative">
+                      <Image
+                        src={item.img}
+                        alt={item.title}
+                        fill
+                        className="object-cover object-center"
+                      />
+                      <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-slate-200 text-xs font-bold text-blue-900 flex items-center gap-2 shadow-sm">
+                        <Icon className="w-4 h-4 text-blue-700" />
+                        <span>{item.tag}</span>
+                      </div>
+                    </ScrollReveal>
                   </div>
 
-                  {/* Contenu textuel 100% lisible */}
+                  {/* Contenu textuel avec rebond de la droite */}
                   <div className={`lg:col-span-7 p-7 sm:p-10 lg:p-12 space-y-6 ${isEven ? '' : 'lg:order-1'}`}>
-                    <div className="space-y-3">
-                      <div className="flex items-center gap-3">
-                        <span className="font-serif text-3xl font-extrabold text-blue-700">
-                          {item.num}.
-                        </span>
-                        <h2 className="font-serif text-2xl sm:text-3xl font-bold text-slate-950 leading-snug">
-                          {item.title}
-                        </h2>
+                    <ScrollReveal variant={isEven ? 'right' : 'left'} delay={150}>
+                      <div className="space-y-3">
+                        <div className="flex items-center gap-3">
+                          <span className="font-serif text-3xl font-extrabold text-blue-700">
+                            {item.num}.
+                          </span>
+                          <h2 className="font-serif text-2xl sm:text-3xl font-bold text-slate-950 leading-snug">
+                            {item.title}
+                          </h2>
+                        </div>
+                        <p className="text-sm sm:text-base text-slate-700 leading-relaxed font-medium">
+                          {item.subtitle}
+                        </p>
                       </div>
-                      <p className="text-sm sm:text-base text-slate-700 leading-relaxed font-medium">
-                        {item.subtitle}
-                      </p>
-                    </div>
+                    </ScrollReveal>
 
                     {/* Prestations détaillées */}
-                    <div className="bg-slate-50 rounded-2xl p-6 border border-slate-200 space-y-3">
-                      <h3 className="text-xs font-bold uppercase tracking-wider text-blue-900">
-                        Actes & Prestations Réglementées
-                      </h3>
-                      <ul className="space-y-3">
-                        {item.details.map((d, di) => (
-                          <li key={di} className="flex items-start gap-3 text-xs sm:text-sm text-slate-800 font-medium">
-                            <CheckCircle2 className="w-4 h-4 text-blue-700 shrink-0 mt-0.5" />
-                            <span className="leading-snug">{d}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
+                    <ScrollReveal variant="bottom" delay={250}>
+                      <div className="bg-slate-50 rounded-2xl p-6 border border-slate-200 space-y-3">
+                        <h3 className="text-xs font-bold uppercase tracking-wider text-blue-900">
+                          Actes & Prestations Réglementées
+                        </h3>
+                        <ul className="space-y-3">
+                          {item.details.map((d, di) => (
+                            <li key={di} className="flex items-start gap-3 text-xs sm:text-sm text-slate-800 font-medium">
+                              <CheckCircle2 className="w-4 h-4 text-blue-700 shrink-0 mt-0.5" />
+                              <span className="leading-snug">{d}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </ScrollReveal>
 
-                    <div className="pt-2">
-                      <Link
-                        href="/rendez-vous"
-                        className="inline-flex items-center gap-2 bg-blue-700 hover:bg-blue-800 text-white px-6 py-3 rounded-full text-xs font-bold uppercase tracking-wider shadow-sm transition-colors"
-                      >
-                        <Calendar className="w-4 h-4 text-white" />
-                        <span>Prendre rendez-vous dans ce domaine</span>
-                        <ArrowRight className="w-4 h-4 text-white" />
-                      </Link>
-                    </div>
+                    <ScrollReveal variant="bottom" delay={320}>
+                      <div className="pt-2">
+                        <Link
+                          href="/rendez-vous"
+                          className="inline-flex items-center gap-2 bg-blue-700 hover:bg-blue-800 text-white px-6 py-3 rounded-full text-xs font-bold uppercase tracking-wider shadow-sm transition-all hover:-translate-y-0.5 active:scale-[0.96]"
+                        >
+                          <Calendar className="w-4 h-4 text-white" />
+                          <span>Prendre rendez-vous dans ce domaine</span>
+                          <ArrowRight className="w-4 h-4 text-white" />
+                        </Link>
+                      </div>
+                    </ScrollReveal>
                   </div>
 
                 </div>
@@ -189,16 +202,22 @@ export default function ExpertisesPage() {
       {/* ── BANDE CTA ── */}
       <section className="py-20 bg-white border-t border-slate-200">
         <div className="max-w-3xl mx-auto px-5 text-center space-y-6">
-          <h2 className="font-serif text-3xl sm:text-4xl font-extrabold text-slate-950">
-            Un projet juridique spécifique ?
-          </h2>
-          <p className="text-base text-slate-700">
-            Nos notaires et juristes spécialisés étudient vos pièces et vous répondent dans un cadre strictement confidentiel.
-          </p>
-          <Link href="/rendez-vous" className="inline-flex items-center gap-2 bg-blue-700 hover:bg-blue-800 text-white px-8 py-4 rounded-full text-xs font-bold uppercase tracking-wider shadow-md transition-colors">
-            <Calendar className="w-4 h-4 text-white" />
-            <span>Initier une consultation notariale</span>
-          </Link>
+          <ScrollReveal variant="right">
+            <h2 className="font-serif text-3xl sm:text-4xl font-extrabold text-slate-950">
+              Un projet juridique spécifique ?
+            </h2>
+          </ScrollReveal>
+          <ScrollReveal variant="right" delay={150}>
+            <p className="text-base text-slate-700">
+              Nos notaires et juristes spécialisés étudient vos pièces et vous répondent dans un cadre strictement confidentiel.
+            </p>
+          </ScrollReveal>
+          <ScrollReveal variant="pop" delay={240}>
+            <Link href="/rendez-vous" className="inline-flex items-center gap-2 bg-blue-700 hover:bg-blue-800 text-white px-8 py-4 rounded-full text-xs font-bold uppercase tracking-wider shadow-md transition-all hover:-translate-y-0.5 active:scale-[0.96]">
+              <Calendar className="w-4 h-4 text-white" />
+              <span>Initier une consultation notariale</span>
+            </Link>
+          </ScrollReveal>
         </div>
       </section>
 
