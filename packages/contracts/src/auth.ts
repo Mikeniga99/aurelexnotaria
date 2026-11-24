@@ -1,6 +1,14 @@
 import { z } from 'zod';
 import { Role } from './enums';
 
+export const RegisterSchema = z.object({
+  email: z.string().email('Adresse e-mail invalide'),
+  password: z.string().min(8, 'Le mot de passe doit comporter au moins 8 caractères'),
+  firstName: z.string().min(2, 'Le prénom doit comporter au moins 2 caractères'),
+  lastName: z.string().min(2, 'Le nom doit comporter au moins 2 caractères'),
+});
+export type RegisterInput = z.infer<typeof RegisterSchema>;
+
 export const LoginSchema = z.object({
   email: z.string().email('Adresse e-mail invalide'),
   password: z.string().min(8, 'Le mot de passe doit comporter au moins 8 caractères'),

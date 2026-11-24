@@ -452,6 +452,192 @@ h1, h2, h3 {
   animation-duration: 0.7s;
 }
 
+/* ═══════════════════════════════════════
+   ANIMATIONS NOTARIALES D'AUTHENTIFICATION (ACTE & SCEAU)
+═══════════════════════════════════════ */
+
+@keyframes parchmentUnroll {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.92);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(0) scale(1.01);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes signatureDraw {
+  0% {
+    stroke-dashoffset: 450;
+    opacity: 0.2;
+  }
+  15% {
+    opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes sealStamp {
+  0% {
+    opacity: 0;
+    transform: scale(2.4) rotate(-25deg);
+    filter: blur(4px);
+  }
+  65% {
+    opacity: 1;
+    transform: scale(0.94) rotate(0deg);
+    filter: blur(0px);
+  }
+  85% {
+    transform: scale(1.05) rotate(1deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+@keyframes quillFloat {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate(-3px, -4px) rotate(-3deg);
+  }
+}
+
+.anim-parchment {
+  animation: parchmentUnroll 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.anim-seal-stamp {
+  animation: sealStamp 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* ── NOUVELLE ANIMATION : BALANCE DE JUSTICE & MAILLET NOTARIAL ── */
+
+@keyframes balanceBeamSway {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-3.5deg);
+  }
+  75% {
+    transform: rotate(3.5deg);
+  }
+}
+
+@keyframes plateSwayLeft {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-4px) rotate(3.5deg);
+  }
+  75% {
+    transform: translateY(4px) rotate(-3.5deg);
+  }
+}
+
+@keyframes plateSwayRight {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  25% {
+    transform: translateY(4px) rotate(3.5deg);
+  }
+  75% {
+    transform: translateY(-4px) rotate(-3.5deg);
+  }
+}
+
+@keyframes gavelStrike {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  30% {
+    transform: rotate(-28deg);
+  }
+  48% {
+    transform: rotate(-30deg);
+  }
+  56% {
+    transform: rotate(0deg);
+  }
+  62% {
+    transform: rotate(-4deg);
+  }
+  68% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes shockwavePulse {
+  0%, 55% {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+  57% {
+    opacity: 1;
+    transform: scale(0.8);
+  }
+  75% {
+    opacity: 0;
+    transform: scale(2.2);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(2.4);
+  }
+}
+
+@keyframes progressGleam {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.anim-balance-beam {
+  transform-origin: 110px 42px;
+  animation: balanceBeamSway 3.2s ease-in-out infinite;
+}
+
+.anim-plate-left {
+  transform-origin: 58px 42px;
+  animation: plateSwayLeft 3.2s ease-in-out infinite;
+}
+
+.anim-plate-right {
+  transform-origin: 162px 42px;
+  animation: plateSwayRight 3.2s ease-in-out infinite;
+}
+
+.anim-gavel {
+  transform-origin: 265px 125px;
+  animation: gavelStrike 2.2s cubic-bezier(0.25, 1, 0.5, 1) infinite;
+}
+
+.anim-shockwave {
+  transform-origin: 215px 128px;
+  animation: shockwavePulse 2.2s ease-out infinite;
+}
+
+.anim-progress-gleam {
+  animation: progressGleam 1.8s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .reveal-init {
     opacity: 1 !important;

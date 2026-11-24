@@ -2,7 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { AppointmentForm } from '@/components/public/AppointmentForm';
-import { Calendar, Clock, Shield, Video, Phone } from 'lucide-react';
+import { Calendar, Clock, Video, Phone } from 'lucide-react';
 import { ScrollReveal } from '@/components/public/ScrollReveal';
 
 export default function AppointmentPage() {
@@ -87,15 +87,6 @@ export default function AppointmentPage() {
                   </ScrollReveal>
                 ))}
               </div>
-
-              <ScrollReveal variant="focus" delay={200}>
-                <div className="bg-white border border-slate-200 rounded-2xl p-4.5 flex items-start gap-3.5 text-xs text-slate-600 shadow-xs">
-                  <Shield className="w-5 h-5 text-blue-700 shrink-0 mt-0.5" />
-                  <span className="leading-relaxed">
-                    Vos informations sont protégées par le secret professionnel et le Règlement Général sur la Protection des Données (RGPD).
-                  </span>
-                </div>
-              </ScrollReveal>
             </div>
 
             {/* Formulaire */}

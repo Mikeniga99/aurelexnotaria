@@ -97,6 +97,15 @@ export default function AdminAppointmentsPage() {
     }
   };
 
+  const STATUS_LABELS: Record<string, string> = {
+    ALL: 'Tous les statuts',
+    PENDING: 'En attente',
+    REVIEWING: 'En examen',
+    CONFIRMED: 'Confirmés',
+    REJECTED: 'Refusés',
+    CANCELLED: 'Annulés',
+  };
+
   const getStatusBadge = (status: AppointmentStatus) => {
     switch (status) {
       case AppointmentStatus.PENDING:
@@ -116,7 +125,7 @@ export default function AdminAppointmentsPage() {
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
-          <h1 className="font-serif text-3xl font-bold text-aurelex-bordeaux">
+          <h1 className="font-serif text-3xl font-bold text-slate-900">
             Gestion des Rendez-vous
           </h1>
           <p className="text-sm text-slate-500 mt-1">
@@ -126,9 +135,9 @@ export default function AdminAppointmentsPage() {
 
         <button
           onClick={fetchAppointments}
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white border border-slate-300 text-xs font-semibold text-slate-700 hover:bg-slate-50 transition-colors shadow-sm"
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white border border-slate-300 text-xs font-semibold text-slate-700 hover:bg-slate-50 transition-colors shadow-sm cursor-pointer"
         >
-          <RefreshCw className="w-3.5 h-3.5" />
+          <RefreshCw className="w-3.5 h-3.5 text-blue-700" />
           <span>Actualiser</span>
         </button>
       </div>
@@ -141,13 +150,13 @@ export default function AdminAppointmentsPage() {
             <button
               key={st}
               onClick={() => setSelectedStatus(st)}
-              className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
+              className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
                 selectedStatus === st
-                  ? 'bg-aurelex-bordeaux text-white shadow-sm'
+                  ? 'bg-blue-700 text-white shadow-sm'
                   : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
               }`}
             >
-              {st === 'ALL' ? 'Tous les statuts' : st}
+              {STATUS_LABELS[st] || st}
             </button>
           ))}
         </div>
@@ -219,7 +228,7 @@ export default function AdminAppointmentsPage() {
                     <td className="py-3.5 px-4 text-right">
                       <button
                         onClick={() => handleOpenModal(item)}
-                        className="px-3 py-1.5 rounded-lg bg-aurelex-bordeaux text-white font-semibold text-xs hover:bg-aurelex-bordeaux-hover shadow-sm transition-colors"
+                        className="px-3 py-1.5 rounded-lg bg-blue-700 text-white font-semibold text-xs hover:bg-blue-800 shadow-sm transition-colors cursor-pointer"
                       >
                         Traiter
                       </button>
@@ -238,7 +247,7 @@ export default function AdminAppointmentsPage() {
           <div className="bg-white w-full max-w-lg rounded-3xl p-6 sm:p-8 shadow-2xl space-y-6">
             <div className="flex justify-between items-start border-b border-slate-200 pb-4">
               <div>
-                <h3 className="font-serif text-xl font-bold text-aurelex-bordeaux">
+                <h3 className="font-serif text-xl font-bold text-slate-900">
                   Dossier : {activeModalItem.fullName}
                 </h3>
                 <p className="text-xs text-slate-500 mt-0.5">
@@ -247,7 +256,7 @@ export default function AdminAppointmentsPage() {
               </div>
               <button
                 onClick={() => setActiveModalItem(null)}
-                className="text-slate-400 hover:text-slate-600 font-bold text-lg"
+                className="text-slate-400 hover:text-slate-600 font-bold text-lg cursor-pointer"
               >
                 ✕
               </button>
@@ -268,13 +277,13 @@ export default function AdminAppointmentsPage() {
                 <select
                   value={newStatus}
                   onChange={(e) => setNewStatus(e.target.value as AppointmentStatus)}
-                  className="w-full px-3 py-2.5 rounded-xl border border-slate-300 text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-aurelex-champagne"
+                  className="w-full px-3 py-2.5 rounded-xl border border-slate-300 text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-[#D4B483]"
                 >
-                  <option value={AppointmentStatus.PENDING}>PENDING (En attente d'instruction)</option>
-                  <option value={AppointmentStatus.REVIEWING}>REVIEWING (En cours d'examen)</option>
-                  <option value={AppointmentStatus.CONFIRMED}>CONFIRMED (Confirmé par l'étude)</option>
-                  <option value={AppointmentStatus.REJECTED}>REJECTED (Refusé)</option>
-                  <option value={AppointmentStatus.CANCELLED}>CANCELLED (Annulé)</option>
+                  <option value={AppointmentStatus.PENDING}>En attente d'instruction</option>
+                  <option value={AppointmentStatus.REVIEWING}>En cours d'examen</option>
+                  <option value={AppointmentStatus.CONFIRMED}>Confirmé par l'office</option>
+                  <option value={AppointmentStatus.REJECTED}>Refusé / Non disponible</option>
+                  <option value={AppointmentStatus.CANCELLED}>Annulé</option>
                 </select>
               </div>
 
@@ -286,8 +295,8 @@ export default function AdminAppointmentsPage() {
                   rows={4}
                   value={internalNotes}
                   onChange={(e) => setInternalNotes(e.target.value)}
-                  placeholder="Ex : Me Saint-Germain a validé le dossier. Pièces d'identité reçues par clerc..."
-                  className="w-full p-3 rounded-xl border border-slate-300 text-xs focus:outline-none focus:ring-2 focus:ring-aurelex-champagne"
+                  placeholder="Ex : Dossier validé. Pièces d'identité reçues par le secrétariat..."
+                  className="w-full p-3 rounded-xl border border-slate-300 text-xs focus:outline-none focus:ring-2 focus:ring-[#D4B483]"
                 />
               </div>
             </div>
@@ -296,7 +305,7 @@ export default function AdminAppointmentsPage() {
               <button
                 type="button"
                 onClick={() => setActiveModalItem(null)}
-                className="px-4 py-2 rounded-xl text-xs font-semibold text-slate-600 hover:bg-slate-100 transition-colors"
+                className="px-4 py-2 rounded-xl text-xs font-semibold text-slate-600 hover:bg-slate-100 transition-colors cursor-pointer"
               >
                 Annuler
               </button>
@@ -304,9 +313,9 @@ export default function AdminAppointmentsPage() {
                 type="button"
                 disabled={isUpdating}
                 onClick={handleUpdateStatus}
-                className="inline-flex items-center gap-2 px-5 py-2 rounded-xl bg-aurelex-bordeaux text-white text-xs font-semibold hover:bg-aurelex-bordeaux-hover transition-colors shadow"
+                className="inline-flex items-center gap-2 px-5 py-2 rounded-xl bg-blue-700 text-white text-xs font-semibold hover:bg-blue-800 transition-colors shadow cursor-pointer"
               >
-                <Save className="w-4 h-4 text-aurelex-champagne" />
+                <Save className="w-4 h-4 text-[#D4B483]" />
                 <span>Enregistrer la modification</span>
               </button>
             </div>

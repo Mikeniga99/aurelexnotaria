@@ -6,10 +6,12 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useTranslations } from 'next-intl';
 import { AppointmentCreateSchema, type AppointmentCreateInput, AppointmentMotif } from '@notaria/contracts';
 import { Calendar, CheckCircle2, AlertCircle, Loader2, Clock, ShieldCheck } from 'lucide-react';
+import { NotarialActLoader } from './NotarialActLoader';
 
 export function AppointmentForm() {
   const t = useTranslations('appointment');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isActLoading, setIsActLoading] = useState(false);
   const [successData, setSuccessData] = useState<{ id: string } | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
@@ -45,11 +47,16 @@ export function AppointmentForm() {
         throw new Error(result.error?.message || 'Une erreur est survenue lors de la transmission.');
       }
 
-      setSuccessData(result.data);
-      reset();
+      // Déclenche l'animation notariée du Parchemin & Sceau
+      setIsActLoading(true);
+
+      setTimeout(() => {
+        setIsActLoading(false);
+        setSuccessData(result.data);
+        reset();
+      }, 2100);
     } catch (err: any) {
       setErrorMessage(err.message || 'Impossible de transmettre votre demande. Veuillez vérifier votre connexion.');
-    } finally {
       setIsSubmitting(false);
     }
   };
@@ -91,10 +98,18 @@ export function AppointmentForm() {
   }
 
   return (
-    <form
-      onSubmit={handleSubmit(onSubmit)}
-      className="bg-white rounded-3xl p-8 sm:p-12 border-2 border-slate-200 shadow-xl space-y-6"
-    >
+    <>
+      {/* ── NOTARIAL ACT LOADING OVERLAY (CONCEPT A) ── */}
+      <NotarialActLoader
+        isOpen={isActLoading}
+        title="Officialisation de votre Demande"
+        subtitle="Enregistrement de la minute au greffe de l'office"
+      />
+
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="bg-white rounded-3xl p-8 sm:p-12 border-2 border-slate-200 shadow-xl space-y-6"
+      >
       {errorMessage && (
         <div className="p-4 rounded-xl bg-red-50 border-2 border-red-200 text-red-800 text-sm flex items-start gap-3">
           <AlertCircle className="w-5 h-5 shrink-0 mt-0.5 text-red-600" />
@@ -110,7 +125,7 @@ export function AppointmentForm() {
           </label>
           <input
             type="text"
-            placeholder="Ex : Me ou M. Jean Dupont"
+            placeholder="Ex : Me ou M. Fleury ACHILLE"
             {...register('fullName')}
             className={`w-full px-4 py-3.5 rounded-xl border-2 bg-white text-slate-950 placeholder-slate-400 text-sm font-medium transition-all focus:outline-none focus:ring-4 focus:ring-blue-100 ${
               errors.fullName ? 'border-red-500' : 'border-slate-300 focus:border-blue-700'
@@ -127,7 +142,7 @@ export function AppointmentForm() {
           </label>
           <input
             type="email"
-            placeholder="jean.dupont@exemple.fr"
+            placeholder="fleury.achille@exemple.fr"
             {...register('email')}
             className={`w-full px-4 py-3.5 rounded-xl border-2 bg-white text-slate-950 placeholder-slate-400 text-sm font-medium transition-all focus:outline-none focus:ring-4 focus:ring-blue-100 ${
               errors.email ? 'border-red-500' : 'border-slate-300 focus:border-blue-700'
@@ -225,30 +240,27 @@ export function AppointmentForm() {
         />
       </div>
 
-      {/* Disclaimer */}
-      <div className="flex items-start gap-3 p-4 rounded-xl bg-blue-50 border border-blue-200 text-xs text-slate-800 leading-relaxed font-medium">
-        <ShieldCheck className="w-5 h-5 text-blue-700 shrink-0 mt-0.5" />
-        <span>{t('disclaimer')}</span>
+      {/* Submit Button Centré & Harmonieux */}
+      <div className="flex justify-center pt-2">
+        <button
+          type="submit"
+          disabled={isSubmitting}
+          className="inline-flex items-center justify-center gap-2 bg-blue-700 hover:bg-blue-800 text-white text-sm font-bold px-8 py-3 rounded-xl shadow-md hover:shadow-lg transition-all disabled:opacity-50 cursor-pointer min-w-[180px]"
+        >
+          {isSubmitting ? (
+            <>
+              <Loader2 className="w-4 h-4 animate-spin text-white shrink-0" />
+              <span>{t('submitting')}</span>
+            </>
+          ) : (
+            <>
+              <Calendar className="w-4 h-4 text-white shrink-0" />
+              <span>{t('submit')}</span>
+            </>
+          )}
+        </button>
       </div>
-
-      {/* Submit Button */}
-      <button
-        type="submit"
-        disabled={isSubmitting}
-        className="w-full inline-flex items-center justify-center gap-2.5 bg-blue-700 hover:bg-blue-800 text-white text-sm font-bold uppercase tracking-wider py-4 rounded-xl shadow-lg shadow-blue-700/25 transition-all disabled:opacity-50"
-      >
-        {isSubmitting ? (
-          <>
-            <Loader2 className="w-5 h-5 animate-spin text-white" />
-            <span>{t('submitting')}</span>
-          </>
-        ) : (
-          <>
-            <Calendar className="w-5 h-5 text-white" />
-            <span>{t('submit')}</span>
-          </>
-        )}
-      </button>
     </form>
+    </>
   );
 }

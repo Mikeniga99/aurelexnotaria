@@ -2,11 +2,22 @@
 
 import React from 'react';
 import { usePathname } from '@/i18n/routing';
-import { Link } from '@/i18n/routing';
+import { useLocale } from 'next-intl';
 import { Home, Briefcase, Users, Calendar, Phone } from 'lucide-react';
 
 export function BottomNav() {
   const pathname = usePathname();
+  const locale = useLocale();
+
+  const handleNavClick = (href: string) => (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    const targetUrl = href === '/' ? `/${locale}` : `/${locale}${href}`;
+    if (window.location.pathname === targetUrl) {
+      window.location.reload();
+    } else {
+      window.location.href = targetUrl;
+    }
+  };
 
   const navItems = [
     { href: '/', label: 'Accueil', icon: Home },
@@ -34,9 +45,10 @@ export function BottomNav() {
             if (item.highlight) {
               return (
                 <div key={item.href} className="relative flex justify-center items-center h-full">
-                  <Link
-                    href={item.href}
-                    className="absolute -top-2 flex flex-col items-center group z-20"
+                  <a
+                    href={item.href === '/' ? `/${locale}` : `/${locale}${item.href}`}
+                    onClick={handleNavClick(item.href)}
+                    className="absolute -top-2 flex flex-col items-center group z-20 cursor-pointer"
                     aria-label={item.label}
                   >
                     {/* Bouton RDV agrandi, parfaitement circulaire et abaissé */}
@@ -48,22 +60,17 @@ export function BottomNav() {
                     <span className="text-[10px] font-bold text-[#D4B483] uppercase tracking-wider mt-1 drop-shadow-[0_1px_2px_rgba(0,0,0,0.9)]">
                       {item.label}
                     </span>
-                  </Link>
+                  </a>
                 </div>
               );
             }
 
             return (
-              <Link
+              <a
                 key={item.href}
-                href={item.href}
-                onClick={(e) => {
-                  if (item.href === '/' && pathname === '/') {
-                    e.preventDefault();
-                    window.location.reload();
-                  }
-                }}
-                className="relative z-10 flex flex-col items-center justify-center h-full py-1 group transition-all duration-150 active:scale-[0.92]"
+                href={item.href === '/' ? `/${locale}` : `/${locale}${item.href}`}
+                onClick={handleNavClick(item.href)}
+                className="relative z-10 flex flex-col items-center justify-center h-full py-1 group transition-all duration-150 active:scale-[0.92] cursor-pointer"
               >
                 <div className="relative flex flex-col items-center">
                   <Icon
@@ -90,7 +97,7 @@ export function BottomNav() {
                     <span className="w-1.5 h-1.5 rounded-full bg-[#D4B483] shadow-[0_0_6px_#D4B483]" />
                   )}
                 </div>
-              </Link>
+              </a>
             );
           })}
         </div>

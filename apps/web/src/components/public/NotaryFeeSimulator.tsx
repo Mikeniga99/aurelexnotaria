@@ -106,8 +106,8 @@ export function NotaryFeeSimulator() {
               <label className="text-xs font-bold uppercase tracking-wider text-slate-900">
                 Prix d'acquisition du bien (€)
               </label>
-              <span className="font-serif text-2xl font-extrabold text-blue-800">
-                {propertyPrice.toLocaleString('fr-FR')} €
+              <span className="font-serif text-2xl font-extrabold text-blue-800 whitespace-nowrap">
+                {propertyPrice.toLocaleString('fr-FR')}&nbsp;€
               </span>
             </div>
             <input
@@ -120,9 +120,9 @@ export function NotaryFeeSimulator() {
               className="w-full h-3 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-blue-700"
             />
             <div className="flex justify-between text-xs text-slate-700 mt-1 font-mono font-bold">
-              <span>50 000 €</span>
-              <span>1 250 000 €</span>
-              <span>2 500 000 €</span>
+              <span className="whitespace-nowrap">50&nbsp;000&nbsp;€</span>
+              <span className="whitespace-nowrap">1&nbsp;250&nbsp;000&nbsp;€</span>
+              <span className="whitespace-nowrap">2&nbsp;500&nbsp;000&nbsp;€</span>
             </div>
           </div>
 
@@ -136,64 +136,72 @@ export function NotaryFeeSimulator() {
 
         {/* Bloc résultats */}
         <div className="lg:col-span-6">
-          <div className="bg-slate-50 rounded-2xl p-6 sm:p-8 border-2 border-blue-200 shadow-md space-y-5">
-            <div className="flex items-baseline justify-between border-b-2 border-blue-200 pb-4">
+          <div className="bg-slate-50 rounded-2xl p-5 sm:p-7 border-2 border-blue-200 shadow-md space-y-5">
+            <div className="flex items-baseline justify-between gap-4 border-b-2 border-blue-200 pb-4">
               <div>
                 <span className="text-xs uppercase tracking-wider font-bold text-slate-700 block">
                   Estimation totale des frais
                 </span>
-                <span className="font-serif text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0B1938]">
-                  {calculation.total.toLocaleString('fr-FR')} €
+                <span className="font-serif text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0B1938] whitespace-nowrap">
+                  {calculation.total.toLocaleString('fr-FR')}&nbsp;€
                 </span>
               </div>
-              <div className="text-right">
+              <div className="text-right shrink-0">
                 <span className="text-xs uppercase tracking-wider text-slate-600 font-bold block">Part estimée</span>
-                <span className="text-2xl font-extrabold text-blue-700">{calculation.percentage} %</span>
+                <span className="text-2xl font-extrabold text-blue-700 whitespace-nowrap">{calculation.percentage}&nbsp;%</span>
               </div>
             </div>
 
             {/* Détail décomposé */}
             <div className="space-y-3.5 text-xs sm:text-sm">
-              <div className="flex justify-between items-center text-slate-800">
-                <span className="flex items-center gap-2 font-medium">
-                  <CheckCircle2 className="w-4 h-4 text-blue-700 shrink-0" />
+              <div className="flex justify-between items-start sm:items-center gap-3 text-slate-800">
+                <span className="flex items-start gap-2 font-medium min-w-0 flex-1">
+                  <CheckCircle2 className="w-4 h-4 text-blue-700 shrink-0 mt-0.5" />
                   <span>Droits de mutation & taxes Trésor Public (env. 80%) :</span>
                 </span>
-                <span className="font-mono font-bold text-slate-950">{calculation.taxes.toLocaleString('fr-FR')} €</span>
+                <span className="font-mono font-bold text-slate-950 whitespace-nowrap shrink-0 text-right">
+                  {calculation.taxes.toLocaleString('fr-FR')}&nbsp;€
+                </span>
               </div>
 
-              <div className="flex justify-between items-center text-slate-800">
-                <span className="flex items-center gap-2 font-medium">
-                  <CheckCircle2 className="w-4 h-4 text-blue-700 shrink-0" />
+              <div className="flex justify-between items-start sm:items-center gap-3 text-slate-800">
+                <span className="flex items-start gap-2 font-medium min-w-0 flex-1">
+                  <CheckCircle2 className="w-4 h-4 text-blue-700 shrink-0 mt-0.5" />
                   <span>Émoluments réglementés de l’office notarial (TTC) :</span>
                 </span>
-                <span className="font-mono font-bold text-slate-950">{calculation.emolumentsTTC.toLocaleString('fr-FR')} €</span>
+                <span className="font-mono font-bold text-slate-950 whitespace-nowrap shrink-0 text-right">
+                  {calculation.emolumentsTTC.toLocaleString('fr-FR')}&nbsp;€
+                </span>
               </div>
 
-              <div className="flex justify-between items-center text-slate-800">
-                <span className="flex items-center gap-2 font-medium">
-                  <CheckCircle2 className="w-4 h-4 text-blue-700 shrink-0" />
+              <div className="flex justify-between items-start sm:items-center gap-3 text-slate-800">
+                <span className="flex items-start gap-2 font-medium min-w-0 flex-1">
+                  <CheckCircle2 className="w-4 h-4 text-blue-700 shrink-0 mt-0.5" />
                   <span>Formalités & débours administratifs :</span>
                 </span>
-                <span className="font-mono font-bold text-slate-950">{calculation.debours.toLocaleString('fr-FR')} €</span>
+                <span className="font-mono font-bold text-slate-950 whitespace-nowrap shrink-0 text-right">
+                  {calculation.debours.toLocaleString('fr-FR')}&nbsp;€
+                </span>
               </div>
 
-              <div className="flex justify-between items-center text-slate-800">
-                <span className="flex items-center gap-2 font-medium">
-                  <CheckCircle2 className="w-4 h-4 text-blue-700 shrink-0" />
+              <div className="flex justify-between items-start sm:items-center gap-3 text-slate-800">
+                <span className="flex items-start gap-2 font-medium min-w-0 flex-1">
+                  <CheckCircle2 className="w-4 h-4 text-blue-700 shrink-0 mt-0.5" />
                   <span>Contribution de Sécurité Immobilière (CSI) :</span>
                 </span>
-                <span className="font-mono font-bold text-slate-950">{calculation.csi.toLocaleString('fr-FR')} €</span>
+                <span className="font-mono font-bold text-slate-950 whitespace-nowrap shrink-0 text-right">
+                  {calculation.csi.toLocaleString('fr-FR')}&nbsp;€
+                </span>
               </div>
             </div>
 
             <div className="pt-2">
               <Link
                 href="/rendez-vous"
-                className="w-full inline-flex items-center justify-center gap-2 bg-blue-700 hover:bg-blue-800 text-white font-bold text-xs uppercase tracking-wider py-4 rounded-xl shadow-md transition-colors"
+                className="w-full inline-flex items-center justify-center gap-2.5 bg-blue-700 hover:bg-blue-800 text-white font-bold text-xs sm:text-sm uppercase tracking-wide px-5 py-3.5 sm:py-4 rounded-xl shadow-md transition-all text-center group"
               >
-                <span>Obtenir une attestation pour mon dossier</span>
-                <ArrowRight className="w-4 h-4 text-white" />
+                <span className="text-center leading-snug">Obtenir une attestation pour mon dossier</span>
+                <ArrowRight className="w-4 h-4 text-white shrink-0 transition-transform group-hover:translate-x-1" />
               </Link>
             </div>
           </div>

@@ -17,6 +17,12 @@ const config: Config = {
             light: '#1B3B6F',
             soft: '#244B8A',
           },
+          ebene: '#0B1938',
+          champagne: {
+            DEFAULT: '#D4B483',
+            soft: '#F4ECE1',
+            dark: '#B08D55',
+          },
           blue: {
             DEFAULT: '#2563EB',
             vibrant: '#3B82F6',

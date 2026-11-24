@@ -137,7 +137,7 @@ export default function AdminArticlesPage() {
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
-          <h1 className="font-serif text-3xl font-bold text-aurelex-bordeaux">
+          <h1 className="font-serif text-3xl font-bold text-slate-900">
             Articles & Publications Bilingues
           </h1>
           <p className="text-sm text-slate-500 mt-1">
@@ -148,9 +148,9 @@ export default function AdminArticlesPage() {
         <div className="flex items-center gap-3">
           <button
             onClick={() => setIsModalOpen(true)}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-aurelex-bordeaux text-white text-xs font-semibold hover:bg-aurelex-bordeaux-hover transition-colors shadow"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-blue-700 text-white text-xs font-semibold hover:bg-blue-800 transition-colors shadow cursor-pointer"
           >
-            <Plus className="w-4 h-4 text-aurelex-champagne" />
+            <Plus className="w-4 h-4 text-[#D4B483]" />
             <span>Nouvel article</span>
           </button>
         </div>
@@ -254,10 +254,10 @@ export default function AdminArticlesPage() {
         <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4">
           <div className="bg-white w-full max-w-2xl rounded-3xl p-6 sm:p-8 shadow-2xl space-y-6 max-h-[90vh] overflow-y-auto">
             <div className="flex justify-between items-center border-b border-slate-200 pb-4">
-              <h3 className="font-serif text-xl font-bold text-aurelex-bordeaux">
+              <h3 className="font-serif text-xl font-bold text-slate-900">
                 Nouvelle Publication Bilingue
               </h3>
-              <button onClick={() => setIsModalOpen(false)} className="text-slate-400 hover:text-slate-600 text-lg">
+              <button onClick={() => setIsModalOpen(false)} className="text-slate-400 hover:text-slate-600 text-lg cursor-pointer">
                 ✕
               </button>
             </div>
@@ -267,9 +267,9 @@ export default function AdminArticlesPage() {
               <button
                 type="button"
                 onClick={() => setActiveTab('FR')}
-                className={`px-6 py-2.5 text-xs font-bold transition-all border-b-2 ${
+                className={`px-6 py-2.5 text-xs font-bold transition-all border-b-2 cursor-pointer ${
                   activeTab === 'FR'
-                    ? 'border-aurelex-bordeaux text-aurelex-bordeaux'
+                    ? 'border-blue-700 text-blue-700'
                     : 'border-transparent text-slate-400 hover:text-slate-700'
                 }`}
               >
@@ -278,9 +278,9 @@ export default function AdminArticlesPage() {
               <button
                 type="button"
                 onClick={() => setActiveTab('EN')}
-                className={`px-6 py-2.5 text-xs font-bold transition-all border-b-2 ${
+                className={`px-6 py-2.5 text-xs font-bold transition-all border-b-2 cursor-pointer ${
                   activeTab === 'EN'
-                    ? 'border-aurelex-bordeaux text-aurelex-bordeaux'
+                    ? 'border-blue-700 text-blue-700'
                     : 'border-transparent text-slate-400 hover:text-slate-700'
                 }`}
               >
@@ -414,9 +414,9 @@ export default function AdminArticlesPage() {
                 <button
                   type="submit"
                   disabled={isSaving}
-                  className="inline-flex items-center gap-2 px-5 py-2 rounded-xl bg-aurelex-bordeaux text-white text-xs font-semibold hover:bg-aurelex-bordeaux-hover shadow"
+                  className="inline-flex items-center gap-2 px-5 py-2 rounded-xl bg-blue-700 text-white text-xs font-semibold hover:bg-blue-800 shadow cursor-pointer"
                 >
-                  <Save className="w-4 h-4 text-aurelex-champagne" />
+                  <Save className="w-4 h-4 text-[#D4B483]" />
                   <span>Enregistrer la publication</span>
                 </button>
               </div>

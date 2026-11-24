@@ -70,8 +70,8 @@
     "morning": "Morning (09:00 - 12:00)",
     "afternoon": "Afternoon (14:00 - 18:00)",
     "message": "Additional details (optional)",
-    "submit": "Submit consultation request",
-    "submitting": "Submitting...",
+    "submit": "Confirm",
+    "submitting": "Confirming...",
     "disclaimer": "In accordance with notarial regulations, this request is received under 'pending' status and will be confirmed by our team upon availability verification.",
     "successTitle": "Request successfully received",
     "successMessage": "Your appointment request has been recorded. Our team will contact you shortly."

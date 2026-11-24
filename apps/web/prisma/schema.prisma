@@ -1,0 +1,296 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+enum Role {
+  VISITOR
+  COLLABORATOR
+  EDITOR
+  ADMIN
+  SUPER_ADMIN
+}
+
+enum AppointmentStatus {
+  PENDING
+  REVIEWING
+  CONFIRMED
+  REJECTED
+  CANCELLED
+}
+
+enum ContentStatus {
+  DRAFT
+  PUBLISHED
+  ARCHIVED
+}
+
+model User {
+  id           String        @id @default(uuid())
+  email        String        @unique
+  passwordHash String
+  firstName    String
+  lastName     String
+  role         Role          @default(COLLABORATOR)
+  isActive     Boolean       @default(true)
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+
+  assignedAppointments Appointment[] @relation("AssignedAppointments")
+  auditLogs            AuditLog[]
+
+  @@map("users")
+}
+
+model Session {
+  id        String   @id
+  sid       String   @unique
+  data      String
+  expiresAt DateTime
+
+  @@map("sessions")
+}
+
+model Category {
+  id           String                @id @default(uuid())
+  slug         String                @unique
+  displayOrder Int                   @default(0)
+  createdAt    DateTime              @default(now())
+  updatedAt    DateTime              @updatedAt
+  translations CategoryTranslation[]
+  articles     Article[]
+
+  @@map("categories")
+}
+
+model CategoryTranslation {
+  id          String   @id @default(uuid())
+  categoryId  String
+  locale      String   // 'fr' | 'en'
+  name        String
+  description String?
+  category    Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+
+  @@unique([categoryId, locale])
+  @@map("category_translations")
+}
+
+model Article {
+  id           String               @id @default(uuid())
+  coverImage   String?
+  isFeatured   Boolean              @default(false)
+  categoryId   String?
+  category     Category?            @relation(fields: [categoryId], references: [id], onDelete: SetNull)
+  createdAt    DateTime             @default(now())
+  updatedAt    DateTime             @updatedAt
+  translations ArticleTranslation[]
+
+  @@map("articles")
+}
+
+model ArticleTranslation {
+  id              String        @id @default(uuid())
+  articleId       String
+  locale          String        // 'fr' | 'en'
+  title           String
+  slug            String
+  excerpt         String?
+  content         String
+  metaTitle       String?
+  metaDescription String?
+  status          ContentStatus @default(DRAFT)
+  publishedAt     DateTime?
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+  article         Article       @relation(fields: [articleId], references: [id], onDelete: Cascade)
+
+  @@unique([locale, slug])
+  @@unique([articleId, locale])
+  @@index([locale, status])
+  @@map("article_translations")
+}
+
+model Expertise {
+  id           String                 @id @default(uuid())
+  icon         String                 @default("Scale")
+  displayOrder Int                    @default(0)
+  isPublished  Boolean                @default(true)
+  createdAt    DateTime               @default(now())
+  updatedAt    DateTime               @updatedAt
+  translations ExpertiseTranslation[]
+
+  @@map("expertises")
+}
+
+model ExpertiseTranslation {
+  id               String    @id @default(uuid())
+  expertiseId      String
+  locale           String    // 'fr' | 'en'
+  title            String
+  slug             String
+  shortDescription String
+  fullContent      String
+  metaTitle        String?
+  metaDescription  String?
+  expertise        Expertise @relation(fields: [expertiseId], references: [id], onDelete: Cascade)
+
+  @@unique([locale, slug])
+  @@unique([expertiseId, locale])
+  @@map("expertise_translations")
+}
+
+model TeamMember {
+  id           String                  @id @default(uuid())
+  fullName     String
+  email        String?
+  phone        String?
+  photoUrl     String?
+  displayOrder Int                     @default(0)
+  isPublished  Boolean                 @default(true)
+  createdAt    DateTime                @default(now())
+  updatedAt    DateTime                @updatedAt
+  translations TeamMemberTranslation[]
+
+  @@map("team_members")
+}
+
+model TeamMemberTranslation {
+  id           String     @id @default(uuid())
+  teamMemberId String
+  locale       String     // 'fr' | 'en'
+  roleTitle    String     // e.g. "Notaire Associé", "Notaire Salarié", "Premier Clerc"
+  bio          String
+  teamMember   TeamMember @relation(fields: [teamMemberId], references: [id], onDelete: Cascade)
+
+  @@unique([teamMemberId, locale])
+  @@map("team_member_translations")
+}
+
+model FAQ {
+  id           String           @id @default(uuid())
+  category     String           // e.g. "IMMOBILIER", "FAMILLE", "ENTREPRISE", "GENERAL"
+  displayOrder Int              @default(0)
+  isPublished  Boolean          @default(true)
+  createdAt    DateTime         @default(now())
+  updatedAt    DateTime         @updatedAt
+  translations FAQTranslation[]
+
+  @@map("faqs")
+}
+
+model FAQTranslation {
+  id       String @id @default(uuid())
+  faqId    String
+  locale   String // 'fr' | 'en'
+  question String
+  answer   String
+  faq      FAQ    @relation(fields: [faqId], references: [id], onDelete: Cascade)
+
+  @@unique([faqId, locale])
+  @@map("faq_translations")
+}
+
+model Guide {
+  id           String             @id @default(uuid())
+  category     String             @default("GENERAL")
+  displayOrder Int                @default(0)
+  isPublished  Boolean            @default(true)
+  createdAt    DateTime           @default(now())
+  updatedAt    DateTime           @updatedAt
+  translations GuideTranslation[]
+
+  @@map("guides")
+}
+
+model GuideTranslation {
+  id       String @id @default(uuid())
+  guideId  String
+  locale   String // 'fr' | 'en'
+  title    String
+  slug     String
+  content  String
+  guide    Guide  @relation(fields: [guideId], references: [id], onDelete: Cascade)
+
+  @@unique([locale, slug])
+  @@unique([guideId, locale])
+  @@map("guide_translations")
+}
+
+model Appointment {
+  id                String            @id @default(uuid())
+  fullName          String
+  email             String
+  phone             String
+  motif             String            // IMMOBILIER, FAMILLE, ENTREPRISE, PATRIMOINE, AUTRE
+  preferredDate     String
+  preferredTimeSlot String?
+  message           String?
+  status            AppointmentStatus @default(PENDING)
+  internalNotes     String?
+  assignedToId      String?
+  assignedTo        User?             @relation("AssignedAppointments", fields: [assignedToId], references: [id], onDelete: SetNull)
+  createdAt         DateTime          @default(now())
+  updatedAt         DateTime          @updatedAt
+
+  @@index([status])
+  @@map("appointments")
+}
+
+model ContactMessage {
+  id         String   @id @default(uuid())
+  fullName   String
+  email      String
+  phone      String?
+  subject    String
+  message    String
+  isRead     Boolean  @default(false)
+  isArchived Boolean  @default(false)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@index([isRead, isArchived])
+  @@map("contact_messages")
+}
+
+model Media {
+  id           String   @id @default(uuid())
+  filename     String
+  originalName String
+  mimeType     String
+  size         Int
+  url          String
+  altText      String?
+  createdAt    DateTime @default(now())
+
+  @@map("medias")
+}
+
+model Setting {
+  id          String   @id @default(uuid())
+  key         String   @unique
+  value       String
+  description String?
+  updatedAt   DateTime @updatedAt
+
+  @@map("settings")
+}
+
+model AuditLog {
+  id        String   @id @default(uuid())
+  userId    String?
+  user      User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+  action    String
+  entity    String
+  entityId  String?
+  details   String?  // JSON string
+  ipAddress String?
+  createdAt DateTime @default(now())
+
+  @@index([userId, createdAt])
+  @@map("audit_logs")
+}

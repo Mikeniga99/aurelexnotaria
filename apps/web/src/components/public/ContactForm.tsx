@@ -86,7 +86,7 @@ export function ContactForm() {
         </label>
         <input
           type="text"
-          placeholder="Jean Dupont"
+          placeholder="Fleury ACHILLE"
           {...register('fullName')}
           className={`w-full px-4 py-3.5 rounded-xl border-2 bg-white text-slate-950 placeholder-slate-400 text-sm font-medium transition-all outline-none focus:ring-4 focus:ring-blue-100 ${
             errors.fullName ? 'border-red-500' : 'border-slate-300 focus:border-blue-700'
@@ -100,7 +100,7 @@ export function ContactForm() {
           <label className="block text-xs font-bold uppercase tracking-wider text-slate-900 mb-2">Email *</label>
           <input
             type="email"
-            placeholder="jean.dupont@exemple.fr"
+            placeholder="fleury.achille@exemple.fr"
             {...register('email')}
             className={`w-full px-4 py-3.5 rounded-xl border-2 bg-white text-slate-950 placeholder-slate-400 text-sm font-medium transition-all outline-none focus:ring-4 focus:ring-blue-100 ${
               errors.email ? 'border-red-500' : 'border-slate-300 focus:border-blue-700'

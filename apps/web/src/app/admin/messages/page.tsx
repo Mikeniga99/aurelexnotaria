@@ -74,7 +74,7 @@ export default function AdminMessagesPage() {
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
-          <h1 className="font-serif text-3xl font-bold text-aurelex-bordeaux">
+          <h1 className="font-serif text-3xl font-bold text-slate-900">
             Messages de Contact
           </h1>
           <p className="text-sm text-slate-500 mt-1">
@@ -84,9 +84,9 @@ export default function AdminMessagesPage() {
 
         <button
           onClick={fetchMessages}
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white border border-slate-300 text-xs font-semibold text-slate-700 hover:bg-slate-50 transition-colors shadow-sm"
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white border border-slate-300 text-xs font-semibold text-slate-700 hover:bg-slate-50 transition-colors shadow-sm cursor-pointer"
         >
-          <RefreshCw className="w-3.5 h-3.5" />
+          <RefreshCw className="w-3.5 h-3.5 text-blue-700" />
           <span>Actualiser</span>
         </button>
       </div>
@@ -116,7 +116,7 @@ export default function AdminMessagesPage() {
                     }}
                     className={`p-4 cursor-pointer transition-colors ${
                       isSelected
-                        ? 'bg-aurelex-champagne-soft border-l-4 border-aurelex-bordeaux'
+                        ? 'bg-blue-50/70 border-l-4 border-blue-700'
                         : msg.isRead
                         ? 'hover:bg-slate-50 opacity-80'
                         : 'bg-white hover:bg-slate-50 font-semibold'
@@ -189,7 +189,7 @@ export default function AdminMessagesPage() {
                 </span>
                 <a
                   href={`mailto:${activeMessage.email}?subject=RE: ${encodeURIComponent(activeMessage.subject)}`}
-                  className="px-4 py-2 rounded-xl bg-aurelex-bordeaux text-white font-semibold hover:bg-aurelex-bordeaux-hover shadow-sm transition-colors"
+                  className="px-4 py-2 rounded-xl bg-blue-700 text-white font-semibold hover:bg-blue-800 shadow-sm transition-colors cursor-pointer"
                 >
                   Répondre par email
                 </a>

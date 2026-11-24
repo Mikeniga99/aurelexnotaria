@@ -93,7 +93,7 @@ export default function AdminDashboardPage() {
     return (
       <div className="flex items-center justify-center h-64">
         <div className="flex items-center gap-3 text-slate-500 text-sm">
-          <RefreshCw className="w-5 h-5 animate-spin text-aurelex-bordeaux" />
+          <RefreshCw className="w-5 h-5 animate-spin text-blue-700" />
           <span>Calcul des indicateurs en temps réel...</span>
         </div>
       </div>
@@ -138,7 +138,7 @@ export default function AdminDashboardPage() {
       {/* Title & Action */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
-          <h1 className="font-serif text-3xl font-bold text-aurelex-bordeaux">
+          <h1 className="font-serif text-3xl font-bold text-slate-900">
             Tableau de Bord
           </h1>
           <p className="text-sm text-slate-500 mt-1">
@@ -147,9 +147,9 @@ export default function AdminDashboardPage() {
         </div>
         <button
           onClick={fetchStats}
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white border border-slate-300 text-xs font-semibold text-slate-700 hover:bg-slate-50 transition-colors shadow-sm"
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white border border-slate-300 text-xs font-semibold text-slate-700 hover:bg-slate-50 transition-colors shadow-sm cursor-pointer"
         >
-          <RefreshCw className="w-3.5 h-3.5" />
+          <RefreshCw className="w-3.5 h-3.5 text-blue-700" />
           <span>Actualiser</span>
         </button>
       </div>
@@ -178,7 +178,7 @@ export default function AdminDashboardPage() {
           </div>
           <Link
             href="/admin/rdv"
-            className="flex items-center justify-between text-xs font-semibold text-aurelex-bordeaux hover:underline pt-2 border-t border-slate-100"
+            className="flex items-center justify-between text-xs font-semibold text-blue-700 hover:underline pt-2 border-t border-slate-100"
           >
             <span>Gérer les demandes</span>
             <ArrowUpRight className="w-4 h-4" />
@@ -207,7 +207,7 @@ export default function AdminDashboardPage() {
           </div>
           <Link
             href="/admin/messages"
-            className="flex items-center justify-between text-xs font-semibold text-aurelex-bordeaux hover:underline pt-2 border-t border-slate-100"
+            className="flex items-center justify-between text-xs font-semibold text-blue-700 hover:underline pt-2 border-t border-slate-100"
           >
             <span>Consulter les messages</span>
             <ArrowUpRight className="w-4 h-4" />
@@ -236,7 +236,7 @@ export default function AdminDashboardPage() {
           </div>
           <Link
             href="/admin/articles"
-            className="flex items-center justify-between text-xs font-semibold text-aurelex-bordeaux hover:underline pt-2 border-t border-slate-100"
+            className="flex items-center justify-between text-xs font-semibold text-blue-700 hover:underline pt-2 border-t border-slate-100"
           >
             <span>Éditeur CMS bilingue</span>
             <ArrowUpRight className="w-4 h-4" />
@@ -252,7 +252,7 @@ export default function AdminDashboardPage() {
             <h2 className="font-serif font-bold text-lg text-slate-900">
               Dernières Demandes de Rendez-vous
             </h2>
-            <Link href="/admin/rdv" className="text-xs text-aurelex-bordeaux font-semibold hover:underline">
+            <Link href="/admin/rdv" className="text-xs text-blue-700 font-semibold hover:underline">
               Tout voir
             </Link>
           </div>
@@ -282,7 +282,7 @@ export default function AdminDashboardPage() {
             <h2 className="font-serif font-bold text-lg text-slate-900">
               Derniers Messages de Contact
             </h2>
-            <Link href="/admin/messages" className="text-xs text-aurelex-bordeaux font-semibold hover:underline">
+            <Link href="/admin/messages" className="text-xs text-blue-700 font-semibold hover:underline">
               Tout voir
             </Link>
           </div>

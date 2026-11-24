@@ -70,8 +70,8 @@
     "morning": "Matin (09h00 - 12h00)",
     "afternoon": "Après-midi (14h00 - 18h00)",
     "message": "Précisions sur votre situation (facultatif)",
-    "submit": "Transmettre ma demande de rendez-vous",
-    "submitting": "Transmission en cours...",
+    "submit": "Confirmer",
+    "submitting": "Confirmation...",
     "disclaimer": "Conformément à la déontologie notariale, cette demande est transmise à l'étude sous statut 'en attente' et sera confirmée par notre secrétariat après vérification de la disponibilité.",
     "successTitle": "Demande bien transmise",
     "successMessage": "Votre demande de rendez-vous a été enregistrée avec succès. Notre équipe vous contactera rapidement."
