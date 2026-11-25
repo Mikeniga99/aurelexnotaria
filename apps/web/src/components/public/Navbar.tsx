@@ -114,13 +114,13 @@ export function Navbar() {
             : 'bg-gradient-to-b from-black/70 via-black/30 to-transparent py-5'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 flex items-center justify-between">
+        <div className="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-12 flex items-center justify-between gap-6 xl:gap-10">
 
           {/* Logo & Identité officielle */}
           <a
             href={`/${locale}`}
             onClick={handleLogoClick}
-            className="flex items-center gap-3 group cursor-pointer"
+            className="flex items-center gap-3 group cursor-pointer shrink-0"
             title="Accueil Aurelex Notaire (Actualiser)"
           >
             <div className="relative w-10 h-10 rounded-xl overflow-hidden shadow-md border border-[#D4B483]/50 group-hover:border-[#D4B483] transition-all shrink-0 bg-white/95 p-0.5">
@@ -143,7 +143,7 @@ export function Navbar() {
           </a>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-7 text-xs font-semibold tracking-wide">
+          <nav className="hidden lg:flex items-center gap-5 xl:gap-8 text-xs font-semibold tracking-wide whitespace-nowrap">
             {navLinks.map((link) => {
               const isActive =
                 link.href === '/'
@@ -173,11 +173,11 @@ export function Navbar() {
           </nav>
 
           {/* Right Action (Desktop) */}
-          <div className="hidden sm:flex items-center gap-2">
+          <div className="hidden sm:flex items-center gap-2.5 shrink-0">
             <a
               href={`/${locale}/rendez-vous`}
               onClick={handleNavClick('/rendez-vous')}
-              className="inline-flex items-center gap-2 bg-[#060D1F]/90 hover:bg-[#060D1F] text-white px-3.5 py-2 rounded-full text-xs font-semibold tracking-wider border border-white/20 shadow-md hover:border-[#D4B483] transition-all duration-200 hover:-translate-y-0.5 active:scale-[0.96] cursor-pointer"
+              className="inline-flex items-center gap-2 bg-[#060D1F]/90 hover:bg-[#060D1F] text-white px-3.5 py-2 rounded-full text-xs font-semibold tracking-wider border border-white/20 shadow-md hover:border-[#D4B483] transition-all duration-200 hover:-translate-y-0.5 active:scale-[0.96] cursor-pointer whitespace-nowrap"
             >
               <Calendar className="w-3.5 h-3.5 text-[#D4B483]" />
               <span>Rendez-vous</span>
@@ -186,7 +186,7 @@ export function Navbar() {
             <a
               href={`/${locale}/#simulateur`}
               onClick={handleNavClick('/#simulateur')}
-              className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 flex items-center justify-center text-white/90 hover:text-white transition-all duration-200 hover:scale-105 active:scale-[0.94] cursor-pointer"
+              className="hidden xl:flex w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 items-center justify-center text-white/90 hover:text-white transition-all duration-200 hover:scale-105 active:scale-[0.94] cursor-pointer shrink-0"
               title="Simulateur de frais"
             >
               <Search className="w-3.5 h-3.5" />
@@ -199,7 +199,7 @@ export function Navbar() {
                 {isAdmin && (
                   <a
                     href="/admin"
-                    className="inline-flex items-center gap-1.5 text-xs text-white/90 hover:text-white bg-white/10 hover:bg-white/20 border border-white/20 px-3 py-2 rounded-full transition-all duration-200 hover:border-[#D4B483]/60"
+                    className="inline-flex items-center gap-1.5 text-xs text-white/90 hover:text-white bg-white/10 hover:bg-white/20 border border-white/20 px-3 py-2 rounded-full transition-all duration-200 hover:border-[#D4B483]/60 whitespace-nowrap"
                     title="Tableau de bord"
                   >
                     <LayoutDashboard className="w-3.5 h-3.5 text-[#D4B483]" />
@@ -208,19 +208,19 @@ export function Navbar() {
                 )}
                 <a
                   href="/espace-client"
-                  className="inline-flex items-center gap-1.5 text-xs text-white/90 hover:text-white bg-white/10 hover:bg-white/20 border border-[#D4B483]/40 px-3 py-2 rounded-full transition-all duration-200"
+                  className="inline-flex items-center gap-1.5 text-xs text-white/90 hover:text-white bg-white/10 hover:bg-white/20 border border-[#D4B483]/40 px-3 py-2 rounded-full transition-all duration-200 whitespace-nowrap"
                   title="Mon espace"
                 >
                   <User className="w-3.5 h-3.5 text-[#D4B483]" />
-                  <span className="max-w-[80px] truncate">{sessionUser.firstName || 'Mon espace'}</span>
+                  <span className="max-w-[90px] truncate">{sessionUser.firstName || 'Mon espace'}</span>
                 </a>
                 <button
                   onClick={handleLogout}
-                  className="inline-flex items-center gap-1.5 text-xs text-white/70 hover:text-white bg-white/5 hover:bg-red-500/20 border border-white/10 hover:border-red-400/40 px-3 py-2 rounded-full transition-all duration-200 cursor-pointer"
+                  className="inline-flex items-center gap-1.5 text-xs text-white/75 hover:text-white bg-white/5 hover:bg-red-500/20 border border-white/15 hover:border-red-400/40 px-3 py-2 rounded-full transition-all duration-200 cursor-pointer whitespace-nowrap"
                   title="Se déconnecter"
                 >
                   <LogOut className="w-3.5 h-3.5" />
-                  <span>Déconnexion</span>
+                  <span className="hidden xl:inline">Déconnexion</span>
                 </button>
               </>
             ) : sessionChecked && !sessionUser ? (
