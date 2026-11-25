@@ -1,10 +1,6 @@
 {
   "version": 2,
-  "buildCommand": "cd apps/web && prisma generate --schema=prisma/schema.prisma && next build",
-  "outputDirectory": "apps/web/.next",
+  "buildCommand": "pnpm run build",
   "installCommand": "pnpm install",
-  "framework": "nextjs",
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/$1" }
-  ]
+  "framework": "nextjs"
 }
