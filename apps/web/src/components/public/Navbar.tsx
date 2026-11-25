@@ -4,7 +4,13 @@ import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { useTranslations, useLocale } from 'next-intl';
 import { Link, usePathname, useRouter } from '@/i18n/routing';
-import { Calendar, Search, ChevronDown, Menu, X, ArrowRight, User, UserPlus } from 'lucide-react';
+import { Calendar, Search, ChevronDown, Menu, X, ArrowRight, User, UserPlus, LogOut, LayoutDashboard } from 'lucide-react';
+
+interface SessionUser {
+  firstName: string;
+  lastName: string;
+  role: string;
+}
 
 export function Navbar() {
   const t = useTranslations('nav');
@@ -13,6 +19,33 @@ export function Navbar() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [sessionUser, setSessionUser] = useState<SessionUser | null>(null);
+  const [sessionChecked, setSessionChecked] = useState(false);
+
+  // Vérification session au montage
+  useEffect(() => {
+    fetch('/api/v1/auth/me', { credentials: 'include' })
+      .then(res => res.ok ? res.json() : null)
+      .then(data => {
+        if (data?.data) {
+          setSessionUser({
+            firstName: data.data.firstName || '',
+            lastName: data.data.lastName || '',
+            role: data.data.role || 'VISITOR',
+          });
+        }
+      })
+      .catch(() => {})
+      .finally(() => setSessionChecked(true));
+  }, []);
+
+  const handleLogout = async () => {
+    await fetch('/api/v1/auth/logout', { method: 'POST', credentials: 'include' });
+    setSessionUser(null);
+    window.location.reload();
+  };
+
+  const isAdmin = sessionUser && ['ADMIN', 'SUPER_ADMIN', 'COLLABORATOR', 'EDITOR'].includes(sessionUser.role);
 
   const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
@@ -139,7 +172,7 @@ export function Navbar() {
             })}
           </nav>
 
-          {/* Right Action (Desktop: Prendre rendez-vous + Simulateur + Connexion + Inscription) */}
+          {/* Right Action (Desktop) */}
           <div className="hidden sm:flex items-center gap-2">
             <a
               href={`/${locale}/rendez-vous`}
@@ -159,23 +192,61 @@ export function Navbar() {
               <Search className="w-3.5 h-3.5" />
             </a>
 
-            <a
-              href="/admin/login?mode=login"
-              className="inline-flex items-center gap-1.5 text-xs text-white/90 hover:text-white bg-white/10 hover:bg-white/20 border border-white/20 px-3 py-2 rounded-full transition-all duration-200 hover:border-[#D4B483]/60"
-              title="Se connecter"
-            >
-              <User className="w-3.5 h-3.5 text-[#D4B483]" />
-              <span>Connexion</span>
-            </a>
-
-            <a
-              href="/admin/login?mode=register"
-              className="inline-flex items-center gap-1.5 text-xs text-white bg-aurelex-bordeaux/90 hover:bg-aurelex-bordeaux border border-[#D4B483]/40 hover:border-[#D4B483] px-3 py-2 rounded-full transition-all duration-200 shadow-sm"
-              title="Créer un compte"
-            >
-              <UserPlus className="w-3.5 h-3.5 text-aurelex-champagne-light" />
-              <span>Inscription</span>
-            </a>
+            {/* Boutons selon l'état de session */}
+            {sessionChecked && sessionUser ? (
+              // ── Utilisateur connecté ──
+              <>
+                {isAdmin && (
+                  <a
+                    href="/admin"
+                    className="inline-flex items-center gap-1.5 text-xs text-white/90 hover:text-white bg-white/10 hover:bg-white/20 border border-white/20 px-3 py-2 rounded-full transition-all duration-200 hover:border-[#D4B483]/60"
+                    title="Tableau de bord"
+                  >
+                    <LayoutDashboard className="w-3.5 h-3.5 text-[#D4B483]" />
+                    <span>Admin</span>
+                  </a>
+                )}
+                <a
+                  href="/espace-client"
+                  className="inline-flex items-center gap-1.5 text-xs text-white/90 hover:text-white bg-white/10 hover:bg-white/20 border border-[#D4B483]/40 px-3 py-2 rounded-full transition-all duration-200"
+                  title="Mon espace"
+                >
+                  <User className="w-3.5 h-3.5 text-[#D4B483]" />
+                  <span className="max-w-[80px] truncate">{sessionUser.firstName || 'Mon espace'}</span>
+                </a>
+                <button
+                  onClick={handleLogout}
+                  className="inline-flex items-center gap-1.5 text-xs text-white/70 hover:text-white bg-white/5 hover:bg-red-500/20 border border-white/10 hover:border-red-400/40 px-3 py-2 rounded-full transition-all duration-200 cursor-pointer"
+                  title="Se déconnecter"
+                >
+                  <LogOut className="w-3.5 h-3.5" />
+                  <span>Déconnexion</span>
+                </button>
+              </>
+            ) : sessionChecked && !sessionUser ? (
+              // ── Non connecté ──
+              <>
+                <a
+                  href="/admin/login?mode=login"
+                  className="inline-flex items-center gap-1.5 text-xs text-white/90 hover:text-white bg-white/10 hover:bg-white/20 border border-white/20 px-3 py-2 rounded-full transition-all duration-200 hover:border-[#D4B483]/60"
+                  title="Se connecter"
+                >
+                  <User className="w-3.5 h-3.5 text-[#D4B483]" />
+                  <span>Connexion</span>
+                </a>
+                <a
+                  href="/admin/login?mode=register"
+                  className="inline-flex items-center gap-1.5 text-xs text-white bg-aurelex-bordeaux/90 hover:bg-aurelex-bordeaux border border-[#D4B483]/40 hover:border-[#D4B483] px-3 py-2 rounded-full transition-all duration-200 shadow-sm"
+                  title="Créer un compte"
+                >
+                  <UserPlus className="w-3.5 h-3.5 text-aurelex-champagne-light" />
+                  <span>Inscription</span>
+                </a>
+              </>
+            ) : (
+              // ── Chargement (skeleton discret) ──
+              <div className="w-28 h-8 rounded-full bg-white/10 animate-pulse" />
+            )}
           </div>
 
           {/* Mobile Hamburger Button */}
@@ -219,23 +290,44 @@ export function Navbar() {
             </a>
 
             <div className="grid grid-cols-2 gap-2.5 pt-1">
-              <a
-                href="/admin/login?mode=login"
-                onClick={() => setMobileMenuOpen(false)}
-                className="w-full inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 text-white font-medium py-2.5 rounded-full text-xs border border-white/20 transition-colors"
-              >
-                <User className="w-3.5 h-3.5 text-[#D4B483]" />
-                <span>Connexion</span>
-              </a>
-
-              <a
-                href="/admin/login?mode=register"
-                onClick={() => setMobileMenuOpen(false)}
-                className="w-full inline-flex items-center justify-center gap-2 bg-aurelex-bordeaux/90 hover:bg-aurelex-bordeaux text-white font-medium py-2.5 rounded-full text-xs border border-[#D4B483]/40 transition-colors shadow-sm"
-              >
-                <UserPlus className="w-3.5 h-3.5 text-aurelex-champagne-light" />
-                <span>Inscription</span>
-              </a>
+              {sessionChecked && sessionUser ? (
+                <>
+                  <a
+                    href="/espace-client"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="col-span-1 w-full inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 text-white font-medium py-2.5 rounded-full text-xs border border-white/20 transition-colors"
+                  >
+                    <User className="w-3.5 h-3.5 text-[#D4B483]" />
+                    <span className="truncate">{sessionUser.firstName || 'Mon espace'}</span>
+                  </a>
+                  <button
+                    onClick={() => { setMobileMenuOpen(false); handleLogout(); }}
+                    className="col-span-1 w-full inline-flex items-center justify-center gap-2 bg-red-500/20 hover:bg-red-500/30 text-white font-medium py-2.5 rounded-full text-xs border border-red-400/30 transition-colors cursor-pointer"
+                  >
+                    <LogOut className="w-3.5 h-3.5 text-red-300" />
+                    <span>Déconnexion</span>
+                  </button>
+                </>
+              ) : (
+                <>
+                  <a
+                    href="/admin/login?mode=login"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="w-full inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 text-white font-medium py-2.5 rounded-full text-xs border border-white/20 transition-colors"
+                  >
+                    <User className="w-3.5 h-3.5 text-[#D4B483]" />
+                    <span>Connexion</span>
+                  </a>
+                  <a
+                    href="/admin/login?mode=register"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="w-full inline-flex items-center justify-center gap-2 bg-aurelex-bordeaux/90 hover:bg-aurelex-bordeaux text-white font-medium py-2.5 rounded-full text-xs border border-[#D4B483]/40 transition-colors shadow-sm"
+                  >
+                    <UserPlus className="w-3.5 h-3.5 text-aurelex-champagne-light" />
+                    <span>Inscription</span>
+                  </a>
+                </>
+              )}
             </div>
           </div>
         </div>
